@@ -1,4 +1,6 @@
 site_name: yhwu_is's Notes
+site_url: https://yhwu-is.github.io/Notes
+site_author: yhwu_is
 theme:
   name: material
   palette:
