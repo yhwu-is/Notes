@@ -1,0 +1,141 @@
+site_name: yhwu_is's Notes
+theme:
+  name: material
+  palette:
+    #primary: blue grey
+    - scheme: default # 日间模式
+      primary: indigo # 上方的
+      accent: cyan # 链接等可交互元件的高亮色
+      toggle:
+        icon: material/weather-night # 图标
+        name: 切换至夜间模式 # 鼠标悬浮提示
+    - scheme: slate # 夜间模式
+      primary: black 
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: 切换至日间模式
+  features: 
+    - navigation.instant #- header.autohide  #自动隐藏
+    #- announce.dismiss #呈现可标记为由用户读取的临时公告，可以包含一个用于取消当前公告的按钮
+    - navigation.tracking #地址栏中的 URL 将自动更新为在目录中突出显示的活动锚点
+    - navigation.tabs #顶级部分将呈现在上面视口标题下方的菜单层中，但在移动设备上保持原样
+    #- navigation.tabs.sticky  #启用粘性选项卡后，导航选项卡将锁定在标题下方，并在向下滚动时始终保持可见
+    #- navigation.sections #启用部分后，顶级部分在边栏中呈现为1220px以上视口的组，但在移动设备上保持原样
+    - navigation.top # 返回顶部的按钮 在上滑时出现
+    - search.suggest # 搜索输入一些字母时推荐补全整个单词
+    - search.highlight # 搜索出的文章关键词加入高亮
+    #- navigation.expand # 打开Tab时左侧目录全部展开
+    #- navigation.indexes #启用节索引页后，可以将文档直接附加到节
+    - search.share #搜索分享按钮
+  icon: 
+    repo: fontawesome/brands/github #右上角图标
+edit_uri: edit/main/docs # 编辑按钮跳转的链接 
+repo_url: https://github.com/Wcowin/mymkdocs # 右上角点击跳转的链接
+repo_name: yhwu_is的GitHub主页 # 右上角的名字
+nav: 
+  - Welcome: index.md
+  - 数学:
+    - 计算理论基础:
+      - 有限自动机与正则语言: math/BasicTC/TC1.md
+      - 下推自动机与上下文无关语言: math/BasicTC/TC2.md
+      - Church-Turing 论题: math/BasicTC/TC3.md
+      - 可判定性: math/BasicTC/TC4.md
+      - 可归约性: math/BasicTC/TC5.md
+    - 计算理论进阶: 
+      - 时间复杂性: math/AdvancedTC/time.md
+      - 空间复杂性: math/AdvancedTC/space.md
+      - 概率算法: math/AdvancedTC/probabilistic.md
+      - 复杂性层次: math/AdvancedTC/intractability.md
+    - 量子信息基础:
+      - 希尔伯特空间: math/BasicQuantumInfo/hilbert.md
+    - 优化理论与方法:
+      - 引言与数学基础: math/optimization/P1.md
+      - 光滑凸优化基础: math/optimization/P2.md
+      - 下降方法: math/optimization/P3.md
+      - 一般凸优化: math/optimization/P4.md
+  - 金融学: 
+    - 公司金融: 
+      - 简介与财务报表: finance/corporate/P1.md
+      - 现金流: finance/corporate/P2.md
+      - 风险与收益: finance/corporate/P3.md
+      - 现金管理: finance/corporate/P4.md
+  - 计算机基础:
+    - 计算机网络:
+      - 2022-2023期末复习: cs/network/review.md
+      - 参考习题: cs/network/exercise.md
+  - 信息安全: 
+    - 网络安全:
+      - 面向信息安全的信号处理: 
+        - 信号与系统基础: is/web/signals/P1.md
+        - 信号处理与安全: is/web/signals/P2.md
+        - 基于Matlab的实验: is/web/signals/P3.md
+    - 硬件与系统安全:
+      - 软件安全: 
+        - 基本原则与缓冲区溢出漏洞: is/system/software/P1.md
+        - ROP: is/system/software/P2.md
+        - 格式字符串漏洞: is/system/software/P3.md
+        - 堆溢出: is/system/software/P4.md
+        - 杂项: is/system/software/P5.md
+    - 数据安全:
+      - 密码学: 
+        - 古典密码: is/data/crypto/P1.md
+        - 对称加密算法: is/data/crypto/P2.md
+        - RSA加密算法: is/data/crypto/P3.md
+        - 椭圆曲线加密算法: is/data/crypto/P4.md
+      - 数据安全与隐私保护: 
+        - 访问控制: is/data/data privacy/P1.md
+        - 同态加密: is/data/data privacy/P2.md
+        - 安全多方计算: is/data/data privacy/P3.md
+        - 差分隐私: is/data/data privacy/P4.md
+    - 其他方向:
+      - 区块链安全: 
+        - 区块链技术原理: is/other/blockchain/basic.md
+  - 其他计算机方向: 
+    - 编程语言原理:
+      - lambda表达式: ocs/pfpl/lambda.md
+      - 判断与规则: ocs/pfpl/P1.md
+      - 静态与动态: ocs/pfpl/P2.md
+      - 全函数: ocs/pfpl/P3.md
+      - 有限数据类型: ocs/pfpl/P4.md
+      - 无限数据类型: ocs/pfpl/P6.md
+
+copyright: Copyright &copy; 2023 吴一航
+
+extra:
+  generator: false  #删除页脚显示“使用 MkDocs 材料制造”
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yhwu-is
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:<yhwu_is@zju.edu.cn> #联系方式
+
+markdown_extensions:
+  - abbr
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - md_in_html
+  - pymdownx.arithmatex:  # latex支持
+      generic: true
+  - toc:
+      permalink: true # 固定标题位置为当前位置
+  - pymdownx.highlight: # 代码块高亮
+      anchor_linenums: true
+      # linenums: true # 显示行号
+      # auto_title: true # 显示编程语言名称
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences # 代码块高亮插件
+  - meta # 支持Markdown文件上方自定义标题标签等
+
+extra_javascript:
+  - javascripts/extra.js
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
