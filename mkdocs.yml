@@ -18,6 +18,7 @@ theme:
         icon: material/weather-sunny
         name: 切换至日间模式
   features: 
+    - navigation.footer
     - navigation.instant #- header.autohide  #自动隐藏
     #- announce.dismiss #呈现可标记为由用户读取的临时公告，可以包含一个用于取消当前公告的按钮
     - navigation.tracking #地址栏中的 URL 将自动更新为在目录中突出显示的活动锚点
@@ -111,6 +112,10 @@ extra:
       link: https://github.com/yhwu-is
     - icon: fontawesome/solid/paper-plane
       link: mailto:<yhwu_is@zju.edu.cn> #联系方式
+
+plugins:
+  - search
+  - tags  #标签
 
 markdown_extensions:
   - abbr
