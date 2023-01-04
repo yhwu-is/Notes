@@ -33,7 +33,7 @@ theme:
   icon: 
     repo: fontawesome/brands/github #右上角图标
 edit_uri: edit/main/docs # 编辑按钮跳转的链接 
-repo_url: https://github.com/Wcowin/mymkdocs # 右上角点击跳转的链接
+repo_url: https://github.com/yhwu-is/Notes # 右上角点击跳转的链接
 repo_name: yhwu_is的GitHub主页 # 右上角的名字
 nav: 
   - Welcome: index.md
