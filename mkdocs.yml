@@ -35,7 +35,7 @@ theme:
     repo: fontawesome/brands/github #右上角图标
 edit_uri: edit/main/docs # 编辑按钮跳转的链接 
 repo_url: https://github.com/yhwu-is/Notes # 右上角点击跳转的链接
-repo_name: yhwu_is的GitHub主页 # 右上角的名字
+repo_name: GitHub仓库 # 右上角的名字
 nav: 
   - Welcome: index.md
   - 数学:
@@ -59,7 +59,8 @@ nav:
       - 一般凸优化: math/optimization/P4.md
   - 金融学: 
     - 公司金融: 
-      - 简介与财务报表: finance/corporate/P1.md
+      - 简介: finance/corporate/P0.md
+      - 财务报表: finance/corporate/P1.md
       - 现金流: finance/corporate/P2.md
       - 风险与收益: finance/corporate/P3.md
       - 现金管理: finance/corporate/P4.md
