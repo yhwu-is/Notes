@@ -64,6 +64,7 @@ nav:
       - 现金流: finance/corporate/P2.md
       - 风险与收益: finance/corporate/P3.md
       - 现金管理: finance/corporate/P4.md
+      - 一些例题: finance/corporate/exercise.md
   - 计算机基础:
     - 计算机网络:
       - 2022-2023期末复习: cs/network/review.md
