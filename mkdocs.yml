@@ -40,6 +40,7 @@ nav:
   - Welcome: index.md
   - 数学:
     - 计算理论基础:
+      - 导言与预备知识: math/BasicTC/TC0.md
       - 有限自动机与正则语言: math/BasicTC/TC1.md
       - 下推自动机与上下文无关语言: math/BasicTC/TC2.md
       - Church-Turing 论题: math/BasicTC/TC3.md
