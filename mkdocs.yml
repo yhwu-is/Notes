@@ -1,6 +1,10 @@
 site_name: yhwu_is's Notes
 site_url: https://yhwu-is.github.io/Notes
 site_author: yhwu_is
+site_description: yhwu_is's Notes
+repo_name: yhwu-is/Notes
+repo_url: https://github.com/yhwu-is/Notes
+edit_uri: tree/main/docs
 
 theme:
   name: material
@@ -36,10 +40,7 @@ theme:
   icon: 
     repo: fontawesome/brands/github #右上角图标
   font: false
-
-edit_uri: edit/main/docs # 编辑按钮跳转的链接 
-repo_url: https://github.com/yhwu-is/Notes # 右上角点击跳转的链接
-repo_name: GitHub仓库 # 右上角的名字
+  
 nav: 
   - Welcome: index.md
   - 数学: 

@@ -40,8 +40,8 @@ $$\pi_i = p_i R - c_ir_i$$
 根据前面的描述，这描述了 AI 刚刚进入市场，是一个比较独立的存在的情况，此时根据 Tullock 模型我们可以得到每个内容创作者 $i$ 在主题 $k$ 中的“市场占有率”：$\dfrac{x_{ik}}{\alpha_k(s_k)^{\tilde{\beta}_k}+s_k}$。如果我们假设每个主题的总市场，也就是用户的总关注度为 $\mu_k \cdot (s_k)^{\tilde{\gamma}_k}$，其中 $\mu_k$ 是一个流行程度的衡量，$\tilde{\gamma}_k \in [0,1]$ 是衡量总关注度随着这一主题内容总量增加而增加的速度的参数。在上述假定下，参与人 $i$ 在所有主题下的总效用为
 
 $$\begin{align}
-    u_i(\pmb{x_i},\pmb{x_{-i}}) &= \sum\limits_{i=1}^K \dfrac{x_{ik} \cdot \mu_k \cdot (s_k)^{\tilde{\gamma}_k}}{\alpha_k(s_k)^{\tilde{\beta}_k}+s_k} - c_i(\pmb{x_i}) \\
-    &= \sum\limits_{i=1}^K \dfrac{x_{ik} \cdot \mu_k}{\alpha_k(s_k)^{\beta_k}+(s_k)^{\gamma_k}} - c_i(\pmb{x_i})
+    u_i(\pmb{x_i},\pmb{x_{-i}}) &= \sum\limits_{k=1}^K \dfrac{x_{ik} \cdot \mu_k \cdot (s_k)^{\tilde{\gamma}_k}}{\alpha_k(s_k)^{\tilde{\beta}_k}+s_k} - c_i(\pmb{x_i}) \\
+    &= \sum\limits_{k=1}^K \dfrac{x_{ik} \cdot \mu_k}{\alpha_k(s_k)^{\beta_k}+(s_k)^{\gamma_k}} - c_i(\pmb{x_i})
 \end{align}$$
 
 其中 $\beta_k = \tilde{\beta}_k - \tilde{\gamma}_k \in [-1,1]$，$\gamma_k = 1 - \tilde{\gamma}_k \in [0,1]$，在之后的分析中我们大都使用新的记号。以上的所有信息就可以完整描述 Exclusive Competition 了，之后的任务就是分析均衡。与传统的 Tullock 竞争模型相比，这里我们引入了一个特别的参与人 AI，因为 AI 事实上并不是智能的玩家，因为 AI 不会主动选择策略，AI 生成的内容量完全由人类生成的量以及前面介绍的公式确定，这种非智能性的、并且策略与其他玩家相关的情况是 Tullock 模型的一个新的变种，这也使得本文的研究具有一定的理论意义。
@@ -84,7 +84,7 @@ $$u_i(\pmb{y_i},\pmb{y_{-i}}) = \begin{cases}
 观察 $\eqref{EX}$ 式，我们可以发现，$\beta$ 并没有出现在式子中，只有 $\alpha$ 出现了，这表明**人类的创作此时受到 AI 创作的影响只是常数级别的，因此我们可以看到人类与 AI 共生的可能性**。更进一步地，我们假设所有人类的创作成本系数都在一个值 $c$ 附近，那么 $||\pmb{c^{-1}}||_{\frac{1}{\rho-1}}$ 约等于 $c^{-1}n^{\rho-1}$，$\eqref{EX}$ 式可以简化为 $s^* = O\left(\left(\dfrac{\mu}{cn^\gamma}\right)^\omega n\right)$，其中 $\omega = \dfrac{1}{\rho+\gamma-1}$。因此当用户关注度 $\mu$ 的增长比成本、人数的综合值 $cn^\gamma$ 的增长更快时，总创作会增多，因此**用户关注度的提高和成本的降低都是关键的提升总创作数量的方式**。
 
 #### Inclusive Competition
-很遗憾，尽管 Exclusive Competition 中纯策略纳什均衡存在且唯一，但 Inclusive Competition 的场景下纯策略纳什 均衡可能不存在。我们需要将条件放宽到成本函数可分，即我们研究 1-D 竞争，此时在一定条件下纯策略纳什均衡是存在（但不一定唯一）：
+很遗憾，尽管 Exclusive Competition 中纯策略纳什均衡存在且唯一，但 Inclusive Competition 的场景下纯策略纳什均衡可能不存在。我们需要将条件放宽到成本函数可分，即我们研究 1-D 竞争，此时在一定条件下纯策略纳什均衡是存在（但不一定唯一）：
 
 !!! 定理
     在 Inclusive Competition 的场景下，假定参与人 $1,\cdots,n$ 按照成本系数 $c_1 \leqslant \cdots \leqslant c_n$ 的顺序排列。如果 $\tilde{\beta}+\tilde{\gamma} \geqslant 1$，纯策略纳什均衡存在（不一定唯一），具有形式 $\pmb{y^*} = (x_1,\cdots,x_{n-m},\perp,\cdots,\perp)$，即创作成本最高的 $m$ 个人类创作者会选择使用 AI 生成创作。
@@ -114,7 +114,7 @@ $$u_i(\pmb{y_i},\pmb{y_{-i}}) = \begin{cases}
 #### 未来展望（from 徐海峰老师的 slides）
 - Copyright issue
 - **What if GenAI platforms have to pay creators for acquiring their authentic data for training GenAIs, and how to acquire such data?（如何为人类创作定价？）**
-- What if GenAI platforms charge creators for generating contents?
+- What if GenAI platforms charge creators for generating contents?（人类使用 AI 平台创作也需要收费）
 - **Authentic contents can now profit from serving Internet users AND serving GenAI platforms – how would this change the competition?**
 - What about the “search engine + conversational engine” competition?
 
