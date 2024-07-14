@@ -43,10 +43,13 @@ repo_name: GitHub仓库 # 右上角的名字
 nav: 
   - Welcome: index.md
   - 数学: 
-    - 线性代数: math/linear_algebra/index.md
+    - 线性代数: 
+      - 线性代数：未竟之美: math/linear_algebra/index.md
     - 数学分析: math/math_analysis/index.md
-    # - 实分析:
-    # - 泛函分析:
+    - 实分析:
+      - 勒贝格测度: math/real_analysis/measure.md
+    - 泛函分析:
+      - 巴拿赫不动点定理: math/functional_analysis/contraction.md
     # - 拓扑学:
     # - 微分几何:
     # - 抽象代数:
@@ -69,8 +72,9 @@ nav:
     - 量子信息基础:
       - 希尔伯特空间: tcs/BasicQuantumInfo/hilbert.md
     - 优化理论与方法:
-      - 引言与数学基础: tcs/optimization/P1.md
-      - 光滑凸优化基础: tcs/optimization/P2.md
+      - 基础知识: tcs/optimization/basic.md
+      - 线性规划基础: tcs/optimization/lp.md
+      - 线性规划对偶: tcs/optimization/duality.md
       - 下降方法: tcs/optimization/P3.md
       - 一般凸优化: tcs/optimization/P4.md
     - 编程语言原理:
@@ -85,11 +89,26 @@ nav:
       - 导言: algt/BasicGameTheory/intro.md
       - 偏好与效用: algt/BasicGameTheory/utility.md
       - 贝叶斯决策理论基础: algt/BasicGameTheory/bayesian.md
+      - 扩展式博弈: algt/BasicGameTheory/extensive.md
+      - 策略式博弈: algt/BasicGameTheory/strategic.md
+      - 混合策略: algt/BasicGameTheory/mixed.md
+      - 行为策略: algt/BasicGameTheory/behavior.md
+      - 均衡精炼: algt/BasicGameTheory/refinement.md
+      - 相关均衡: algt/BasicGameTheory/correlated.md
       - 机制设计基础: algt/BasicGameTheory/mechanism.md
-    - 算法博弈论二十讲:
+    - 博弈论进阶:
+      - 不动点与均衡（I）: algt/AdvancedGameTheory/fixedpoint-1.md
+      - 不动点与均衡（II）: algt/AdvancedGameTheory/fixedpoint-2.md
+      - 无限博弈: algt/AdvancedGameTheory/infinite.md
+    - 算法博弈论基础:
       - 势博弈: algt/twenty_lectures/potential.md
+      - 在线学习: algt/twenty_lectures/online.md
+      - 交换遗憾: algt/twenty_lectures/swap.md
+      - 多臂老虎机: algt/twenty_lectures/bandit.md
     - 机制设计与近似:
       - 无先验知识的机制设计: algt/MechDesignApprox/prior-free.md
+    - 机器学习与博弈论:
+      - 绪论: algt/MLGameTheory/intro.md
   - 经济与金融学类: 
     - 公司金融: 
       - 简介: eco_fin/corporate/P0.md
@@ -131,6 +150,11 @@ nav:
   - 论文阅读:
     - 拍卖与机制设计: 
       - compatitive auctions and digital goods: paper/auction/P1.md
+    - 计算经济学:
+      - peer prediction: paper/ec/peer.md
+    - AI 相关:
+      - Human vs. Generative AI: paper/ai/human-ai.md
+      - LLM mechanism: paper/ai/llm.md
 
 copyright: Copyright &copy; 2023-2024 吴一航
 
