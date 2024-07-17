@@ -40,7 +40,7 @@ theme:
   icon: 
     repo: fontawesome/brands/github #右上角图标
   font: false
-  
+
 nav: 
   - Welcome: index.md
   - 数学: 
@@ -106,11 +106,16 @@ nav:
       - 在线学习: algt/twenty_lectures/online.md
       - 交换遗憾: algt/twenty_lectures/swap.md
       - 多臂老虎机: algt/twenty_lectures/bandit.md
+    - 算法博弈论进阶:
+      - 纳什均衡的计算复杂度（I）: algt/Advanced-algt/complexity-1.md
+      - 纳什均衡的计算复杂度（II）: algt/Advanced-algt/complexity-2.md
     - 机制设计与近似:
       - 无先验知识的机制设计: algt/MechDesignApprox/prior-free.md
     - 机器学习与博弈论:
       - 绪论: algt/MLGameTheory/intro.md
   - 经济与金融学类: 
+    - 数理经济学基础:
+      - 概论: eco_fin/math_eco/intro.md
     - 公司金融: 
       - 简介: eco_fin/corporate/P0.md
       - 财务报表: eco_fin/corporate/P1.md
