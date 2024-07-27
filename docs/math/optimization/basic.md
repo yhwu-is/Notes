@@ -1,4 +1,4 @@
-# 基础知识
+# 凸优化基础知识
 
 ## 凸集与分离超平面定理
 ### 凸集
@@ -16,10 +16,10 @@ $$ \text{conv}(x^0,x^1,\ldots,x^k) = \left\{ \sum_{i=0}^k \lambda_i x^i \mid \la
 
 有一个基本的结果是，如果 $X$ 是一个闭集，那么对每个点 $x \notin X$，至少存在一个点 $y$ 距离 $x$ 最近。我们将要证明的是，如果 $X$ 是闭凸集，这一最近的点是唯一的：
 
-!!! 定理
+!!! note "定理"
     令 $X \subseteq \mathbb{R}^n$ 是一个闭凸集，$x \in \mathbb{R}^n$ 是一个不在 $X$ 中的点，则存在唯一的 $y \in X$，使得 $d(x,X) = d(x,y)$。
 
-!!! 证明
+!!! note "证明"
     首先根据闭集可知至少存在一个点 $y \in X$，使得 $d(x,X) = d(x,y)$。接下来用反证法，假设存在另一个点 $z \in X$ 使得 $d(x,z) = d(x,X)$，因为 $X$ 是凸集，$\dfrac{y+z}{2} \in X$，我们证明 $d(x,\dfrac{y+z}{2}) < d(x,y)$ 来得到矛盾（因为 $y$ 是距离 $x$ 最近的点）。我们可以定义函数 $D: \mathbb{R} \to \mathbb{R}$ 为 
     
     $$\begin{aligned}
@@ -31,20 +31,20 @@ $$ \text{conv}(x^0,x^1,\ldots,x^k) = \left\{ \sum_{i=0}^k \lambda_i x^i \mid \la
     事实上这是关于 $\alpha$ 的一个二次函数，并且 $\alpha^2$ 的系数是正数，根据 $D(0) = D(1)$ 可知 $D(\alpha)$ 在 $(0,1)$ 内取得最小值，实际上根据对称性就是 $D(1/2)$，因此 $d(x,\dfrac{y+z}{2}) < d(x,y)$，得到矛盾。
 
 下面是一个无关的结论，放在这里只是因为想起来有这么个结果，然后也为了提醒一下我自己学过这一结论：
-!!! 一个补充的结论
+!!! note "一个补充的结论"
     设 $X$ 是一个闭集，$Y$ 是一个集合，满足 $X \cap Y = \varnothing$，那么
 
     1. 若 $Y$ 是紧集，则 $d(X,Y) > 0$；
     2. 若 $Y$ 是闭集，则 $d(X,Y)$ 可能等于 $0$。
 
-!!! 补充结论的证明
+!!! note "补充结论的证明"
     1. 因为 $X \cap Y = \varnothing$，因此对于任意的 $y \in Y$，都存在 $\delta_y$ 使得 $d(y,X) > 2\delta_y$，故 $B(y,\delta_y) \cap X = \varnothing$。因为 $Y$ 是紧集，因此根据有限覆盖定理，存在有限个 $y_1,y_2,\ldots,y_k$ 使得 $Y \subseteq \bigcup\limits_{i=1}^k B(y_i,\delta_{y_i})$。令 $\delta = \min\{\delta_{y_1},\delta_{y_2},\ldots,\delta_{y_k}\}$，则 $\forall x \in X, y \in Y$，都存在一个 $i$ 使得 $y \in B(y_i,\delta_{y_i})$，即 $|y - y_i| \leqslant \delta_{y_i}$，因此 $|x - y| \geqslant |x - y_i| - |y - y_i| > 2\delta_{y_i} - \delta_{y_i} = \delta_{y_i} \geqslant \delta$，即 $d(X,Y) \geqslant \delta > 0$。
     2. 只需注意到 $y = 1/x$ 的函数曲线与 $x$ 轴都是闭集，但它们之间的距离为 $0$ 即可。
 
 ### 分离超平面定理
 在应用中有一个非常常用的结论，即**分离超平面定理（Separating Hyperplane Theorem）**。为了描述这一定理，我们首先需要定义一些术语：
 
-!!! 超平面定义
+!!! note "超平面定义"
     $\mathbb{R}^n$ 中的一个**超平面（hyperplane）** $H(\alpha,\beta)$ 可以由一个法向量 $\alpha \in \mathbb{R}^n$ 和一个标量（称为截距） $\beta \in \mathbb{R}$ 确定，即
 
     $$ H(\alpha,\beta) = \{ x \in \mathbb{R}^n \mid \langle \alpha,x \rangle = \beta \} $$
@@ -55,7 +55,7 @@ $$ \text{conv}(x^0,x^1,\ldots,x^k) = \left\{ \sum_{i=0}^k \lambda_i x^i \mid \la
 
 一个超平面将一个集合和一个点分离，条件是：这个集合被包含在超平面的一个半空间中，而这个点在另一个半空间中。这一定义的形式化描述如下：
 
-!!! 分离的定义
+!!! note "分离的定义"
     令 $S \subseteq \mathbb{R}^n$ 是一个集合，$x \in \mathbb{R}^n$ 是一个向量。超平面 $H(\alpha,\beta)$ 将 $S$ 和 $x$ 分开，条件是
 
     1. $S \subseteq H^+(\alpha,\beta)$ 且 $x \in H^-(\alpha,\beta)$，或者
@@ -68,7 +68,7 @@ $$ \text{conv}(x^0,x^1,\ldots,x^k) = \left\{ \sum_{i=0}^k \lambda_i x^i \mid \la
 
 有了上面的定义之后，我们就可以开始描述分离超平面定理了。分离超平面定理说的是，对每个闭凸集以及每个不在那个集合中的每个点，都存在一个超平面将这个集合和这个点严格分离，并且定理还直接给出了如何构建这样一个超平面：
 
-!!! 分离超平面定理
+!!! note "分离超平面定理"
     令 $S \subseteq \mathbb{R}^n$ 是一个闭凸集，$x \in \mathbb{R}^n$ 是一个不在 $S$ 中的点，$y$ 是 $S$ 中距离 $x$ 最近的点（上一小节的结论表明这样的点存在）。那么超平面 $H(x-y,\langle x-y,y \rangle)$ 将 $S$ 和 $x$ 分离。进一步地，存在超平面将 $S$ 和 $x$ 严格分离。
 
 这个定理的几何解释非常直观：我们将 $x-y$ 作为超平面的法向量是很自然的事情，然后我们设置截距项让超平面过 $y$ 点，这样因为 $S$ 是闭凸集，所以 $S$ 中的所有点都在 $y$ 的一侧，而 $x$ 在 $y$ 的另一侧，因此这个超平面将 $S$ 和 $x$ 分开。如果我们进一步要求严格分离，那么我们可以稍微调整截距项，使得超平面不经过 $y$ 点，让平面在 $x,y$ 两点之间即可。下图给出了一个世纪的例子供读者体会。
@@ -77,7 +77,7 @@ $$ \text{conv}(x^0,x^1,\ldots,x^k) = \left\{ \sum_{i=0}^k \lambda_i x^i \mid \la
 <img src="/Notes/assets/images/tcs/optimization/basic/separate.png" width="30%" style="margin: 0 auto;">
 </div>
 
-!!! 分离超平面定理的证明
+!!! note "分离超平面定理的证明"
     我们直接根据定义证明超平面 $H(x-y,\langle x-y,y \rangle)$ 将 $S$ 和 $x$ 分离即可，严格分离前面的分析已经得到了方法。
 
     1. 证明 $x \in H^+(x-y,\langle x-y,y \rangle)$：这等价于 $\langle x-y,x \rangle \geqslant \langle x-y,y \rangle$，即 $\langle x-y,x-y \rangle \geqslant 0$，根据内积的正定性这是显然的。事实上因为 $d(x,S) > 0$ 因此 $x \neq y$，所以这个不等式是严格的，因此事实上有 $x \in H^+(x-y,\langle x-y,y \rangle)\backslash H(x-y,\langle x-y,y \rangle)$。
@@ -92,16 +92,16 @@ $$ \text{conv}(x^0,x^1,\ldots,x^k) = \left\{ \sum_{i=0}^k \lambda_i x^i \mid \la
 
 事实上分离超平面定理有一个很自然的推广：
 
-!!! 分离超平面定理的推广
+!!! note "分离超平面定理的推广"
     令 $X,Y \in \mathbb{R}^n$ 是两个闭凸集，如果 $X \cap Y = \varnothing$，则存在超平面 $H(\alpha,\beta)$ 将 $X$ 与 $Y$ 分离。
 
-证明思路非常简单，因为两个集合都是闭集，因此最小化两个集合之间距离的点都可以取到，设为 $x \in X,y \in Y$，然后根据分离超平面定理得到分离 $x$ 和 $Y$，以及分离 $y$ 和 $X$ 的两个超平面，然后取两个超平面之间的平面就是分离两个集合的超平面。
+证明思路非常简单，因为两个集合都是闭集，因此最小化两个集合之间距离的点都可以取到，设为 $x \in X,y \in Y$，然后根据分离超平面定理得到分离 $x$ 和 $Y$，以及分离 $y$ 和 $X$ 的两个超平面，然后取两个超平面之间的平面就是分离两个集合的超平面。需要注意的是，两个闭凸集之间不一定可以严格分离，这一点可以从两个不相交的闭集距离可以等于 $0$ 看出来。
 
 ## 单纯形
 ### 仿射无关性
 接下来我们需要介绍一些有关于单纯形的基本知识，为了引入单纯形，我们需要首先介绍仿射无关性的概念。
 
-!!! 仿射无关的定义
+!!! note "仿射无关的定义"
     $\mathbb{R}^n$ 中的向量 $x^0,x^1,\cdots,x^k$ 是仿射无关的，条件是： $\mathbb{R}$ 内未知数为 $(\alpha^l)_{l=0}^k$ 的如下方程：
 
     $$\begin{align}
@@ -125,7 +125,7 @@ $$ x^0 = t x^1 + (1 - t) x^2 $$
 
 由此我们也发现了仿射无关和线性无关尽管非常相似，但并不是一个概念。平面上三点不共线就可以仿射无关，但考虑 $(1,0),(0,1),(1,1)$ 这三个点，它们是线性相关的。反之，根据线性无关的定义可以直接推出仿射无关，因此仿射无关是一个更弱的约束。更具体地，我们有如下定理：
 
-!!! 仿射相关与线性无关
+!!! note "仿射相关与线性无关"
     考虑 $\mathbb{R}^n$ 中的向量组 $S = \{x^0,x^1,\cdots,x^k\}(k \geqslant 2)$，下列说法等价：
 
     1. $S$ 仿射相关；
@@ -134,7 +134,7 @@ $$ x^0 = t x^1 + (1 - t) x^2 $$
 
 实际上这里的 1 和 2 的等价性就是前面定义的直观解释，**这表明，线性无关与仿射无关等相关概念其实都可以平移理解**第三条一方面很容易让我们回想起非齐次线性方程组 $AX=b$ 的解的性质，实际上 $AX=b$ 的解可以视为 $\{X_0,X_0+X_1,\cdots,X_0+X_p\}$ 的全体仿射组合的结果，其中 $X_0$ 是 $AX=b$ 的一个特解，$X_1,\cdots,X_p$ 是 $AX=0$ 的基础解系；另一方面，1 和 3 的等价性表明，$S$ 仿射无关等价于 $x^1-x^0,x^2-x^0,\cdots,x^k-x^0$ 线性无关，因此 $\mathbb{R}^n$ 中可能存在 $n+1$ 个仿射无关向量，但是不存在 $n+2$ 个仿射无关向量，否则这样作差会得到 $n+1$ 个线性无关向量：
 
-!!! 仿射相关与线性无关的推论
+!!!note "仿射相关与线性无关的推论"
     $\mathbb{R}^n$ 中可能存在 $n+1$ 个仿射无关向量，但是不存在 $n+2$ 个仿射无关向量。
 
 ### 重心坐标系统
@@ -151,14 +151,14 @@ $$ \pmb{r} = \dfrac{m_1\pmb{r}_1 + m_2\pmb{r}_2 + \cdots + m_n\pmb{r}_n}{m_1 + m
 ### 单纯形
 有了前面的基础，我们可以定义**单纯形（simplex）**的概念了。事实上单纯形是最简单的一类凸集，因此我们对凸集的很多研究可以从单纯形入手，然后进一步推广到一般凸集：
 
-!!! 单纯形的定义
+!!! note "单纯形的定义"
     集合 $S \subseteq \mathbb{R}^n$ 称为一个 $k$ 维单纯形，如果 $S$ 是由 $k+1$ 个仿射无关的向量 $x^0,x^1,\cdots,x^k$ 张成的凸包，即
 
     $$ S = \text{conv}(x^0,x^1,\cdots,x^k) = \left\{ \sum_{i=0}^k \lambda_i x^i \mid \lambda_i \geqslant 0, \sum\limits_{i=0}^k \lambda_i = 1 \right\} $$
 
 我们将上述单纯形记作 $\langle \langle x^0,x^1,\cdots,x^k \rangle \rangle$。显然，一个单纯形是一个凸紧集，零维单纯形是一个单点集合，一维单纯形就是一个闭区间，二维单纯形是一个三角形，三维单纯形是一个四面体，等等。并且单纯形的极端点根据定义就是 $x^0,x^1,\cdots,x^k$。下面这一定理是重心坐标系统的自然推论，表明单纯形内的每一个向量都可以被表达为单纯形极端点的凸组合：
 
-!!! 凸组合
+!!! note "凸组合"
     令 $x^0,x^1,\cdots,x^k$ 是 $\mathbb{R}^n$ 中 $k+1$ 个仿射无关的向量，令 $y \in \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle$，那么 $y$ 可以表达为 $x^0,x^1,\cdots,x^k$ 的唯一凸组合。换言之，$\mathbb{R}$ 中未知数为 $(\alpha^l)_{l=0}^k$ 的如下方程有唯一解：
 
     $$\begin{align}
@@ -171,19 +171,19 @@ $$ \pmb{r} = \dfrac{m_1\pmb{r}_1 + m_2\pmb{r}_2 + \cdots + m_n\pmb{r}_n}{m_1 + m
 
 有一个显然的事实是，仿射无关向量组的子集仍然是仿射无关的，因此我们还可以有下面的结论以及相关的定义：
 
-!!! 单纯形的面
+!!! note "单纯形的面"
     令 $S = \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle$ 是 $\mathbb{R}^n$ 中的一个 $k$ 维单纯形，那么对每个集合 $\{x^{l_0},\cdots,x^{l_t}\} \subseteq \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle$，$\{x^{l_0},\cdots,x^{l_t}\}$ 张成的凸包称为 $S$ 的一个 $t$ 维**面（face）**，事实上也是一个 $t$ 维**子单纯形（subsimplex）**。特别地，$S$ 的每个极端点都是 $S$ 的一个 $0$ 维面，$S$ 本身是一个 $k$ 维面。
 
 这一定义非常直观，例如一个四面体的所有面就是所有顶点、所有边、所有三角面，以及整个四面体本身。进一步地，我们定义单纯形的边界：
 
-!!! 单纯形的边界
+!!! note "单纯形的边界"
     令 $S = \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle$ 是 $\mathbb{R}^n$ 中的一个 $k$ 维单纯形，$S$ 的**边界（boundary）**定义为 $S$ 的所有 $k-1$ 维子单纯形（或 $k-1$ 维面）的并集，即
 
     $$ \partial S = \bigcup\limits_{l=0}^k \langle \langle x^0,x^1,\cdots,x^{l-1},x^{l+1},\cdots,x^k \rangle \rangle $$
 
 这一定义也是很自然的，例如一个三角形的边界就是三角形的三条边，一个四面体的边界就是四面体的所有面。有了如上定义的基础，我们将要定义一个比较复杂的概念，即单纯形的划分，这一定义是[博弈论中要介绍的斯佩纳引理](../../algt/AdvancedGameTheory/fixedpoint-1.md)的讨论基础。
 
-!!! 单纯形的划分
+!!! note "单纯形的划分"
     令 $S \subseteq \mathbb{R}^n$ 是一个 $k$ 维单纯形，$S$ 的一个**划分（partition）**是 $\mathbb{R}^n$ 中的一组单纯形 $\mathcal{T} = \{T_1,T_2,\cdots,T_M\}$，满足
 
     1. $\bigcup\limits_{m=1}^M T_m = S$：即划分的所有单纯形的并集是整个单纯形 $S$；
@@ -207,7 +207,7 @@ $$ \pmb{r} = \dfrac{m_1\pmb{r}_1 + m_2\pmb{r}_2 + \cdots + m_n\pmb{r}_n}{m_1 + m
 
 最后我们用一个很难证明（因此这里不给出证明）的定理来结束我们对单纯形划分的讨论，它将会在[博弈论中要介绍的斯佩纳引理](../../algt/AdvancedGameTheory/fixedpoint-1.md)的证明中用到，事实上前面的知识很大程度上就是为了引入斯佩纳引理做准备的。
 
-!!! 划分的性质
+!!! note "划分的性质"
     令 $S = \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle$ 是 $\mathbb{R}^n$ 中的一个 $k$ 维单纯形，$\mathcal{T}$ 是 $S$ 的一个划分，$T \in \mathcal{T}$ 是 $\mathcal{T}$ 中的一个 $k-1$ 维单纯形。如果 $T$ 在 $S$ 的边界内，那么 $T$ 被包含在 $\mathcal{T}$ 内的唯一一个 $k$ 维单纯形内；如果 $T$ 不在 $S$ 的边界内，那么 $T$ 被包含在 $\mathcal{T}$ 内的两个 $k$ 维单纯形内。
 
 例如上图的 $\text{C}$，一维单纯形 $\langle \langle x^1,x^3 \rangle \rangle$ 在 $S$ 的边界内，它的确被包含在 $\mathcal{T}$ 内的唯一一个二维单纯形 $T_1$ 内；而 $\langle \langle x^3,x^5 \rangle \rangle$ 不在边界内，它也的确被包含在 $\mathcal{T}$ 内的两个二维单纯形 $T_1,T_2$ 内。由此我们可以感受到这一定理是非常直观的，边界上的就在唯一分区中，而内部的就在两个分区中，很符合我们对“划分”的直观，但严格证明技术性很强，因此略去。

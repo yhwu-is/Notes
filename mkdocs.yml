@@ -47,9 +47,19 @@ nav:
     - 线性代数: 
       - 线性代数：未竟之美: math/linear_algebra/index.md
     - 数学分析: math/math_analysis/index.md
+    - 优化理论与方法:
+      - 数学预备知识: math/optimization/preliminary.md
+      - 凸优化基础知识: math/optimization/basic.md
+      - 凸函数: math/optimization/convex.md
+      - 线性规划基础: math/optimization/lp.md
+      - 对偶: math/optimization/duality.md
+      - 几何应用: math/optimization/geometry.md
+      - 下降方法: math/optimization/descent.md
     - 实分析:
       - 勒贝格测度: math/real_analysis/measure.md
     - 泛函分析:
+      - 度量空间: math/functional_analysis/metric.md
+      - 赋范线性空间与巴拿赫空间: math/functional_analysis/normed.md
       - 巴拿赫不动点定理: math/functional_analysis/contraction.md
     # - 拓扑学:
     # - 微分几何:
@@ -72,12 +82,6 @@ nav:
       - 复杂性层次: tcs/AdvancedTC/intractability.md
     - 量子信息基础:
       - 希尔伯特空间: tcs/BasicQuantumInfo/hilbert.md
-    - 优化理论与方法:
-      - 基础知识: tcs/optimization/basic.md
-      - 线性规划基础: tcs/optimization/lp.md
-      - 线性规划对偶: tcs/optimization/duality.md
-      - 下降方法: tcs/optimization/P3.md
-      - 一般凸优化: tcs/optimization/P4.md
     - 编程语言原理:
       - lambda表达式: tcs/pfpl/lambda.md
       - 判断与规则: tcs/pfpl/P1.md
@@ -93,26 +97,33 @@ nav:
       - 扩展式博弈: algt/BasicGameTheory/extensive.md
       - 策略式博弈: algt/BasicGameTheory/strategic.md
       - 混合策略: algt/BasicGameTheory/mixed.md
-      - 行为策略: algt/BasicGameTheory/behavior.md
       - 均衡精炼: algt/BasicGameTheory/refinement.md
       - 相关均衡: algt/BasicGameTheory/correlated.md
-      - 机制设计基础: algt/BasicGameTheory/mechanism.md
     - 博弈论进阶:
       - 不动点与均衡（I）: algt/AdvancedGameTheory/fixedpoint-1.md
       - 不动点与均衡（II）: algt/AdvancedGameTheory/fixedpoint-2.md
+      - 行为策略: algt/AdvancedGameTheory/behavior.md
+      - 不完全信息博弈的一般模型: algt/AdvancedGameTheory/incomplete-general.md
       - 无限博弈: algt/AdvancedGameTheory/infinite.md
     - 算法博弈论基础:
       - 势博弈: algt/twenty_lectures/potential.md
-      - 在线学习: algt/twenty_lectures/online.md
-      - 交换遗憾: algt/twenty_lectures/swap.md
-      - 多臂老虎机: algt/twenty_lectures/bandit.md
+      - 在线学习与多臂老虎机: algt/twenty_lectures/online.md
+      - 无憾算法: algt/twenty_lectures/regret.md
+      - 随机奖励的多臂老虎机算法: algt/twenty_lectures/stochastic.md
     - 算法博弈论进阶:
       - 纳什均衡的计算复杂度（I）: algt/Advanced-algt/complexity-1.md
       - 纳什均衡的计算复杂度（II）: algt/Advanced-algt/complexity-2.md
-    - 机制设计与近似:
-      - 无先验知识的机制设计: algt/MechDesignApprox/prior-free.md
-    - 机器学习与博弈论:
-      - 绪论: algt/MLGameTheory/intro.md
+      - 多臂老虎机进阶: algt/Advanced-algt/bandit.md
+    - 机制设计专题:
+      - 无先验知识的机制设计: algt/mechanism/prior-free.md
+    - 计算与经济杂项:
+      - prediction markets: algt/EconCS/prediction-markets.md
+      - peer prediction: algt/EconCS/peer.md
+      - information design: algt/EconCS/information-design.md
+      - information pricing: algt/EconCS/information-pricing.md
+      - strategic learning: algt/EconCS/strategic.md
+      - performative prediction: algt/EconCS/performative.md
+      - fairness: algt/EconCS/fairness.md
   - 经济与金融学类: 
     - 数理经济学基础:
       - 概论: eco_fin/math_eco/intro.md
@@ -123,6 +134,9 @@ nav:
       - 风险与收益: eco_fin/corporate/P3.md
       - 现金管理: eco_fin/corporate/P4.md
       - 一些例题: eco_fin/corporate/exercise.md
+    - 一些杂记:
+      - 本伯南克: eco_fin/notes/bernanke.md
+      - 贫穷经济学: eco_fin/notes/poor.md
   - 计算机类:
     - 计算机网络:
       - 2022-2023期末复习: cs/network/review.md

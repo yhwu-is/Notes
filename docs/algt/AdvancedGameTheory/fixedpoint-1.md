@@ -5,7 +5,7 @@
 对于这一话题感兴趣的读者可以进一步翻阅 *Fixed Point Theorems with Applications to Economics and Game Theory* (Kim C. Border) 等相关教材。对于数理经济学感兴趣的可以参考《经济动态的递归方法》（Nancy L. Stokey，Robert E. Lucas），其中介绍了经济学相关的大量数学基础。
 
 ## 斯佩纳引理
-为了介绍接下来的不动点定理，我们首先介绍斯佩纳（Sperner）引理。这里的介绍需要一些简单的单纯形的预修知识，可以参见[凸优化基础知识](../../tcs/optimization/basic.md)，我们将紧接着其中的末尾部分继续我们的讨论。
+为了介绍接下来的不动点定理，我们首先介绍斯佩纳（Sperner）引理。这里的介绍需要一些简单的单纯形的预修知识，可以参见[凸优化基础知识](../../math/optimization/basic.md)，我们将紧接着其中的末尾部分继续我们的讨论。
 
 ### 着色的定义
 回忆若 $S = \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle$ 是 $\mathbb{R}^n$ 中的一个单纯形，那么每个向量 $y \in S$ 都可以唯一表示为 $x^0,x^1,\cdots,x^k$ 的凸组合：$y = \sum\limits_{l=0}^k \alpha^l x^l$，其中 $\alpha^l \geqslant 0$ 且 $\sum\limits_{l=0}^k \alpha^l = 1$。在此基础上，我们定义
@@ -82,10 +82,10 @@ $$\text{supp}_S(y) = \{ l \mid \alpha^l > 0 \}$$
 
     最后我们分析这个图中从 $\mathcal{A},\mathcal{B},\mathcal{C}$ 出发的边数，从而得出结论：
 
-    - 从 $\mathcal{A}$ 中每个节点出发，到 $\mathcal{B}$ 或 $\mathcal{C}$ 的边有且仅有一条：回忆[凸优化基础知识](../../tcs/optimization/basic.md)的最后一个定理，$\mathcal{A}$ 中每个节点根据定义都在边界上，因此只能在唯一的 $k$ 维单纯形中；因为 $\mathcal{A}$ 中每个节点已经有 $k-1$ 个颜色，因此 $\mathcal{A}$ 中每个节点所在的 $k$ 维单纯形一定包含于 $\mathcal{B}$ 或 $\mathcal{C}$ 中，因此相连的边有且仅有一条；
+    - 从 $\mathcal{A}$ 中每个节点出发，到 $\mathcal{B}$ 或 $\mathcal{C}$ 的边有且仅有一条：回忆[凸优化基础知识](../../math/optimization/basic.md)的最后一个定理，$\mathcal{A}$ 中每个节点根据定义都在边界上，因此只能在唯一的 $k$ 维单纯形中；因为 $\mathcal{A}$ 中每个节点已经有 $k-1$ 个颜色，因此 $\mathcal{A}$ 中每个节点所在的 $k$ 维单纯形一定包含于 $\mathcal{B}$ 或 $\mathcal{C}$ 中，因此相连的边有且仅有一条；
     - 从 $\mathcal{B}$ 中每个节点出发，到 $\mathcal{A}$ 或 $\mathcal{C}$ 的边有且仅有两条：因为 $\mathcal{B}$ 中的每个节点都被 $\{0,1,\cdots,k-1\}$ 着色，因此有且仅有两个 $k-1$ 维子单纯形（或者说面）被 $\{0,1,\cdots,k-1\}$ 着色（因为有一种颜色被两个极端点使用，其余颜色都是一一对应）
         - 如果这样的 $k-1$ 维单纯形在边界上，那么符合 $\mathcal{A}$ 和 $\mathcal{B}$ 相连的条件，因此有一条边；
-        - 如果这样的 $k-1$ 维单纯形在内部，回忆[凸优化基础知识](../../tcs/optimization/basic.md)的最后一个定理，这样的单纯形包含于两个 $k$ 维单纯形，并且因为这个 $k-1$ 维单纯形已经使用了 $\{0,1,\cdots,k-1\}$，因此这两个 $k$ 维单纯形一个在 $\mathcal{B}$ 中（因为现在探讨的是 $\mathcal{B}$ 中每个节点出发的情况），令一个在 $\mathcal{B}$ 或 $\mathcal{C}$ 中，也是有一条边连接的；
+        - 如果这样的 $k-1$ 维单纯形在内部，回忆[凸优化基础知识](../../math/optimization/basic.md)的最后一个定理，这样的单纯形包含于两个 $k$ 维单纯形，并且因为这个 $k-1$ 维单纯形已经使用了 $\{0,1,\cdots,k-1\}$，因此这两个 $k$ 维单纯形一个在 $\mathcal{B}$ 中（因为现在探讨的是 $\mathcal{B}$ 中每个节点出发的情况），令一个在 $\mathcal{B}$ 或 $\mathcal{C}$ 中，也是有一条边连接的；
         - 因此这样的 $k-1$ 维单纯形无论如何都会带来一条边的连接，而我们有两个这样的单纯形，因此有两条边；
     - 从 $\mathcal{C}$ 中每个节点出发，到 $\mathcal{A}$ 或 $\mathcal{B}$ 的边有且仅有一条：因为 $\mathcal{C}$ 中的每个节点都被 $\{0,1,\cdots,k\}$ 着色，因此有且仅有一个 $k-1$ 维子单纯形被 $\{0,1,\cdots,k-1\}$ 着色（因为此时点和颜色一一对应），根据和 $\mathcal{B}$ 类似的讨论即可得到结论。
 
@@ -195,7 +195,7 @@ $$\| x \|_\infty = \max\limits_{i=1,2,\cdots,n} |x_i|$$
 回忆对于闭凸集 $X$ 而言，对于 $x \notin X$，存在唯一的 $y \in X$，使得 $d(x,y) = d(x,X)$，这个 $y$ 就是 $g(x)$，即 $g$ 是良定义的。这一引理表明，$g$ 是一个 Lipschitz 连续的映射，因此也是连续的。
 
 !!! 引理的证明
-    回忆[凸优化基础知识](../../tcs/optimization/basic.md)中关于分离超平面定理的证明，对于 $x \notin X$，设 $y$ 是 $X$ 中距离 $x$ 最近的点，$z$ 是 $X$ 中任一点，则有 $\langle x-y,z-y \rangle \leqslant 0$。代入引理的符号，有 $\langle x-g(x),g(y)-g(x) \rangle \leqslant 0$，同理有 $\langle y-g(y),g(x)-g(y) \rangle \leqslant 0$，两式相加得到
+    回忆[凸优化基础知识](../../math/optimization/basic.md)中关于分离超平面定理的证明，对于 $x \notin X$，设 $y$ 是 $X$ 中距离 $x$ 最近的点，$z$ 是 $X$ 中任一点，则有 $\langle x-y,z-y \rangle \leqslant 0$。代入引理的符号，有 $\langle x-g(x),g(y)-g(x) \rangle \leqslant 0$，同理有 $\langle y-g(y),g(x)-g(y) \rangle \leqslant 0$，两式相加得到
 
     $$\langle (g(y) - g(x)) - (y-x),g(y)-g(x) \rangle \leqslant 0$$
 
