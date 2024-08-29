@@ -99,6 +99,7 @@ nav:
       - 混合策略: algt/BasicGameTheory/mixed.md
       - 均衡精炼: algt/BasicGameTheory/refinement.md
       - 相关均衡: algt/BasicGameTheory/correlated.md
+      - 社会选择理论: algt/BasicGameTheory/social.md
     - 博弈论进阶:
       - 不动点与均衡（I）: algt/AdvancedGameTheory/fixedpoint-1.md
       - 不动点与均衡（II）: algt/AdvancedGameTheory/fixedpoint-2.md
@@ -115,6 +116,10 @@ nav:
       - 纳什均衡的计算复杂度（II）: algt/Advanced-algt/complexity-2.md
       - 多臂老虎机进阶: algt/Advanced-algt/bandit.md
     - 机制设计专题:
+      - 简介: algt/mechanism/intro.md
+      - 单参数机制基础: algt/mechanism/single.md
+      - 最优机制: algt/mechanism/optimal.md
+      - 多参数机制基础: algt/mechanism/multi.md
       - 无先验知识的机制设计: algt/mechanism/prior-free.md
     - 计算与经济杂项:
       - prediction markets: algt/EconCS/prediction-markets.md
@@ -175,6 +180,8 @@ nav:
     - AI 相关:
       - Human vs. Generative AI: paper/ai/human-ai.md
       - LLM mechanism: paper/ai/llm.md
+    - TCS 相关:
+      - 算法机制设计: paper/tcs/almd.md
 
 copyright: Copyright &copy; 2023-2024 吴一航
 

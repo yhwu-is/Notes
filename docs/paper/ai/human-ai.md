@@ -3,6 +3,8 @@
 ## Human vs. Generative AI in Content Creation Competition: Symbiosis or Conflict?
 Fan Yao, Chuanhao Li, Denis Nekipelov, Hongning Wang and Haifeng Xu **(ICML 2024)**
 
+[论文链接](https://arxiv.org/pdf/2402.15467)
+
 ### 概括
 当前 AI 生成的内容创作越来越流行，其相对于人类的创作而言创作成本很低，因此被广泛应用；当然 AI 创作需要基于优质的人类创作（目前看来 AI 自己合成的数据作为训练素材效果并不好），因此人类的智慧看起来也不可或缺。但一些现状（例如 TikTok 上大量的 AI 合成音乐）引发了一些焦虑：人类的创作是否会被 AI 创作彻底取代，即 AI 在内容创作方面会不会有一天占据几乎所有的市场？本文从博弈论的角度出发尝试回答这一问题，他们基于经典的 Tullock 竞争对这一问题进行了建模分析，并得出结论：在满足一定条件时，人类创作和 AI 的创作是可以共生的。
 
@@ -122,6 +124,8 @@ $$u_i(\pmb{y_i},\pmb{y_{-i}}) = \begin{cases}
 
 ## How to Strategize Human Content Creation in the Era of GenAI?
 Seyed A. Esmaeili, Kshipra Bhawalkar, Zhe Feng, Di Wang, Haifeng Xu
+
+[论文链接](https://arxiv.org/pdf/2406.05187)
 
 ### 概括
 本文的背景与上一篇类似，也是考虑人类创作与 AI 创作之间的关系。但本文相对而言视角更加宏观：本文利用多臂老虎机模型研究了人类创作和 AI 创作之间关系的的演化过程，这是大部分工作所没有涉及的。这篇文章将创作主题分为两类：一类是 time-sensitive 的，即随着时间的推移，内容会折旧的主题，例如新闻、流行音乐等；另一类是 time-insensitive 的，即内容不会随着时间的推移而折旧的主题，例如历史、知识等。在 time-sensitive 的主题下，不存在多项式时间算法最大化人类的效用（除非随机指数时间假设成立），因此作者提出了一种 2-近似的算法；在 time-insensitive 的主题下，存在多项式时间的精确算法，但分析结果表明人类会逐步退出内容创作这一市场。
