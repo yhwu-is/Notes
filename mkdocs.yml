@@ -93,12 +93,14 @@ nav:
     - 微观经济学与博弈论基础: 
       - 导言: algt/BasicGameTheory/intro.md
       - 偏好与效用: algt/BasicGameTheory/utility.md
+      - 逆向选择与信息不对称: algt/BasicGameTheory/reverse.md
       - 贝叶斯决策理论基础: algt/BasicGameTheory/bayesian.md
       - 扩展式博弈: algt/BasicGameTheory/extensive.md
       - 策略式博弈: algt/BasicGameTheory/strategic.md
       - 混合策略: algt/BasicGameTheory/mixed.md
       - 均衡精炼: algt/BasicGameTheory/refinement.md
       - 相关均衡: algt/BasicGameTheory/correlated.md
+      - 信号博弈: algt/BasicGameTheory/signaling.md
       - 社会选择理论: algt/BasicGameTheory/social.md
     - 博弈论进阶:
       - 不动点与均衡（I）: algt/AdvancedGameTheory/fixedpoint-1.md
@@ -117,8 +119,10 @@ nav:
       - 多臂老虎机进阶: algt/Advanced-algt/bandit.md
     - 机制设计专题:
       - 简介: algt/mechanism/intro.md
-      - 单参数机制基础: algt/mechanism/single.md
+      - 占优策略的执行: algt/mechanism/dominant.md
+      - 贝叶斯执行: algt/mechanism/bayesian.md
       - 最优机制: algt/mechanism/optimal.md
+      - 拍卖理论基础: algt/mechanism/auction.md
       - 多参数机制基础: algt/mechanism/multi.md
       - 无先验知识的机制设计: algt/mechanism/prior-free.md
     - 计算与经济杂项:
