@@ -1,0 +1,5572 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="yhwu_is's Notes">
+      
+      
+        <meta name="author" content="yhwu_is">
+      
+      
+        <link rel="canonical" href="https://yhwu-is.github.io/Notes/algt/AdvancedGameTheory/fixedpoint-1/">
+      
+      
+        <link rel="prev" href="../../BasicGameTheory/social/">
+      
+      
+        <link rel="next" href="../fixedpoint-2/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>不动点与均衡（I） - yhwu_is's Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#i" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="yhwu_is&#39;s Notes" class="md-header__button md-logo" aria-label="yhwu_is's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            yhwu_is's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              不动点与均衡（I）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yhwu-is/Notes" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yhwu-is/Notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../math/linear_algebra/" class="md-tabs__link">
+          
+  
+    
+  
+  数学
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tcs/dsa/dsa0/" class="md-tabs__link">
+          
+  
+    
+  
+  理论计算机基础
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../BasicGameTheory/intro/" class="md-tabs__link">
+          
+  
+    
+  
+  算法博弈论
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../eco_fin/math_eco/intro/" class="md-tabs__link">
+          
+  
+    
+  
+  经济与金融学类
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cs/network/review/" class="md-tabs__link">
+          
+  
+    
+  
+  计算机类
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../paper/auction/P1/" class="md-tabs__link">
+          
+  
+    
+  
+  论文阅读
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="yhwu_is&#39;s Notes" class="md-nav__button md-logo" aria-label="yhwu_is's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    yhwu_is's Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yhwu-is/Notes" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yhwu-is/Notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../math/math_analysis/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    数学
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            数学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../math/linear_algebra/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    线性代数
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            线性代数
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    优化理论与方法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            优化理论与方法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/preliminary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学预备知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    凸优化基础知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/convex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    凸函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/lp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性规划基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/duality/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    对偶
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/geometry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    几何应用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/descent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    下降方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            实分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/real_analysis/measure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    勒贝格测度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    泛函分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            泛函分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/functional_analysis/metric/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    度量空间
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/functional_analysis/normed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    赋范线性空间与巴拿赫空间
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/functional_analysis/contraction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    巴拿赫不动点定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    统计学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    理论计算机基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            理论计算机基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据结构与算法分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            数据结构与算法分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/dsa/dsa0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言与基础知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算理论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算理论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    导言与预备知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    有限自动机与正则语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    下推自动机与上下文无关语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Church-Turing 论题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    可判定性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    可归约性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算理论进阶
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算理论进阶
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/AdvancedTC/time/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    时间复杂性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/AdvancedTC/space/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    空间复杂性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/AdvancedTC/probabilistic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概率算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/AdvancedTC/intractability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    复杂性层次
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    机器学习理论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            机器学习理论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/MLT/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    机器学习理论基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    量子信息基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            量子信息基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicQuantumInfo/hilbert/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    希尔伯特空间
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编程语言原理
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言原理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/lambda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lambda表达式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    判断与规则
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    静态与动态
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    全函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/P4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    有限数据类型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/P6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无限数据类型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    算法博弈论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            算法博弈论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    微观经济学与博弈论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            微观经济学与博弈论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    导言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/utility/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    偏好与效用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/reverse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逆向选择与信息不对称
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/bayesian/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    贝叶斯决策理论基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/extensive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    扩展式博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/strategic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    策略式博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/mixed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    混合策略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/refinement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    均衡精炼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/correlated/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    相关均衡
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/signaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信号博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicGameTheory/social/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    社会选择理论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    博弈论进阶
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            博弈论进阶
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    不动点与均衡（I）
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    不动点与均衡（I）
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      斯佩纳引理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="斯佩纳引理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      着色的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      斯佩纳引理的证明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      单纯形划分的进一步性质
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      布劳威尔不动点定理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="布劳威尔不动点定理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理陈述与证明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理的应用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      角谷不动点定理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="角谷不动点定理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理陈述与证明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理应用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kkm" class="md-nav__link">
+    <span class="md-ellipsis">
+      KKM 定理
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fixedpoint-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    不动点与均衡（II）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../behavior/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    行为策略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../incomplete-general/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    不完全信息博弈的一般模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infinite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无限博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    算法博弈论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            算法博弈论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../twenty_lectures/potential/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    势博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../twenty_lectures/online/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在线学习与多臂老虎机
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../twenty_lectures/regret/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无憾算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../twenty_lectures/stochastic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    随机奖励的多臂老虎机算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    算法博弈论进阶
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            算法博弈论进阶
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced-algt/complexity-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    纳什均衡的计算复杂度（I）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced-algt/complexity-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    纳什均衡的计算复杂度（II）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced-algt/bandit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多臂老虎机进阶
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    机制设计专题
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            机制设计专题
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/dominant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    占优策略的执行
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/bayesian/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    贝叶斯执行
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/optimal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    最优机制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/auction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    拍卖理论基础（I）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/multi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多参数机制基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/prior-free/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无先验知识的机制设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算与经济杂项
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            计算与经济杂项
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/prediction-markets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    prediction markets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/peer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    peer prediction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/information-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    information design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/information-pricing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    information pricing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/strategic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    strategic learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/performative/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    performative prediction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/fairness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    fairness
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    经济与金融学类
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            经济与金融学类
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数理经济学基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            数理经济学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/math_eco/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    公司金融
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            公司金融
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/P0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    财务报表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现金流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    风险与收益
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/P4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现金管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/exercise/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一些例题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    一些杂记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            一些杂记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/notes/bernanke/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本伯南克
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/notes/poor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    贫穷经济学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机类
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            计算机类
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机网络
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/network/review/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022-2023期末复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/network/websec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络安全复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/network/exercise/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    参考习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    网络安全
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            网络安全
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    面向信息安全的信号处理
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            面向信息安全的信号处理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/web/signals/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信号与系统基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/web/signals/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信号处理与安全
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/web/signals/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于Matlab的实验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    硬件与系统安全
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            硬件与系统安全
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    软件安全
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            软件安全
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/system/software/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基本原则与缓冲区溢出漏洞
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/system/software/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ROP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/system/software/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    格式字符串漏洞
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/system/software/P4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    堆溢出
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/system/software/P5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    杂项
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据安全
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            数据安全
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    密码学
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            密码学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/crypto/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    古典密码
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/crypto/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    对称加密算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/crypto/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RSA加密算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/crypto/P4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    椭圆曲线加密算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据安全与隐私保护
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            数据安全与隐私保护
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/data%20privacy/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    访问控制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/data%20privacy/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    同态加密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/data%20privacy/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安全多方计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/data%20privacy/P4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    差分隐私
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    区块链安全
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            区块链安全
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/blockchain/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    区块链技术原理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    论文阅读
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            论文阅读
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    拍卖与机制设计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            拍卖与机制设计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/auction/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    compatitive auctions and digital goods
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算经济学
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算经济学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/ec/peer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    peer prediction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AI 相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI 相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/ai/human-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Human vs. Generative AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/ai/llm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LLM mechanism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TCS 相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            TCS 相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/tcs/almd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    算法机制设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      斯佩纳引理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="斯佩纳引理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      着色的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      斯佩纳引理的证明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      单纯形划分的进一步性质
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      布劳威尔不动点定理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="布劳威尔不动点定理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理陈述与证明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理的应用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      角谷不动点定理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="角谷不动点定理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理陈述与证明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理应用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kkm" class="md-nav__link">
+    <span class="md-ellipsis">
+      KKM 定理
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="i">不动点与均衡（I）<a class="headerlink" href="#i" title="Permanent link">&para;</a></h1>
+<p>作为博弈论进阶的开篇，我们希望探讨一系列不动点定理及其与均衡之间的关联——这无疑是一个令人着迷于其美感的话题。在<a href="../../../math/functional_analysis/contraction/">泛函分析相关章节</a>中，我们已经介绍了最基础的巴拿赫不动点定理及其应用，因此本讲我们从布劳威尔（Brouwer）不动点定理开始，也将介绍角谷（Kakutani）不动点定理和 KKM 定理，以及它们在纳什均衡存在性等方面的应用。</p>
+<p>对于这一话题感兴趣的读者可以进一步翻阅 <em>Fixed Point Theorems with Applications to Economics and Game Theory</em> (Kim C. Border) 等相关教材。对于数理经济学感兴趣的可以参考《经济动态的递归方法》（Nancy L. Stokey，Robert E. Lucas），其中介绍了经济学相关的大量数学基础。</p>
+<h2 id="_1">斯佩纳引理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>为了介绍接下来的不动点定理，我们首先介绍斯佩纳（Sperner）引理。这里的介绍需要一些简单的单纯形的预修知识，可以参见<a href="../../../math/optimization/basic/">凸优化基础知识</a>，我们将紧接着其中的末尾部分继续我们的讨论。</p>
+<h3 id="_2">着色的定义<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>回忆若 <span class="arithmatex">\(S = \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的一个单纯形，那么每个向量 <span class="arithmatex">\(y \in S\)</span> 都可以唯一表示为 <span class="arithmatex">\(x^0,x^1,\cdots,x^k\)</span> 的凸组合：<span class="arithmatex">\(y = \sum\limits_{l=0}^k \alpha^l x^l\)</span>，其中 <span class="arithmatex">\(\alpha^l \geqslant 0\)</span> 且 <span class="arithmatex">\(\sum\limits_{l=0}^k \alpha^l = 1\)</span>。在此基础上，我们定义</p>
+<div class="arithmatex">\[\text{supp}_S(y) = \{ l \mid \alpha^l &gt; 0 \}\]</div>
+<p>为 <span class="arithmatex">\(y\)</span> 的支撑集。回忆一下，如果 <span class="arithmatex">\(\mathcal{T}\)</span> 是 <span class="arithmatex">\(S\)</span> 的划分，那么 <span class="arithmatex">\(Y(\mathcal{T})\)</span> 是 <span class="arithmatex">\(\mathcal{T}\)</span> 内所有单纯形的极端点的集合，我们有如下定义：</p>
+<div class="admonition 单纯形划分的染色">
+<p class="admonition-title">单纯形划分的染色</p>
+<p>令 <span class="arithmatex">\(S = \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的一个 <span class="arithmatex">\(k\)</span> 维单纯形，对于 <span class="arithmatex">\(n \geqslant k\)</span>，令 <span class="arithmatex">\(\mathcal{T}\)</span> 是 <span class="arithmatex">\(S\)</span> 的一个划分。<span class="arithmatex">\(\mathcal{T}\)</span> 的一个<strong>着色（coloring）</strong>是一个从 <span class="arithmatex">\(Y(\mathcal{T})\)</span> 到 <span class="arithmatex">\(\{0,1,\cdots,k\}\)</span> 的映射 <span class="arithmatex">\(c\)</span>，将每个极端点映射到一个颜色（每个颜色是一个指数）。如果对每个 <span class="arithmatex">\(y \in Y(\mathcal{T})\)</span>，<span class="arithmatex">\(y\)</span> 的颜色 <span class="arithmatex">\(c(y)\)</span> 是 <span class="arithmatex">\(y\)</span> 的支撑集中的某个指数，那么我们称这个着色是<strong>合适的（proper）</strong>。</p>
+</div>
+<p>这个定义说起来有些拗口，我们以三角形为例进行理解。三角形事实上是单纯形 <span class="arithmatex">\(S = \langle \langle x^0,x^1,x^2 \rangle \rangle\)</span>，根据合适着色的要求，<span class="arithmatex">\(x^0\)</span> 的支撑是 <span class="arithmatex">\(\{0\}\)</span>，<span class="arithmatex">\(x^1\)</span> 的支撑是 <span class="arithmatex">\(\{1\}\)</span>，<span class="arithmatex">\(x^2\)</span> 的支撑是 <span class="arithmatex">\(\{2\}\)</span>，因此合适的着色是将 <span class="arithmatex">\(x^0\)</span> 着色为 <span class="arithmatex">\(0\)</span>，<span class="arithmatex">\(x^1\)</span> 着色为 <span class="arithmatex">\(1\)</span>，<span class="arithmatex">\(x^2\)</span> 着色为 <span class="arithmatex">\(2\)</span>。除此之外，位于 <span class="arithmatex">\(x^0\)</span> 和 <span class="arithmatex">\(x^1\)</span> 之间的点 <span class="arithmatex">\(x^3\)</span> 的支撑是 <span class="arithmatex">\(\{0,1\}\)</span>，因此它的着色可以是 <span class="arithmatex">\(0\)</span> 或 <span class="arithmatex">\(1\)</span>，但不能是 <span class="arithmatex">\(2\)</span>，其余同理；而位于三角形内部的点的支撑是 <span class="arithmatex">\(\{0,1,2\}\)</span>，因此它的着色可以是 <span class="arithmatex">\(0,1,2\)</span> 中的任意一个。我们给出一个例子：</p>
+<div style="text-align: center;">
+<img src="/Notes/assets/images/algt/AGT/fixedpoint-1/propercolor.png" width="80%" style="margin: 0 auto;">
+</div>
+
+<p>图中的 <span class="arithmatex">\(\text{A}\)</span> 和 <span class="arithmatex">\(\text{B}\)</span> 都是合适的着色，但 <span class="arithmatex">\(\text{C}\)</span> 不是，因为箭头指向的点着色了 <span class="arithmatex">\(1\)</span>，但这个点的支撑 <span class="arithmatex">\(x^0\)</span> 和 <span class="arithmatex">\(x^2\)</span> 的着色分别是 <span class="arithmatex">\(0\)</span> 和 <span class="arithmatex">\(2\)</span>。进一步地，我们可以定义完美着色的概念：</p>
+<div class="admonition 完美着色">
+<p class="admonition-title">完美着色</p>
+<p>令 <span class="arithmatex">\(\mathcal{T}\)</span> 是 <span class="arithmatex">\(k\)</span> 维单纯形 <span class="arithmatex">\(S\)</span> 的划分，令 <span class="arithmatex">\(c\)</span> 是 <span class="arithmatex">\(\mathcal{T}\)</span> 的合适着色。<span class="arithmatex">\(k\)</span> 维单纯形 <span class="arithmatex">\(T \in \mathcal{T}\)</span> 是<strong>完美着色的（perfectly colored）</strong>，如果 <span class="arithmatex">\(T\)</span> 的 <span class="arithmatex">\(k+1\)</span> 个极端点被 <span class="arithmatex">\(k+1\)</span> 种不同的颜色着色。</p>
+</div>
+<div style="text-align: center;">
+<img src="/Notes/assets/images/algt/AGT/fixedpoint-1/perfectcolor.png" width="80%" style="margin: 0 auto;">
+</div>
+
+<p>上图中每种着色中，完美着色的 <span class="arithmatex">\(k\)</span> 维单纯形都被填充了灰色，我们发现合适的着色 <span class="arithmatex">\(\text{A}\)</span> 和 <span class="arithmatex">\(\text{B}\)</span> 中完美着色的 <span class="arithmatex">\(k\)</span> 维单纯形有奇数个，而 <span class="arithmatex">\(\text{C}\)</span> 表明不合适的着色中完美着色的 <span class="arithmatex">\(k\)</span> 维单纯形可能出现偶数个。推广之后就是斯佩纳引理的内容：</p>
+<div class="admonition 斯佩纳引理">
+<p class="admonition-title">斯佩纳引理</p>
+<p>令 <span class="arithmatex">\(S\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的一个 <span class="arithmatex">\(k\)</span> 维单纯形，对于 <span class="arithmatex">\(n \geqslant k\)</span>，令 <span class="arithmatex">\(\mathcal{T}\)</span> 是 <span class="arithmatex">\(S\)</span> 的一个划分。如果 <span class="arithmatex">\(c\)</span> 是 <span class="arithmatex">\(\mathcal{T}\)</span> 的一个合适着色，那么完美着色 <span class="arithmatex">\(k\)</span> 维单纯形 <span class="arithmatex">\(T \in \mathcal{T}\)</span> 的个数是奇数。特别地，<span class="arithmatex">\(\mathcal{T}\)</span> 中至少有一个完美着色的 <span class="arithmatex">\(k\)</span> 维单纯形。</p>
+</div>
+<h3 id="_3">斯佩纳引理的证明<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="admonition 斯佩纳引理的证明">
+<p class="admonition-title">斯佩纳引理的证明</p>
+<p>根据单纯形的维数 <span class="arithmatex">\(k\)</span> 使用数学归纳法：</p>
+<p><strong>第一步：<span class="arithmatex">\(k = 0\)</span> 的情况</strong></p>
+<p>此时单纯形只包含一个点，显然引理成立。</p>
+<p><strong>第二步：<span class="arithmatex">\(k &gt; 0\)</span> 时，定义三类单纯形的集合</strong></p>
+<p>考虑 <span class="arithmatex">\(k &gt; 0\)</span> 的情况，假定定理陈述对每个 <span class="arithmatex">\(k - 1\)</span> 维单纯形都成立，令 <span class="arithmatex">\(S = \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle\)</span> 是一个 <span class="arithmatex">\(k\)</span> 维单纯形，<span class="arithmatex">\(\mathcal{T}\)</span> 是 <span class="arithmatex">\(S\)</span> 的一个划分，<span class="arithmatex">\(c\)</span> 是 <span class="arithmatex">\(\mathcal{T}\)</span> 的一个合适着色。我们定义如下三类单纯形集合：</p>
+<ul>
+<li><span class="arithmatex">\(\mathcal{A}\)</span> 表示 <span class="arithmatex">\(\mathcal{T}\)</span> 中所有的被包含在 <span class="arithmatex">\(S\)</span> 的边界内并被 <span class="arithmatex">\(\{0,1,\cdots,k-1\}\)</span> 着色的 <span class="arithmatex">\(k-1\)</span> 维单纯形；</li>
+<li><span class="arithmatex">\(\mathcal{B}\)</span> 表示 <span class="arithmatex">\(\mathcal{T}\)</span> 中所有被 <span class="arithmatex">\(\{0,1,\cdots,k-1\}\)</span> 着色的 <span class="arithmatex">\(k\)</span> 维单纯形，也就是说有两个节点被相同的颜色着色；</li>
+<li><span class="arithmatex">\(\mathcal{C}\)</span> 表示 <span class="arithmatex">\(\mathcal{T}\)</span> 中所有被 <span class="arithmatex">\(\{0,1,\cdots,k\}\)</span> 着色的 <span class="arithmatex">\(k\)</span> 维单纯形。</li>
+</ul>
+<p>定义这几类单纯形集合的作用在之后就会看到，在那时回过头来看，这里的定义是非常巧妙的。我们来看一个例子：</p>
+<p><div style="text-align: center;">
+<img src="/Notes/assets/images/algt/AGT/fixedpoint-1/sperner-1.png" width="25%" style="margin: 0 auto;">
+</div></p>
+<p>在上图中，<span class="arithmatex">\(\mathcal{A}\)</span> 是三角形边界上被 <span class="arithmatex">\(\{0,1\}\)</span> 染色的线段，被加粗表示；<span class="arithmatex">\(\mathcal{B}\)</span> 是被 <span class="arithmatex">\(\{0,1\}\)</span> 染色的小三角形，用浅色阴影表示；<span class="arithmatex">\(\mathcal{C}\)</span> 是被 <span class="arithmatex">\(\{0,1,2\}\)</span> 染色的小三角形，用深色阴影表示。我们可以看到，<span class="arithmatex">\(\mathcal{A}\)</span> 中的线段有 <span class="arithmatex">\(3\)</span> 个，<span class="arithmatex">\(\mathcal{B}\)</span> 中的小三角形有 <span class="arithmatex">\(4\)</span> 个，<span class="arithmatex">\(\mathcal{C}\)</span> 中的小三角形有 <span class="arithmatex">\(5\)</span> 个。</p>
+<p><strong>第三步：证明 <span class="arithmatex">\(\mathcal{A}\)</span> 中的线段数是奇数</strong></p>
+<p>由于 <span class="arithmatex">\(\mathcal{A}\)</span> 中的线段是 <span class="arithmatex">\(k-1\)</span> 维单纯形，且被 <span class="arithmatex">\(\{0,1,\cdots,k-1\}\)</span> 着色，根据归纳假设，<span class="arithmatex">\(\mathcal{A}\)</span> 中的线段数是奇数。</p>
+<p><strong>第四步：构建连接单纯形之间的图</strong></p>
+<p>接下来我们定义无向图如下：</p>
+<ul>
+<li>节点集为 <span class="arithmatex">\(\mathcal{A} \cup \mathcal{B} \cup \mathcal{C}\)</span>，即 <span class="arithmatex">\(\mathcal{A} \cup \mathcal{B} \cup \mathcal{C}\)</span> 中的每个单纯形都是图上的一个节点；</li>
+<li>令 <span class="arithmatex">\(T_1,T_2\)</span> 是 <span class="arithmatex">\(\mathcal{A} \cup \mathcal{B} \cup \mathcal{C}\)</span> 中两个不同的单纯形，当且仅当 <span class="arithmatex">\(T_1 \cap T_2\)</span> 是由 <span class="arithmatex">\(\{0,1,\cdots,k-1\}\)</span> 着色的 <span class="arithmatex">\(k-1\)</span> 维单纯形时，<span class="arithmatex">\(T_1\)</span> 和 <span class="arithmatex">\(T_2\)</span> 之间有一条边。</li>
+</ul>
+<p>下图给出了一个如此定义的无向图的实例，其中短线就代表着单纯形之间的边：</p>
+<p><div style="text-align: center;">
+<img src="/Notes/assets/images/algt/AGT/fixedpoint-1/sperner-2.png" width="25%" style="margin: 0 auto;">
+</div></p>
+<p><strong>第五步：分析图的性质，得到最终结论</strong></p>
+<p>最后我们分析这个图中从 <span class="arithmatex">\(\mathcal{A},\mathcal{B},\mathcal{C}\)</span> 出发的边数，从而得出结论：</p>
+<ul>
+<li>从 <span class="arithmatex">\(\mathcal{A}\)</span> 中每个节点出发，到 <span class="arithmatex">\(\mathcal{B}\)</span> 或 <span class="arithmatex">\(\mathcal{C}\)</span> 的边有且仅有一条：回忆<a href="../../../math/optimization/basic/">凸优化基础知识</a>的最后一个定理，<span class="arithmatex">\(\mathcal{A}\)</span> 中每个节点根据定义都在边界上，因此只能在唯一的 <span class="arithmatex">\(k\)</span> 维单纯形中；因为 <span class="arithmatex">\(\mathcal{A}\)</span> 中每个节点已经有 <span class="arithmatex">\(k-1\)</span> 个颜色，因此 <span class="arithmatex">\(\mathcal{A}\)</span> 中每个节点所在的 <span class="arithmatex">\(k\)</span> 维单纯形一定包含于 <span class="arithmatex">\(\mathcal{B}\)</span> 或 <span class="arithmatex">\(\mathcal{C}\)</span> 中，因此相连的边有且仅有一条；</li>
+<li>从 <span class="arithmatex">\(\mathcal{B}\)</span> 中每个节点出发，到 <span class="arithmatex">\(\mathcal{A}\)</span> 或 <span class="arithmatex">\(\mathcal{C}\)</span> 的边有且仅有两条：因为 <span class="arithmatex">\(\mathcal{B}\)</span> 中的每个节点都被 <span class="arithmatex">\(\{0,1,\cdots,k-1\}\)</span> 着色，因此有且仅有两个 <span class="arithmatex">\(k-1\)</span> 维子单纯形（或者说面）被 <span class="arithmatex">\(\{0,1,\cdots,k-1\}\)</span> 着色（因为有一种颜色被两个极端点使用，其余颜色都是一一对应）<ul>
+<li>如果这样的 <span class="arithmatex">\(k-1\)</span> 维单纯形在边界上，那么符合 <span class="arithmatex">\(\mathcal{A}\)</span> 和 <span class="arithmatex">\(\mathcal{B}\)</span> 相连的条件，因此有一条边；</li>
+<li>如果这样的 <span class="arithmatex">\(k-1\)</span> 维单纯形在内部，回忆<a href="../../../math/optimization/basic/">凸优化基础知识</a>的最后一个定理，这样的单纯形包含于两个 <span class="arithmatex">\(k\)</span> 维单纯形，并且因为这个 <span class="arithmatex">\(k-1\)</span> 维单纯形已经使用了 <span class="arithmatex">\(\{0,1,\cdots,k-1\}\)</span>，因此这两个 <span class="arithmatex">\(k\)</span> 维单纯形一个在 <span class="arithmatex">\(\mathcal{B}\)</span> 中（因为现在探讨的是 <span class="arithmatex">\(\mathcal{B}\)</span> 中每个节点出发的情况），令一个在 <span class="arithmatex">\(\mathcal{B}\)</span> 或 <span class="arithmatex">\(\mathcal{C}\)</span> 中，也是有一条边连接的；</li>
+<li>因此这样的 <span class="arithmatex">\(k-1\)</span> 维单纯形无论如何都会带来一条边的连接，而我们有两个这样的单纯形，因此有两条边；</li>
+</ul>
+</li>
+<li>从 <span class="arithmatex">\(\mathcal{C}\)</span> 中每个节点出发，到 <span class="arithmatex">\(\mathcal{A}\)</span> 或 <span class="arithmatex">\(\mathcal{B}\)</span> 的边有且仅有一条：因为 <span class="arithmatex">\(\mathcal{C}\)</span> 中的每个节点都被 <span class="arithmatex">\(\{0,1,\cdots,k\}\)</span> 着色，因此有且仅有一个 <span class="arithmatex">\(k-1\)</span> 维子单纯形被 <span class="arithmatex">\(\{0,1,\cdots,k-1\}\)</span> 着色（因为此时点和颜色一一对应），根据和 <span class="arithmatex">\(\mathcal{B}\)</span> 类似的讨论即可得到结论。</li>
+</ul>
+<p>事实上，从图中所有节点出发的边的总数，等于边的数量 <span class="arithmatex">\(R\)</span> 的两倍，因为每条边都被数了两次，这意味着</p>
+<div class="arithmatex">\[2R = |\mathcal{A}| + 2|\mathcal{B}| + |\mathcal{C}|\]</div>
+<p>因此等号右边是偶数，而 <span class="arithmatex">\(|\mathcal{A}|\)</span> 是奇数，因此 <span class="arithmatex">\(|\mathcal{C}|\)</span> 也是奇数，注意 <span class="arithmatex">\(\mathcal{C}\)</span> 的定义就是完美着色的 <span class="arithmatex">\(k\)</span> 维单纯形的集合，因此斯佩纳引理得证。</p>
+</div>
+<p>不得不承认的一点是，这个证明的整体过程看完有一种不知道怎么就证出来的感觉，事实上回过头来体会就会发现其中的构造都非常的精妙，<strong>整体而言就是分了三类单纯形，构造了一种特殊的图，第一类数量可以用归纳假设，第二类图中产生边数为偶数，第三类是目标，数量根据奇偶性分析直接可以得到</strong>，或许这就是奇妙的组合学吧！</p>
+<h3 id="_4">单纯形划分的进一步性质<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>接下来的内容将会在之后的证明中用到，因此做一个简单的介绍：</p>
+<div class="admonition 单纯形与单纯形划分的直径">
+<p class="admonition-title">单纯形与单纯形划分的直径</p>
+<p>令 <span class="arithmatex">\(S = \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的一个 <span class="arithmatex">\(k\)</span> 维单纯形，对于 <span class="arithmatex">\(n \geqslant k\)</span>，令 <span class="arithmatex">\(\mathcal{T} = \{T_1,T_2,\cdots,T_M\}\)</span> 是 <span class="arithmatex">\(S\)</span> 的一个划分。<span class="arithmatex">\(S\)</span> 的<strong>直径（diameter）</strong>定义为</p>
+<div class="arithmatex">\[\rho(S) = \max\limits_{i,j} \| x^i - x^j \|\]</div>
+<p>其中 <span class="arithmatex">\(i,j\)</span> 遍历 <span class="arithmatex">\(0,1,\cdots,k\)</span>。也就是说，单纯形的直径是最远的极端点之间的距离，事实上这也是单纯形内任意两点的最大距离，事实上只需要注意到单纯形是凸集就并不难理解。进一步地，<span class="arithmatex">\(\mathcal{T}\)</span> 的<strong>直径（diameter）</strong>定义为</p>
+<div class="arithmatex">\[\rho(\mathcal{T}) = \max\limits_{m=1,2,\cdots,M} \rho(T_m)\]</div>
+<p>也就是说，单纯形划分的直径是划分中最大的单纯形的直径。</p>
+</div>
+<p>下面的定理表明，每个单纯形划分都可以“加细”，或者说被精炼为具有更小直径的划分：</p>
+<div class="admonition 单纯形划分的精炼">
+<p class="admonition-title">单纯形划分的精炼</p>
+<p>令 <span class="arithmatex">\(k \geqslant 1\)</span>，<span class="arithmatex">\(\mathcal{T}\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的一个 <span class="arithmatex">\(k\)</span> 维单纯形 <span class="arithmatex">\(S = \langle \langle x^0,x^1,\cdots,x^k \rangle \rangle\)</span> 的一个划分。那么存在 <span class="arithmatex">\(S\)</span> 的一个划分 <span class="arithmatex">\(\mathcal{T'}\)</span>，满足如下要求：</p>
+<ol>
+<li>对每个 <span class="arithmatex">\(T' \in \mathcal{T'}\)</span>，都存在 <span class="arithmatex">\(T \in \mathcal{T}\)</span>，使得 <span class="arithmatex">\(T \subseteq T'\)</span>；</li>
+<li><span class="arithmatex">\(\rho(\mathcal{T'}) \leqslant \dfrac{k}{k+1} \rho(\mathcal{T})\)</span>。</li>
+</ol>
+</div>
+<p>反复运用上述定理即可得到如下推论，之后我们会默认熟知这一结果推导其他结果：</p>
+<div class="admonition 单纯形划分精炼的推论">
+<p class="admonition-title">单纯形划分精炼的推论</p>
+<p>对每个单纯形 <span class="arithmatex">\(S\)</span> 和任意的 <span class="arithmatex">\(\varepsilon &gt; 0\)</span>，存在一个划分 <span class="arithmatex">\(\mathcal{T_\varepsilon}\)</span>，使得 <span class="arithmatex">\(\rho(\mathcal{T_\varepsilon}) &lt; \varepsilon\)</span>。</p>
+</div>
+<p>定理的证明技术性较强，暂时略去（或许一直都会略去了）。证明方式就是构造出符合条件的划分精炼，如果读者对证明感兴趣可以参考我们的一本参考资料：《博弈论》[以] 迈克尔·马希勒，埃隆·索兰，什穆埃尔·扎米尔。</p>
+<h2 id="_5">布劳威尔不动点定理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">定理陈述与证明<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>我们已经做了充足的准备来迎接本节的第一个核心定理：布劳威尔（Brouwer）不动点定理。这个定理是拓扑学中的一个基本定理，事实上有非常多种证明方式，大多数都需要利用拓扑学知识，因此我们只能选取一条技术性更强的路线，即使用前面介绍的斯佩纳引理来证明。我们首先给出定理的陈述，然后逐步展开我们的讨论，直至完全证明这一定理：</p>
+<div class="admonition 布劳威尔不动点定理">
+<p class="admonition-title">布劳威尔不动点定理</p>
+<p>令 <span class="arithmatex">\(X\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的一个非空闭凸集，<span class="arithmatex">\(f: X \to X\)</span> 是一个连续映射，那么 <span class="arithmatex">\(f\)</span> 至少有一个不动点，即存在 <span class="arithmatex">\(x \in X\)</span>，使得 <span class="arithmatex">\(f(x) = x\)</span>。</p>
+</div>
+<div style="text-align: center;">
+<img src="/Notes/assets/images/algt/AGT/fixedpoint-1/brouwer.png" width="25%" style="margin: 0 auto;">
+</div>
+
+<p>上图给出了定理在 <span class="arithmatex">\(n=1\)</span> 的情况下的例子，显然 <span class="arithmatex">\([a,b] \to [a,b]\)</span> 的连续映射无论怎么画都会和 <span class="arithmatex">\(i(x)= x\)</span> 相交。对于二维的情况，一个例子是如果你把世界地图平铺在地面上，那么一定存在地面上的一个点，与其上方地图上的一个点代表同一位置。或者更生活化地，大商场等地方可以看到的平面地图，上面标有“您在此处”的红点。如果标注足够精确，那么这个点就是把实际地形射到地图的连续函数的不动点。</p>
+<p>为了证明这一定理的一般情况，我们首先证明一个特殊情况，即 <span class="arithmatex">\(X\)</span> 是<strong>标准单纯形（standard simplex）</strong>的情况。<span class="arithmatex">\(n-1\)</span> 维标准单纯形 <span class="arithmatex">\(X(n)\)</span> 定义如下：</p>
+<div class="arithmatex">\[X(n) = \{ x \in \mathbb{R}^n \mid x_i \geqslant 0, \sum\limits_{i=1}^n x_i = 1 \}\]</div>
+<p>下图给出了三个最简单的标准单纯形，不能看出 <span class="arithmatex">\(n-1\)</span> 维标准单纯形就是顶点为 <span class="arithmatex">\(e_1,\cdots,e_n\)</span>（自然基）的单纯形。</p>
+<div style="text-align: center;">
+<img src="/Notes/assets/images/algt/AGT/fixedpoint-1/standard.png" width="80%" style="margin: 0 auto;">
+</div>
+
+<p>我们首先证明如下特殊情况：</p>
+<div class="admonition 布劳威尔不动点定理的特殊情况">
+<p class="admonition-title">布劳威尔不动点定理的特殊情况</p>
+<p>令 <span class="arithmatex">\(f: X(n) \to X(n)\)</span> 是一个连续映射，那么 <span class="arithmatex">\(f\)</span> 至少有一个不动点。</p>
+</div>
+<p>在定理的证明中，我们需要用到 <span class="arithmatex">\(\mathbb{R}^n\)</span> 的上范数（sup-norm）：对于 <span class="arithmatex">\(x = (x_1,x_2,\cdots,x_n) \in \mathbb{R}^n\)</span>，定义</p>
+<div class="arithmatex">\[\| x \|_\infty = \max\limits_{i=1,2,\cdots,n} |x_i|\]</div>
+<div class="admonition 布劳威尔不动点定理的特殊情况证明">
+<p class="admonition-title">布劳威尔不动点定理的特殊情况证明</p>
+<p>对任意的 <span class="arithmatex">\(y \in X(n)\)</span>，都有 <span class="arithmatex">\(y = \sum\limits_{i=1}^n y_i e_i\)</span>，其中 <span class="arithmatex">\(e_i\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 的自然基。于是 <span class="arithmatex">\(y\)</span> 的支撑 <span class="arithmatex">\(\text{supp}_{X(n)}(y)\)</span> 是 <span class="arithmatex">\(\{ i \mid y_i &gt; 0 \}\)</span>。</p>
+<p><strong>第一步：对每个 <span class="arithmatex">\(y \in X(n)\)</span>，存在 <span class="arithmatex">\(i \in \text{supp}_{X(n)}(y)\)</span> 满足 <span class="arithmatex">\(f_i(y) \leqslant y_i\)</span></strong></p>
+<p>根据 <span class="arithmatex">\(f: X(n) \to X(n)\)</span> 可知 <span class="arithmatex">\(\sum\limits_{i=1}^n y_i = \sum\limits_{i=1}^n f_i(y) = 1\)</span> 且 <span class="arithmatex">\(f(y_i) \geqslant 0\)</span>，反证法，假设对每个 <span class="arithmatex">\(i \in \text{supp}_{X(n)}(y)\)</span> 都有 <span class="arithmatex">\(f_i(y) &gt; y_i\)</span>，而我们知道对每个 <span class="arithmatex">\(i \notin \text{supp}_{X(n)}(y)\)</span>，<span class="arithmatex">\(f_i(y) \geqslant 0 = y_i\)</span>，因此此时有 <span class="arithmatex">\(\sum\limits_{i=1}^n f_i(y) &gt; \sum\limits_{i=1}^n y_i = 1\)</span>，与 <span class="arithmatex">\(f\)</span> 是 <span class="arithmatex">\(X(n)\)</span> 到 <span class="arithmatex">\(X(n)\)</span> 的映射矛盾。</p>
+<p><strong>第二步：定义一个着色</strong></p>
+<p>因为紧集上的连续函数都是一致连续的，因此对于任意的 <span class="arithmatex">\(\varepsilon &gt; 0\)</span>，存在 <span class="arithmatex">\(\delta &gt; 0\)</span>，使得对于任意的 <span class="arithmatex">\(x,y \in X(n)\)</span>，只要 <span class="arithmatex">\(\| x - y \|_\infty &lt; \delta\)</span>，就有 <span class="arithmatex">\(\| f(x) - f(y) \|_\infty &lt; \varepsilon\)</span>。从而我们定义 <span class="arithmatex">\(X(n)\)</span> 的划分 <span class="arithmatex">\(\mathcal{T}_\varepsilon\)</span>，使得对于任意的 <span class="arithmatex">\(T_\varepsilon \in \mathcal{T}_\varepsilon\)</span>，<span class="arithmatex">\(\rho(T_\varepsilon) &lt; \delta\)</span>。为了之后讨论的方便，这里的 <span class="arithmatex">\(\delta\)</span> 我们都取小于等于 <span class="arithmatex">\(\epsilon\)</span> 的值。</p>
+<p>我们定义一个着色 <span class="arithmatex">\(c\)</span>，使得对每个 <span class="arithmatex">\(x \in Y(\mathcal{T}_\varepsilon)\)</span>，<span class="arithmatex">\(c(x) = i\)</span> 当且仅当 <span class="arithmatex">\(i \in \text{supp}_{X(n)}(y)\)</span> 且 <span class="arithmatex">\(f_i(x) \leqslant x_i\)</span>。根据第一步的讨论，这样的 <span class="arithmatex">\(i\)</span> 一定存在，并且这个着色是合适的，因为 <span class="arithmatex">\(c(x)\)</span> 取的是 <span class="arithmatex">\(x\)</span> 的支撑集中的某个指数。根据斯佩纳引理，我们知道至少有一个完美着色的 <span class="arithmatex">\(n-1\)</span> 维单纯形 <span class="arithmatex">\(T_\varepsilon \in \mathcal{T}_\varepsilon\)</span>。</p>
+<p><strong>第三步：不动点的存在性</strong></p>
+<p>我们设这个完美着色的单纯形为 <span class="arithmatex">\(T_\varepsilon = \langle \langle x^1,x^2,\cdots,x^n \rangle \rangle\)</span>，其所有节点被 <span class="arithmatex">\(\{1,2,\cdots,n\}\)</span> 着色，不妨设 <span class="arithmatex">\(c(x^i) = i\)</span>，即 <span class="arithmatex">\(f_i(x^i) \leqslant x_i^i\)</span> 成立（<span class="arithmatex">\(x_i^i\)</span> 是 <span class="arithmatex">\(x^i\)</span> 的第 <span class="arithmatex">\(i\)</span> 个坐标）。令 <span class="arithmatex">\(x^\varepsilon\)</span> 是 <span class="arithmatex">\(T_\varepsilon\)</span> 中的一个向量，因为 <span class="arithmatex">\(\rho(T_\varepsilon) &lt; \delta\)</span>，这意味着 <span class="arithmatex">\(\| x^\varepsilon - x^i \|_\infty &lt; \delta\)</span> 对每个 <span class="arithmatex">\(i\)</span> 都成立，因此根据 <span class="arithmatex">\(f\)</span> 的一致连续性，有</p>
+<div class="arithmatex">\[f_i(x^\varepsilon) \leqslant f_i(x^i) + \varepsilon \leqslant x_i^i + \varepsilon \leqslant x_i^\varepsilon + \varepsilon + \delta \leqslant x_i^\varepsilon + 2\varepsilon, \forall i \in [n]\]</div>
+<p>上式对于任意的 <span class="arithmatex">\(\varepsilon\)</span> 都成立，因此存在点列 <span class="arithmatex">\((x^\varepsilon)_{\varepsilon &gt; 0}\)</span>，使得</p>
+<div class="arithmatex">\[\begin{equation}
+    f_i(x^\varepsilon) \leqslant x_i^\varepsilon + 2\varepsilon \tag{1} \label{brouwer}
+\end{equation}\]</div>
+<p>对每个 <span class="arithmatex">\(i\)</span> 都成立。根据 <span class="arithmatex">\(X(n)\)</span> 的紧性，存在一个收敛的子列 <span class="arithmatex">\((x^{\varepsilon_k})_{k=1}^\infty\)</span>，收敛到一个点 <span class="arithmatex">\(x^* \in X(n)\)</span>。根据 <span class="arithmatex">\(f\)</span> 的连续性，对 <span class="arithmatex">\(\eqref{brouwer}\)</span> 取极限，有 <span class="arithmatex">\(f_i(x^*) \leqslant x_i^*,\forall i \in [n]\)</span>，而回忆 <span class="arithmatex">\(\sum\limits_{i=1}^n x_i^* = \sum\limits_{i=1}^n f_i(x^*) = 1\)</span>，因此有 <span class="arithmatex">\(f_i(x^*) = x_i^*,\forall i \in [n]\)</span>，从而 <span class="arithmatex">\(f(x^*) = x^*\)</span>，即 <span class="arithmatex">\(f\)</span> 至少有一个不动点。</p>
+</div>
+<p>事实上，任何一个 <span class="arithmatex">\(k\)</span> 维单纯形 <span class="arithmatex">\(S\)</span> 都等价于标准单纯形 <span class="arithmatex">\(X(k+1)\)</span>（只需要将顶点一一对应后，使用重心坐标即可，不影响我们上面的证明），所以这一定理对任意的单纯形也都是成立的。总结一下上述证明，核心在于构造了一个合适的着色，然后利用斯佩纳引理得到了一个完美着色的单纯形，最后通过一致连续性和紧性得到了不动点的存在性，事实上最终的不动点就是一个极限点。</p>
+<p>接下来我们需要将布劳威尔不动点定理推广到一般的凸紧集的情况，我们需要首先证明如下引理：</p>
+<div class="admonition 引理">
+<p class="admonition-title">引理</p>
+<p>令 <span class="arithmatex">\(X\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的一个非空凸紧集，定义函数 <span class="arithmatex">\(g: \mathbb{R}^n \to X\)</span>，使得 <span class="arithmatex">\(g(x)\)</span> 是 <span class="arithmatex">\(X\)</span> 中距离 <span class="arithmatex">\(x\)</span> 最近的点。那么 <span class="arithmatex">\(d(g(x),g(y)) \leqslant d(x,y), \forall x,y \in \mathbb{R}^n\)</span>。</p>
+</div>
+<p>回忆对于闭凸集 <span class="arithmatex">\(X\)</span> 而言，对于 <span class="arithmatex">\(x \notin X\)</span>，存在唯一的 <span class="arithmatex">\(y \in X\)</span>，使得 <span class="arithmatex">\(d(x,y) = d(x,X)\)</span>，这个 <span class="arithmatex">\(y\)</span> 就是 <span class="arithmatex">\(g(x)\)</span>，即 <span class="arithmatex">\(g\)</span> 是良定义的。这一引理表明，<span class="arithmatex">\(g\)</span> 是一个 Lipschitz 连续的映射，因此也是连续的。</p>
+<div class="admonition 引理的证明">
+<p class="admonition-title">引理的证明</p>
+<p>回忆<a href="../../../math/optimization/basic/">凸优化基础知识</a>中关于分离超平面定理的证明，对于 <span class="arithmatex">\(x \notin X\)</span>，设 <span class="arithmatex">\(y\)</span> 是 <span class="arithmatex">\(X\)</span> 中距离 <span class="arithmatex">\(x\)</span> 最近的点，<span class="arithmatex">\(z\)</span> 是 <span class="arithmatex">\(X\)</span> 中任一点，则有 <span class="arithmatex">\(\langle x-y,z-y \rangle \leqslant 0\)</span>。代入引理的符号，有 <span class="arithmatex">\(\langle x-g(x),g(y)-g(x) \rangle \leqslant 0\)</span>，同理有 <span class="arithmatex">\(\langle y-g(y),g(x)-g(y) \rangle \leqslant 0\)</span>，两式相加得到</p>
+<div class="arithmatex">\[\langle (g(y) - g(x)) - (y-x),g(y)-g(x) \rangle \leqslant 0\]</div>
+<p>从而有 <span class="arithmatex">\(\| g(y) - g(x) \|^2 \leqslant \langle g(y) - g(x),y-x \rangle \leqslant \| g(y) - g(x) \| \| y - x \|\)</span>（第二个不等号使用了柯西-施瓦茨不等式），即 <span class="arithmatex">\(\| g(y) - g(x) \| \leqslant \| y - x \|\)</span>，即 <span class="arithmatex">\(g\)</span> 是 Lipschitz 连续的。</p>
+</div>
+<p>在做好一切准备工作后，我们就可以开始证明最终的定理了：</p>
+<div class="admonition 布劳威尔不动点定理的证明">
+<p class="admonition-title">布劳威尔不动点定理的证明</p>
+<p>因为 <span class="arithmatex">\(X\)</span> 是紧集，因此存在一个足够大的单纯形 <span class="arithmatex">\(S\)</span> 包含 <span class="arithmatex">\(X\)</span>。定义函数 <span class="arithmatex">\(h: S \to S\)</span> 满足 <span class="arithmatex">\(h(x) = f(g(x))\)</span>，其中 <span class="arithmatex">\(g\)</span> 是引理中定义的函数。根据引理，<span class="arithmatex">\(g\)</span> 是连续函数，又 <span class="arithmatex">\(f\)</span> 也是连续函数，因此 <span class="arithmatex">\(h\)</span> 是连续的，因此根据特殊情况的证明，<span class="arithmatex">\(h\)</span> 至少有一个不动点 <span class="arithmatex">\(x^* \in S\)</span>，即 <span class="arithmatex">\(f(g(x^*)) = h(x^*) = x^*\)</span>。注意到函数 <span class="arithmatex">\(h\)</span> 的实际值域是 <span class="arithmatex">\(f\)</span> 的值域，因此包含于 <span class="arithmatex">\(X\)</span>，因此 <span class="arithmatex">\(x^* \in X\)</span>，因此根据定义 <span class="arithmatex">\(g(x^*) = x^*\)</span>，因此 <span class="arithmatex">\(f(x^*) = x^*\)</span>，即 <span class="arithmatex">\(f\)</span> 至少有一个不动点。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">布劳威尔不动点定理相关的历史</p>
+<p>布劳威尔不动点定理是代数拓扑的早期成就，还是更多更一般的不动点定理的基础，在泛函分析中尤其重要。在 1904 年，首先由 Piers Bohl 证明 <span class="arithmatex">\(n = 3\)</span> 的情况。后来在 1909 年，鲁伊兹·布劳威尔（L. E. J. Brouwer）再次证明。在1910年，雅克·阿达马提供一般情况的证明，而布劳威尔在 1912 年提出另一个不同的证明。这些早期的证明皆属于非构造性的间接证明，与数学直觉主义理想矛盾。直到 1967 年，美国数学家 H. E. Scarf 找到了计算单纯形连续映射不动点的组合拓扑有限算法，这也就是 Brouwer 不动点定理的构造性证明。我们从斯佩纳引理出发的证明来源于 Kuhn（1960）。</p>
+<p>布劳威尔不动点定理在无限维空间中的推广是邵德尔（Schauder）不动点定理，即每一个从一个巴拿赫空间的某个给定的凸紧子集射到它自身的连续函数都有（至少）一个不动点。</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">布劳威尔不动点定理的推广</p>
+<p>我们考虑一个简单的推广：<span class="arithmatex">\(f: X \to X\)</span> 中的 <span class="arithmatex">\(X\)</span> 不再强制要求是凸紧集，可以只是一个同胚于一个凸紧集的紧集。那么布劳威尔不动点定理是否仍然成立呢？</p>
+<p>答案是成立的，设 <span class="arithmatex">\(g: X \to S\)</span> 是同胚映射，其中 <span class="arithmatex">\(S\)</span> 是凸紧集，构造 <span class="arithmatex">\(h: S \to S\)</span> 满足 <span class="arithmatex">\(h(x) = g(f(g^{-1}(x)))\)</span>，根据同胚的要求以及布劳威尔不动点定理，<span class="arithmatex">\(h\)</span> 存在不动点 <span class="arithmatex">\(x^* \in S\)</span>，即 <span class="arithmatex">\(g(f(g^{-1}(x^*))) = x^*\)</span>，因此 <span class="arithmatex">\(f(g^{-1}(x^*)) = g^{-1}(x^*)\)</span>，、因此 <span class="arithmatex">\(f\)</span> 至少有一个不动点 <span class="arithmatex">\(g^{-1}(x^*)\)</span>。</p>
+</div>
+<h3 id="_7">定理的应用<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>接下来我们将应用布劳威尔不动点定理证明纳什定理：</p>
+<div class="admonition 定理">
+<p class="admonition-title">纳什定理</p>
+<p>对于任意一个策略式博弈 <span class="arithmatex">\(G = (N,(S_i)_{i\in N},(u_i)_{i\in N})\)</span>，如果参与人的个数有限，每个参与人的策略集是有限的，那么必然存在一个混合策略纳什均衡。</p>
+</div>
+<p>我们假设 <span class="arithmatex">\(G\)</span> 的混合扩展为 <span class="arithmatex">\(\Gamma = (N,(\Sigma_i)_{i\in N},(U_i)_{i\in N})\)</span>，并且 <span class="arithmatex">\(|S_i| = m_i\)</span>。为了我们接下来的证明，我们不加说明地给出两个很简单的结论：</p>
+<div class="admonition 引理">
+<p class="admonition-title">纳什定理的引理</p>
+<ol>
+<li>如果参与人 <span class="arithmatex">\(i\)</span> 的纯策略集是有限的，那么参与人 <span class="arithmatex">\(i\)</span> 的混合策略集 <span class="arithmatex">\(\Sigma_i\)</span> 是凸紧的（事实上是单纯形，极端点是所有可能的纯策略向量）；</li>
+<li>如果 <span class="arithmatex">\(A \subset \mathbb{R}^n\)</span> 和 <span class="arithmatex">\(B \subset \mathbb{R}^m\)</span> 都是凸（紧）集，那么 <span class="arithmatex">\(A \times B \subset \mathbb{R}^{n+m}\)</span> 也是凸（紧）的。</li>
+</ol>
+</div>
+<p>综合引理的两个结论可知，集合 <span class="arithmatex">\(\Sigma = \Sigma_1 \times \Sigma_2 \times \cdots \times \Sigma_n\)</span> 是凸紧的，因此接下来我们的整体思路是：构造 <span class="arithmatex">\(f: \Sigma \to \Sigma\)</span>，使得 <span class="arithmatex">\(f\)</span> 是一个连续映射，然后根据布劳威尔不动点定理，证明 <span class="arithmatex">\(f\)</span> 至少有一个不动点，并且这个不动点恰好是一个混合策略纳什均衡。</p>
+<p>定理的正式证明我们逐步分析得到，因为这里 <span class="arithmatex">\(f\)</span> 的构造需要逐步分析才更好理解背后的含义。事实上，因为 <span class="arithmatex">\(f: \Sigma \to \Sigma\)</span>，所以 <span class="arithmatex">\(f\)</span> 将一个混合策略映射到另一个混合策略。如果 <span class="arithmatex">\(\sigma\)</span> 不是混合策略纳什均衡，那么存在一个参与人 <span class="arithmatex">\(i\)</span>，<span class="arithmatex">\(\sigma_i\)</span> 不是 <span class="arithmatex">\(\sigma_{-i}\)</span> 的最佳应对，故我们令 <span class="arithmatex">\(f_i(\sigma)\)</span> 为参与人 <span class="arithmatex">\(i\)</span> 比 <span class="arithmatex">\(\sigma_i\)</span> 更优的对 <span class="arithmatex">\(\sigma_{-i}\)</span> 的应对，即一个向着均衡方向的改进。这样的定义思想使得，<span class="arithmatex">\(\sigma\)</span> 是混合策略纳什均衡当且仅当 <span class="arithmatex">\(f(\sigma) = \sigma\)</span>，因为此时每个人都已经处于最优应对了。</p>
+<p>以上只是一些想法，要真的定义出这个 <span class="arithmatex">\(f\)</span>，我们首先需要一个辅助函数 <span class="arithmatex">\(g_i^j: \Sigma \to [0,+\infty)\)</span>，满足</p>
+<div class="arithmatex">\[g_i^j(\sigma) = \max\{0, U_i(s_i^j,\sigma_{-i}) - U_i(\sigma)\}\]</div>
+<p>也就是说，<span class="arithmatex">\(g_i^j\)</span> 是参与人 <span class="arithmatex">\(i\)</span> 从 <span class="arithmatex">\(\sigma_i\)</span> 转向纯策略 <span class="arithmatex">\(s_i^j\)</span> 带来的收益。如果收益大于零则为收益，否则为零。一个很显然的结论是，当且仅当 <span class="arithmatex">\(\forall i,j\)</span> 都有 <span class="arithmatex">\(g_i^j(\sigma) = 0\)</span> 时，<span class="arithmatex">\(\sigma\)</span> 是混合策略纳什均衡，因为纳什均衡是最优反应。</p>
+<p>现在我们可以定义 <span class="arithmatex">\(f\)</span>，使其符合我们之前讨论的直观：当 <span class="arithmatex">\(\sigma\)</span> 不是均衡时，<span class="arithmatex">\(f_i(\sigma)\)</span> 能转向更优反应。因为 <span class="arithmatex">\(f(\sigma)\)</span> 仍然是混合策略向量，故记 <span class="arithmatex">\(f_i^j(\sigma)\)</span> 为取值 <span class="arithmatex">\(\sigma\)</span> 时，参与人 <span class="arithmatex">\(i\)</span> 选择纯策略 <span class="arithmatex">\(s_i^j\)</span> 的概率。事实上如果 <span class="arithmatex">\(\sigma_i\)</span> 不是 <span class="arithmatex">\(\sigma_{-i}\)</span> 的最优应对，那么我们应当将 <span class="arithmatex">\(i\)</span> 选择更优的纯策略的概率增大，因此我们可以令</p>
+<div class="arithmatex">\[f_i^j(\sigma) = \dfrac{\sigma_i(s_i^j)+g_i^j(\sigma)}{1+\sum\limits_{k=1}^{m_i} g_i^k(\sigma)}\]</div>
+<p>这非常符合我们的直观，并且分母上的值也使得 <span class="arithmatex">\(\sum\limits_{j=1}^{m_i} f_i^j(\sigma) = 1\)</span>，即 <span class="arithmatex">\(f_i(\sigma)\)</span> 仍然是一个混合策略，即的确满足 <span class="arithmatex">\(f: \Sigma \to \Sigma\)</span>。除此之外，我们知道 <span class="arithmatex">\(U_i\)</span> 都是连续函数（因为是多重线性函数），<span class="arithmatex">\(g\)</span> 是两个连续函数的最大值，因此也是连续函数，而 <span class="arithmatex">\(f\)</span> 的分母一定大于 <span class="arithmatex">\(0\)</span>，因此 <span class="arithmatex">\(f\)</span> 也是连续函数，根据布劳威尔不动点定理，<span class="arithmatex">\(f\)</span> 至少有一个不动点，即存在 <span class="arithmatex">\(\sigma^* \in \Sigma\)</span>，使得 <span class="arithmatex">\(f(\sigma^*) = \sigma^*\)</span>，下面我们就要证明 <span class="arithmatex">\(\sigma^*\)</span> 的确是一个混合策略纳什均衡。 </p>
+<div class="admonition 证明">
+<p class="admonition-title"><span class="arithmatex">\(\sigma^*\)</span> 的确是一个混合策略纳什均衡</p>
+<p>因为 <span class="arithmatex">\(\sigma^*\)</span> 是一个不动点，因此 <span class="arithmatex">\(f(\sigma^*) = \sigma^*\)</span>，即 <span class="arithmatex">\(f_i^j(\sigma^*) = \sigma_i^*(s_i^j) = \dfrac{\sigma_i^*(s_i^j)+g_i^j(\sigma^*)}{1+\sum\limits_{k=1}^{m_i} g_i^k(\sigma^*)}\)</span>，整理得到</p>
+<div class="arithmatex">\[g_i^j(\sigma) = \sigma_i(s_i^j)\sum\limits_{k=1}^{m_i} g_i^k(\sigma),\forall i \in N, j \in [m_i]\]</div>
+<p>使用反证法，假设这一不动点 <span class="arithmatex">\(\sigma^*\)</span> 不是混合策略纳什均衡，那么必定存在一个参与人 <span class="arithmatex">\(i\)</span> 以及 <span class="arithmatex">\(l \in [m_i]\)</span> 使得 <span class="arithmatex">\(g_i^l(\sigma) &gt; 0\)</span>。特别地，<span class="arithmatex">\(\sum\limits_{k=1}^{m_i} g_i^k(\sigma) &gt; 0\)</span>，因此根据上式我们得到</p>
+<div class="arithmatex">\[\begin{equation}
+    \sigma_i(s_i^j) &gt; 0 \iff g_i^j(\sigma) &gt; 0, \forall j \in [m_i] \tag{3} \label{nash-1}
+\end{equation}\]</div>
+<p>因为 <span class="arithmatex">\(U_i\)</span> 是多线性的，因此 <span class="arithmatex">\(U_i(\sigma) = \sum\limits_{j=1}^{m_i} \sigma_i(s_i^j) U_i(s_i^j,\sigma_{-i})\)</span>，这意味着</p>
+<div class="arithmatex">\[\begin{align}
+    0 &amp;= \sum\limits_{j=1}^{m_i} \sigma_i^*(s_i^j) (U_i(s_i^j,\sigma_{-i}) - U_i(\sigma^*)) \\
+    &amp;= \sum\limits_{j: \sigma_i(s_i^j) &gt; 0} \sigma_i^*(s_i^j) (U_i(s_i^j,\sigma_{-i}) - U_i(\sigma^*)) \\
+    &amp;= \sum\limits_{j: \sigma_i(s_i^j) &gt; 0} \sigma_i^*(s_i^j) g_i^j(\sigma) \\
+\end{align}\]</div>
+<p>然而我们知道<span class="arithmatex">\(g_i^l(\sigma) &gt; 0\)</span>，根据 <span class="arithmatex">\(\eqref{nash-1}\)</span>，我们知道 <span class="arithmatex">\(\sigma_i^*(s_i^l) &gt; 0\)</span>，因此上式的和大于 <span class="arithmatex">\(0\)</span>，这与 <span class="arithmatex">\(0\)</span> 的等式矛盾，因此假设不成立，<span class="arithmatex">\(\sigma^*\)</span> 是一个混合策略纳什均衡。</p>
+</div>
+<p>由此我们便证明了纳什均衡的存在性。事实上这一证明非常美丽，对 <span class="arithmatex">\(f\)</span> 的构造也非常优雅美观，因此这一证明值得重视。接下来我们讨论纳什定理的一个拓展，因为有时候存在约束使得参与人 <span class="arithmatex">\(i\)</span> 无法选择整个 <span class="arithmatex">\(\Sigma_i\)</span>，例如要求选择某个纯策略的概率必须大于等于一个值。在这样的情况下，约束条件可以转化为线性不等式，而有限数目的半空间相交得到的有界集合称为<strong>多面体（polytope）</strong>。事实上多面体可以视为其极值点的凸包，只是这些极值点不一定仿射无关（这是单纯形的要求）了，例如四边形不是单纯形，但是是多面体。事实上，当参与人的策略空间是多面体时，纳什定理也成立：</p>
+<div class="admonition 定理">
+<p class="admonition-title">纳什定理的一般化</p>
+<p>令 <span class="arithmatex">\(\Gamma = (N,(X_i)_{i\in N},(U_i)_{i\in N})\)</span> 是一个策略式博弈，对每个参与人 <span class="arithmatex">\(i\)</span>，集合 <span class="arithmatex">\(X_i\)</span> 是 <span class="arithmatex">\(\mathbb{R}^{d_i}\)</span> 上的一个多面体，<span class="arithmatex">\(U_i\)</span> 是多重线性函数，那么 <span class="arithmatex">\(\Gamma\)</span> 至少有一个混合策略纳什均衡。</p>
+</div>
+<p>具体证明略去，事实上就是将多面体的极端点都视为纯策略，定义一个辅助的博弈即可。</p>
+<h2 id="_8">角谷不动点定理<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">定理陈述与证明<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>角谷（Kakutani）不动点定理是由日本数学家角谷静夫提出的，它是布劳威尔不动点定理的一个推广，也是一个非常重要的不动点定理：在纳什本人的论文中，纳什定理的证明首先使用了布劳威尔不动点定理，之后的版本则在大卫·盖尔（David Gale）的建议下使用了更简单的角谷不动点定理。</p>
+<div class="admonition tip">
+<p class="admonition-title">3n + 1 猜想</p>
+<p>事实上，提到角谷静夫，最令人熟知的可能是著名的 <span class="arithmatex">\(3n+1\)</span> 猜想，即角谷猜想（事实上并不是他提出的，但因为他也对这一问题投入了研究所以也冠以他的名字），这个猜想是一个非常有趣且至今未被证明的数学问题，它的描述如下：对于每一个正整数，如果它是奇数，则对它乘 <span class="arithmatex">\(3\)</span> 再加 <span class="arithmatex">\(1\)</span>，如果它是偶数，则对它除以 <span class="arithmatex">\(2\)</span>，如此循环，最终都能够得到 <span class="arithmatex">\(1\)</span>。</p>
+</div>
+<p>为了描述角谷不动点定理，我们需要引入”半连续性“的概念，实际上是一般的连续性概念的推广：</p>
+<div class="admonition 半连续性">
+<p class="admonition-title">半连续性</p>
+<p>设 <span class="arithmatex">\(f(x)\)</span> 定义在 <span class="arithmatex">\(X \subset \mathbb{R}^n\)</span> 上，在 <span class="arithmatex">\(x_0\)</span> 及其附近有定义，则</p>
+<ol>
+<li>如果 <span class="arithmatex">\(\forall \varepsilon &gt; 0\)</span>，<span class="arithmatex">\(\exists \delta &gt; 0\)</span>，使得 <span class="arithmatex">\(\forall x \in X\)</span>，只要 <span class="arithmatex">\(\| x - x_0 \| &lt; \delta\)</span>，就有 <span class="arithmatex">\(f(x) &lt; f(x_0) + \varepsilon\)</span>，则称 <span class="arithmatex">\(f(x)\)</span> 在 <span class="arithmatex">\(x_0\)</span> 处<strong>上半连续</strong>；</li>
+<li>如果 <span class="arithmatex">\(\forall \varepsilon &gt; 0\)</span>，<span class="arithmatex">\(\exists \delta &gt; 0\)</span>，使得 <span class="arithmatex">\(\forall x \in X\)</span>，只要 <span class="arithmatex">\(\| x - x_0 \| &lt; \delta\)</span>，就有 <span class="arithmatex">\(f(x_0) - \varepsilon &lt; f(x)\)</span>，则称 <span class="arithmatex">\(f(x)\)</span> 在 <span class="arithmatex">\(x_0\)</span> 处<strong>下半连续</strong>。</li>
+</ol>
+</div>
+<p>比较连续性的定义：<span class="arithmatex">\(\forall \varepsilon &gt; 0\)</span>，<span class="arithmatex">\(\exists \delta &gt; 0\)</span>，使得 <span class="arithmatex">\(\forall x \in X\)</span>，只要 <span class="arithmatex">\(\| x - x_0 \| &lt; \delta\)</span>，就有 <span class="arithmatex">\(|f(x) - f(x_0)| &lt; \varepsilon\)</span>，我们知道函数在 <span class="arithmatex">\(x_0\)</span> 处连续当且仅当它在 <span class="arithmatex">\(x_0\)</span> 处既上半连续又下半连续。下图可以用来直观描述上、下半连续函数，其中左图是上半连续函数，右图是下半连续函数：</p>
+<div style="text-align: center;">
+<img src="/Notes/assets/images/algt/AGT/fixedpoint-1/upperlower.png" width="60%" style="margin: 0 auto;">
+</div>
+
+<p>角谷不动点定理描述的是所谓的“集值函数”，即取值是集合的函数 <span class="arithmatex">\(F: X \to 2^X\)</span>，其中 <span class="arithmatex">\(2^X\)</span> 表示 <span class="arithmatex">\(X\)</span> 的幂集。<span class="arithmatex">\(F\)</span> 的图像指的是集合 <span class="arithmatex">\(\{(x,y) \in X \times X \mid y \in F(x)\}\)</span>，实际上就是 <span class="arithmatex">\(F\)</span> 在平面上的图像。基于此我们给出角谷不动点定理的陈述：</p>
+<div class="admonition 定理">
+<p class="admonition-title">角谷不动点定理</p>
+<p>令 <span class="arithmatex">\(X\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的一个非空凸紧集，<span class="arithmatex">\(F: X \to 2^X\)</span> 是一个上半连续的集值函数，满足对每个 <span class="arithmatex">\(x \in X\)</span>，<span class="arithmatex">\(F(x)\)</span> 是非空闭凸集，那么 <span class="arithmatex">\(F\)</span> 至少有一个不动点，即存在 <span class="arithmatex">\(x^* \in X\)</span>，使得 <span class="arithmatex">\(x^* \in F(x^*)\)</span>。</p>
+</div>
+<p>集值函数的上半连续实际上就是 <span class="arithmatex">\(F\)</span> 的图像是闭集，事实上集值函数的闭图像定理表明，对紧致的豪斯多夫空间 <span class="arithmatex">\(Y\)</span>，一个集值函数 <span class="arithmatex">\({\displaystyle \varphi :X\to 2^{Y}}\)</span>有闭图像的充分必要条件是：<span class="arithmatex">\(\varphi\)</span> 是上半连续的，且对所有 <span class="arithmatex">\(x\)</span>，<span class="arithmatex">\(\varphi(x)\)</span> 是闭集。因为所有欧几里得空间都为豪斯多夫空间，故上述定理还可以重述为：</p>
+<div class="admonition 定理">
+<p class="admonition-title">角谷不动点定理的另一表述</p>
+<p>令 <span class="arithmatex">\(X\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的一个非空凸紧集，<span class="arithmatex">\(F: X \to 2^X\)</span> 一个集值函数，<span class="arithmatex">\(F\)</span> 有闭图像且对每个 <span class="arithmatex">\(x \in X\)</span>，<span class="arithmatex">\(F(x)\)</span> 是非空凸集，那么 <span class="arithmatex">\(F\)</span> 至少有一个不动点。</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">一些例子</p>
+<p><strong>有无穷多个不动点的函数</strong></p>
+<p>例如：函数 <span class="arithmatex">\({\displaystyle \varphi(x) = [1-x/2,1-x/4]}\)</span> 满足所有角谷不动点定理的条件，并存在无穷多个不动点。</p>
+<p><strong>有一个不动点的函数</strong></p>
+<p>例如：一个函数 <span class="arithmatex">\({\displaystyle \varphi (x)={\begin{cases}3/4&amp;0\leqslant x&lt;0.5\\ [0,1]&amp;x=0.5\\1/4&amp;0.5&lt;x\leqslant 1\end{cases}}}\)</span> 满足所有角谷不动点定理的条件，存在唯一一个不动点 <span class="arithmatex">\({\displaystyle x=0.5}\)</span>。</p>
+<p><strong>不满足凸集的函数</strong></p>
+<p>例如：一个函数 <span class="arithmatex">\({\displaystyle \varphi (x)={\begin{cases}3/4&amp;0\leqslant x&lt;0.5\\\{3/4,1/4\}&amp;x=0.5\\1/4&amp;0.5&lt;x\leqslant 1\end{cases}}}\)</span> 在 <span class="arithmatex">\({\displaystyle x=0.5}\)</span> 处不满足凸集定义，但满足其他角谷不动点定理的条件。这个函数没有不动点。</p>
+<p><strong>不满足闭合图的函数</strong></p>
+<p>例如：一个函数 <span class="arithmatex">\({\displaystyle \varphi (x)={\begin{cases}3/4&amp;0\leqslant x&lt;0.5\\1/4&amp;0.5\leqslant x\leqslant 1\end{cases}}}\)</span> 不存在不动点，因为函数不满足闭图像。考虑序列 <span class="arithmatex">\({\displaystyle x_{n}=0.5-1/n}\)</span> 和 <span class="arithmatex">\({\displaystyle y_{n}=3/4}\)</span>：当 <span class="arithmatex">\({\displaystyle x_{n}\to x=0.5,y_{n}\to y=3/4,y\notin \varphi (x)}\)</span>。</p>
+</div>
+<p>事实上角谷不动点定理是布劳威尔不动点定理的推广：取 <span class="arithmatex">\(F(x) = \{f(x)\}\)</span>，那么角谷不动点定理就是布劳威尔不动点定理。为了证明角谷不动点定理，我们需要首先给出一些定义，然后证明一个引理。对 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的每个子集 <span class="arithmatex">\(A\)</span>，以及任意的 <span class="arithmatex">\(\varepsilon &gt; 0\)</span>，用 <span class="arithmatex">\(B(A,\varepsilon)\)</span> 表示 <span class="arithmatex">\(A\)</span> 的 <span class="arithmatex">\(\varepsilon\)</span>-邻域，即 <span class="arithmatex">\(B(A,\varepsilon) = \{ x \in \mathbb{R}^n \mid d(x,A) &lt; \varepsilon \}\)</span>。</p>
+<p>显然，如果 <span class="arithmatex">\(A\)</span> 是凸集，那么 <span class="arithmatex">\(B(A,\varepsilon)\)</span> 也是凸集。下面的引理说的是，对上半连续的集值函数 <span class="arithmatex">\(F\)</span>，如果 <span class="arithmatex">\(x\)</span> “接近于” <span class="arithmatex">\(x_0\)</span>，那么 <span class="arithmatex">\(F(x)\)</span> “接近于” <span class="arithmatex">\(F(x^0)\)</span>：</p>
+<div class="admonition 引理">
+<p class="admonition-title">引理</p>
+<p>令 <span class="arithmatex">\(F: X \to 2^X\)</span> 是上半连续集值函数（<span class="arithmatex">\(X\)</span> 是紧集），对每个 <span class="arithmatex">\(x^0 \in X\)</span> 和任意的 <span class="arithmatex">\(\varepsilon\)</span>，都存在 <span class="arithmatex">\(\delta &gt; 0\)</span> 使得 <span class="arithmatex">\(F(x) \subseteq B(F(x^0),\varepsilon)\)</span> 对所有满足 <span class="arithmatex">\(d(x,x^0) \leqslant \delta\)</span> 的 <span class="arithmatex">\(x \in X\)</span> 成立。</p>
+</div>
+<div class="admonition 引理的证明">
+<p class="admonition-title">引理的证明</p>
+<p>使用反证法：假设存在 <span class="arithmatex">\(x^0 \in X\)</span> 和 <span class="arithmatex">\(\varepsilon\)</span>，对任意的 <span class="arithmatex">\(\delta &gt; 0\)</span>，都存在 <span class="arithmatex">\(x^\delta \in X\)</span> 满足 <span class="arithmatex">\(d(x^\delta,x^0) \leqslant \delta\)</span>，存在 <span class="arithmatex">\(y^\delta \in F(x^\delta)\)</span>，使得 <span class="arithmatex">\(d(y^\delta,F(x^0)) &gt; \varepsilon\)</span> 成立。因为 <span class="arithmatex">\(X\)</span> 是紧集，可以取 <span class="arithmatex">\((x^\delta)\)</span> 和 <span class="arithmatex">\((y^\delta)\)</span> 的收敛子列 <span class="arithmatex">\((x^k)_{k \in \mathbb{N}}\)</span> 和 <span class="arithmatex">\((y^k)_{k \in \mathbb{N}}\)</span>，满足</p>
+<ol>
+<li><span class="arithmatex">\(\lim\limits_{k \to \infty} x^k = x^0\)</span>，因为 <span class="arithmatex">\(\delta \to 0\)</span>；</li>
+<li><span class="arithmatex">\(y^k \in F(x^k)\)</span> 对每个 <span class="arithmatex">\(k \in \mathbb{N}\)</span> 都成立，极限 <span class="arithmatex">\(\hat{y} = \lim\limits_{k \to \infty} y^k\)</span> 存在；</li>
+<li><span class="arithmatex">\(d(y^k,F(x^0)) &gt; \varepsilon\)</span> 对每个 <span class="arithmatex">\(k \in \mathbb{N}\)</span> 都成立。</li>
+</ol>
+<p>根据 1、2 以及 <span class="arithmatex">\(F\)</span> 的图像是闭集（因此 <span class="arithmatex">\((x_k,y_k)\)</span> 的极限点仍然 <span class="arithmatex">\(F\)</span> 的图像内）可知，<span class="arithmatex">\(\hat{y} \in F(x^0)\)</span>，但是 <span class="arithmatex">\(d(\hat{y},F(x^0)) \geqslant \varepsilon\)</span>，矛盾。</p>
+</div>
+<p>接下来我们可以开始证明角谷不动点定理，证明的大致思路是，构造一个 <span class="arithmatex">\(X \to X\)</span> 的连续函数序列 <span class="arithmatex">\((f^m)_{m \in \mathbb{N}}\)</span>，利用布劳威尔不动点定理，这个序列的每个函数都有一个不动点，然后证明这些不动点的极限点就是 <span class="arithmatex">\(F\)</span> 的不动点。</p>
+<div class="admonition 证明">
+<p class="admonition-title">角谷不动点定理的证明</p>
+<p><strong>第一步：定义连续函数的序列</strong></p>
+<p>对每个 <span class="arithmatex">\(m \in \mathbb{N}\)</span>，定义 <span class="arithmatex">\(f^m: X \to X\)</span>。因为 <span class="arithmatex">\(X\)</span> 是紧集，故可以被有限个开球覆盖（假设 <span class="arithmatex">\(K^m\)</span> 个），每个开球的半径为 <span class="arithmatex">\(\dfrac{1}{m}\)</span>。用 <span class="arithmatex">\((x_k^m)_{k=1}^{K_m}\)</span> 表示这些球的中心，那么对任意的 <span class="arithmatex">\(x \in X\)</span>，都存在 <span class="arithmatex">\(k\)</span> 使得 <span class="arithmatex">\(d(x,x_k^m) &lt; \dfrac{1}{m}\)</span>。对每个 <span class="arithmatex">\(k \in [K_m]\)</span>，选择 <span class="arithmatex">\(y_k^m \in F(x_k^m)\)</span>。用 <span class="arithmatex">\(C_k^m\)</span> 表示与 <span class="arithmatex">\(x_k^m\)</span> 距离至少为 <span class="arithmatex">\(\dfrac{1}{m}\)</span> 的点集：</p>
+<div class="arithmatex">\[C_k^m = \{ x \in X \mid d(x,x_k^m) \geqslant \dfrac{1}{m} \}\]</div>
+<p>这意味着 <span class="arithmatex">\(d(x,x_k^m) \leqslant \dfrac{1}{m}\)</span> 当且仅当 <span class="arithmatex">\(x \notin C_k^m\)</span>。因为 <span class="arithmatex">\(C_k^m\)</span> 是闭集，这当且仅当 <span class="arithmatex">\(d(x,C_k^m) &gt; 0\)</span> 才能发生。对每个 <span class="arithmatex">\(x \in X\)</span> 和每个 <span class="arithmatex">\(k \in [K_m]\)</span>，定义</p>
+<div class="arithmatex">\[\lambda_k^m(x) = \dfrac{d(x,C_k^m)}{\sum\limits_{l=1}^{K_m} d(x,C_l^m)}\]</div>
+<p>根据前面的讨论，分母一定是正数。而我们知道距离函数 <span class="arithmatex">\(x \mapsto d(x,C_k^m)\)</span> 是连续的，因此 <span class="arithmatex">\(\lambda_k^m(x)\)</span> 也是连续的。定义 <span class="arithmatex">\(f^m: X \to X\)</span> 为</p>
+<div class="arithmatex">\[f^m(x) = \sum\limits_{k=1}^{K_m} \lambda_k^m(x) y_k^m\]</div>
+<p>注意到 <span class="arithmatex">\(\sum\limits_{k=1}^{K_m} \lambda_k^m(x) = 1\)</span> 对每个 <span class="arithmatex">\(x \in X\)</span> 都成立，故 <span class="arithmatex">\(f^m(x)\)</span> 是点集 <span class="arithmatex">\((y_k^m)_{k=1}^{K_m}\)</span> 的凸组合，又因为 <span class="arithmatex">\(X\)</span> 是凸集，故 <span class="arithmatex">\(f^m(x)\)</span> 的值域在 <span class="arithmatex">\(X\)</span> 内。</p>
+<p><strong>第二步：运用布劳威尔不动点定理</strong></p>
+<p>对每个 <span class="arithmatex">\(m \in \mathbb{N}\)</span>，<span class="arithmatex">\(f^m\)</span> 都是连续的，因为它是有限个连续函数的和，根据布劳威尔不动点定理，<span class="arithmatex">\(f^m\)</span> 至少有一个不动点 <span class="arithmatex">\(x^{*.m} \in X\)</span> 满足 <span class="arithmatex">\(f^m(x^{*.m}) = x^{*.m}\)</span>。因为不动点序列 <span class="arithmatex">\((x^{*.m})_{m \in \mathbb{N}}\)</span> 包含在紧集 <span class="arithmatex">\(X\)</span> 中，故存在一个收敛子列 <span class="arithmatex">\((x^{*.m_l})_{l \in \mathbb{N}}\)</span>，收敛到一个点 <span class="arithmatex">\(x^* \in X\)</span>。</p>
+<p><strong>第三步：<span class="arithmatex">\(x^*\)</span> 是 <span class="arithmatex">\(F\)</span> 的一个不动点</strong></p>
+<p>因为 <span class="arithmatex">\(x^{*.m_l}\)</span> 是 <span class="arithmatex">\(f^{m_l}\)</span> 的不动点，故</p>
+<div class="arithmatex">\[\begin{equation}
+    x^{*.m_l} = f^{m_l}(x^{*.m_l}) = \sum\limits_{k=1}^{K_{m_l}} \lambda_k^{m_l}(x^{*.m_l}) y_k^{m_l} \tag{2} \label{kakutani}
+\end{equation}\]</div>
+<p>此时我们需要利用前面的引理。对任意的 <span class="arithmatex">\(\varepsilon &gt; 0\)</span>，取符合引理条件的 <span class="arithmatex">\(\delta &gt; 0\)</span>，令 <span class="arithmatex">\(L\)</span> 足够大使得对所有的 <span class="arithmatex">\(l \geqslant L\)</span>，</p>
+<ol>
+<li><span class="arithmatex">\(\dfrac{1}{m_l} &lt; \dfrac{\delta}{2}\)</span>；</li>
+<li><span class="arithmatex">\(d(x^{*.m_l},x^*) &lt; \dfrac{\delta}{2}\)</span>。</li>
+</ol>
+<p>令 <span class="arithmatex">\(l \geqslant L\)</span>，对每个满足 <span class="arithmatex">\(\lambda_k^{m_l}(x^{*.m_l}) &gt; 0\)</span> 的 <span class="arithmatex">\(k\)</span>，有 <span class="arithmatex">\(d(x_k^{m_l},x^{*.m_l}) &lt; \dfrac{1}{m_l} &lt; \dfrac{\delta}{2}\)</span>（回忆 <span class="arithmatex">\(\lambda_k^m(x)\)</span> 的定义），因此，根据三角不等式，对每个 <span class="arithmatex">\(k\)</span> 有</p>
+<div class="arithmatex">\[d(x^*,x_k^{m_l}) \leqslant d(x^*,x^{*.m_l}) + d(x^{*.m_l},x_k^{m_l}) &lt; \dfrac{\delta}{2} + \dfrac{\delta}{2} = \delta\]</div>
+<p>根据引理，<span class="arithmatex">\(y_k^{m_l} \in F(x_k^{m_l}) \subseteq B(F(x^*),\varepsilon)\)</span> 对任意的 <span class="arithmatex">\(k \in [K_m]\)</span> 成立，即对任意的 <span class="arithmatex">\(k \in [K_m]\)</span>，<span class="arithmatex">\(\lambda_k^{m_l}(x^{*.m_l}) = 0\)</span> 或者 <span class="arithmatex">\(y_k^{m_l} \in B(F(x^*),\varepsilon)\)</span>。因此，根据 <span class="arithmatex">\(\eqref{kakutani}\)</span>，<span class="arithmatex">\(x^{*.m_l}\)</span> 是凸集 <span class="arithmatex">\(B(F(x^*),\varepsilon)\)</span> 的凸组合，即 <span class="arithmatex">\(x^{*.m_l} \in B(F(x^*),\varepsilon)\)</span>。因为 <span class="arithmatex">\(\varepsilon\)</span> 是任意的，且 <span class="arithmatex">\(F(x^*)\)</span> 是闭集，故 <span class="arithmatex">\(x^* \in F(x^*)\)</span>，即 <span class="arithmatex">\(x^*\)</span> 是 <span class="arithmatex">\(F\)</span> 的一个不动点。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">不动点理论相关的历史</p>
+<p>角谷不动点定理在 1941 年由角谷静夫提出，后来也有泛化为无穷维度局部凸拓扑向量空间的推广，称为角谷-格里科斯伯格-樊定理，对应的单值函数定理是吉洪诺夫不动点定理，具体的描述可以参考<a href="http://www.shuxueji.com/w/48510">这个网页</a>。还有一些其它的历史可以参考<a href="https://haopen.github.io/prof/2017/06/18/fixed-point">这个网页</a>。</p>
+<p>事实上不动点理论是一个曾经非常热门的方向，从布劳威尔不动点定理开始，1922 年，波兰著名数学家 S. Banach 给出了一个既简单又实用的压缩映射原理。此后也有越来越多的不动点定理研究成果涌现，除了这里讨论的角谷不动点定理外，还有例如 1968 年的 Fan-Browder 不动点定理，1972 年的 Himmelberg 不动点定理以及 Tarafdar 在 1987 年和 1992 年分别在拓扑线性空间和 H-空间建立的不动点定理；美国数学家 Michael（1956 年），Deutsch 和 Kenderov（1983 年），应用集值分析中的连续选择原理在拓扑空间建立集值不动点定理和几乎不动点定理；丹麦数学家 Nielsen 研究不动点的个数（Nielsen 数），开创不动点类理论的研究；1990 年以后，关于不动点理论的研究达到一个高潮，在各种映射或空间条件下，讨论不动点，随机不动点，几乎不动点等，每年有上百篇论文发表，新的不动点定理和各种迭代逼近方法不断涌现。</p>
+</div>
+<h3 id="_10">定理应用<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>我们将使用角谷不动点定理再次证明纳什定理，这事实上也是纳什本人使用的方法（见 Nash, J.F. (1950). <em>Equilibrium Points in N-Person Games</em>. Proceedings of the National Academy of Sciences of the United States of America）。我们同样令 <span class="arithmatex">\(\Gamma = (N,(\Sigma_i)_{i\in N},(U_i)_{i\in N})\)</span>。</p>
+<div class="admonition 证明">
+<p class="admonition-title">纳什定理</p>
+<p>这一证明非常简单直接，因为我们只需要定义 <span class="arithmatex">\(F_i: \Sigma \to 2^{\Sigma_i}\)</span> 为</p>
+<div class="arithmatex">\[F_i(\sigma) = \{\sigma_i \in \Sigma_i \mid U_i(\sigma_i,\sigma_{-i}) = \max\limits_{\sigma_i' \in \Sigma_i} U_i(\sigma_i',\sigma_{-i})\}\]</div>
+<p>即 <span class="arithmatex">\(F_i(\sigma)\)</span> 是参与人 <span class="arithmatex">\(i\)</span> 对 <span class="arithmatex">\(\sigma_{-i}\)</span> 的最优反应的集合。定义 <span class="arithmatex">\(F: \Sigma \to 2^{\Sigma}\)</span> 满足 <span class="arithmatex">\(F(\sigma) = \mathop{\times}\limits_{i \in N} F_i(\sigma)\)</span>。因为每个 <span class="arithmatex">\(F_i(\sigma)\)</span> 是最优反应集合，根据混合策略的性质显然是闭凸集，故 <span class="arithmatex">\(F(\sigma)\)</span> 是闭凸集，进一步显然 <span class="arithmatex">\(F\)</span> 满足图像为闭集，因此符合角谷不动点定理的条件，存在 <span class="arithmatex">\(\sigma^* \in F(\sigma^*)\)</span>，即 <span class="arithmatex">\(\forall i \in N\)</span>，<span class="arithmatex">\(\sigma_i^* \in F_i(\sigma^*)\)</span>，即 <span class="arithmatex">\(\sigma_i^*\)</span> 是 <span class="arithmatex">\(\sigma_{-i}\)</span> 的最优反应，故 <span class="arithmatex">\(\sigma^*\)</span> 是一个混合策略纳什均衡。</p>
+</div>
+<p>因此我们只需要把集值函数直接定义为最优反应集合即可，那么不动点就是互为最优反应，因此这一证明相比于布劳威尔不动点定理的证明要简单许多，这也体现出角谷不动点定理的强大。</p>
+<div class="admonition quote">
+<p class="admonition-title">角谷静夫的小故事</p>
+<p>在《纳什博弈论论文集》序言部分第七页最下边的注释，序言作者 Ken Binmore 讲了一个小故事，有次角谷静夫做演讲，演讲结束后，角谷静夫问 Kin Binmore 为啥这么多人来听演讲，Ken Binmore 解释说许多经济学家是来看作出如此重要的角谷静夫不动点理论的作者的。角谷静夫却回答说：“什么是角谷静夫不动点理论”。</p>
+</div>
+<h2 id="kkm">KKM 定理<a class="headerlink" href="#kkm" title="Permanent link">&para;</a></h2>
+<p>KKM 定理是拓扑学中的重要定理，是根据最早证明它的三位数学家的名字（Knaster-Kuratowski-Mazurkiewicz）命名的。KKM 定理实际上与布劳威尔不动点定理等价，这里我们先给出一个直接使用斯佩纳引理的证明，然后给出 KKM 定理和布劳威尔不动点定理的等价性证明。</p>
+<div class="admonition 定理">
+<p class="admonition-title">KKM 定理</p>
+<p>令 <span class="arithmatex">\(X_1,X_2,\cdots,X_n\)</span> 是 <span class="arithmatex">\(X(n)\)</span> 的紧子集，满足</p>
+<ol>
+<li>并集是 <span class="arithmatex">\(X(n)\)</span>，即 <span class="arithmatex">\(\bigcup\limits_{i=1}^n X_i = X(n)\)</span>；</li>
+<li>对于每个 <span class="arithmatex">\(i \in [n]\)</span>，<span class="arithmatex">\(X_i \supseteq \{x = (x_1,\cdots,x_n) \in X(n) \mid x_i = 0\}\)</span>。</li>
+</ol>
+<p>那么它们的交集非空：<span class="arithmatex">\(\bigcap\limits_{i=1}^n X_i \neq \emptyset\)</span>。</p>
+</div>
+<p>使用斯佩纳引理的证明需要引入一个概念，即相对开集：集合 <span class="arithmatex">\(A \subseteq \mathbb{R}^n\)</span> 是集合 <span class="arithmatex">\(C \subseteq \mathbb{R}^n\)</span> 的<strong>相对开集（relatively open set）</strong>，如果存在一个开集 <span class="arithmatex">\(U \subseteq \mathbb{R}^n\)</span>，使得 <span class="arithmatex">\(A = U \cap C\)</span>。相应的我们也有相对闭集的概念，即 <span class="arithmatex">\(A\)</span> 是 <span class="arithmatex">\(C\)</span> 的相对闭集，如果 <span class="arithmatex">\(C \setminus A\)</span> 是相对开集。</p>
+<div class="admonition question">
+<p class="admonition-title">相对闭集的性质</p>
+<p>根据闭集的性质，如果 <span class="arithmatex">\(A\)</span> 是 <span class="arithmatex">\(C\)</span> 的相对闭集，那么不难证明 <span class="arithmatex">\(A\)</span> 的每个收敛于 <span class="arithmatex">\(C\)</span> 内的序列的极限都在 <span class="arithmatex">\(A\)</span> 中。原因很简单，根据定义相对闭集实际上也是一个闭集与 <span class="arithmatex">\(C\)</span> 的交集，而闭集的极限点都在这一闭集内，所以如果极限点在 <span class="arithmatex">\(C\)</span> 内，实际上就是在 <span class="arithmatex">\(C\)</span> 与闭集的交集内，即在 <span class="arithmatex">\(A\)</span> 内。</p>
+</div>
+<div class="admonition 定理的证明">
+<p class="admonition-title">定理的证明</p>
+<p>我们首先证明定理的特例，即 <span class="arithmatex">\((X_i)_{i=1}^n\)</span> 是都是 <span class="arithmatex">\(X(n)\)</span> 的相对开集的情况。使用反证法，设 <span class="arithmatex">\(\bigcap\limits_{i=1}^n X_i = \emptyset\)</span>，因此对于任意的 <span class="arithmatex">\(x \in X(n)\)</span>，都存在至少一个 <span class="arithmatex">\(i\)</span> 使得 <span class="arithmatex">\(x \notin X_i\)</span>。</p>
+<p>对于每个 <span class="arithmatex">\(k \in \mathbb{N}\)</span>，令 <span class="arithmatex">\(\mathcal{T}_k\)</span> 是 <span class="arithmatex">\(X(n)\)</span> 的划分，直径小于 <span class="arithmatex">\(\dfrac{1}{k}\)</span>。定义 <span class="arithmatex">\(\mathcal{T_k}\)</span> 的着色如下：对每个节点 <span class="arithmatex">\(y \in Y(\mathcal{T}_k)\)</span>，<span class="arithmatex">\(y\)</span> 的颜色是满足 <span class="arithmatex">\(y \notin X_i\)</span> 的 <span class="arithmatex">\(i\)</span> 之一。注意，如果 <span class="arithmatex">\(y_i = 0\)</span>，那么 <span class="arithmatex">\(y \in X_i\)</span>，故此时 <span class="arithmatex">\(y\)</span> 的颜色不是 <span class="arithmatex">\(i\)</span>。这意味着，如果 <span class="arithmatex">\(y\)</span> 的颜色是 <span class="arithmatex">\(i\)</span>，那么必然有 <span class="arithmatex">\(y_i &gt; 0\)</span>，即 <span class="arithmatex">\(y\)</span> 的颜色是 <span class="arithmatex">\(y\)</span> 的支撑中的一个指数，因此着色是合适的。根据斯佩纳引理，<span class="arithmatex">\(\mathcal{T}_k\)</span> 中至少有一个完美着色的 <span class="arithmatex">\(n-1\)</span> 维单纯形 <span class="arithmatex">\(T_k\)</span>。这意味着对每个 <span class="arithmatex">\(i \in [n]\)</span>，都存在 <span class="arithmatex">\(T_k\)</span> 的一个顶点 <span class="arithmatex">\(x_{k,i}\)</span>，其颜色为 <span class="arithmatex">\(i\)</span>（故而不在 <span class="arithmatex">\(X_i\)</span> 内）。</p>
+<p>令 <span class="arithmatex">\(i \in [n]\)</span>，考虑序列 <span class="arithmatex">\((x_{k,i})_{k \in \mathbb{N}}\)</span>，因为 <span class="arithmatex">\(X(n)\)</span> 是紧集，故存在子列收敛于 <span class="arithmatex">\(x_{*,i}\)</span>。于是我们得到了 <span class="arithmatex">\(n\)</span> 个极限值 <span class="arithmatex">\(x_{*,1},x_{*,2},\cdots,x_{*,n}\)</span>，事实上，关于这些极限值，以下两个论断必然成立：</p>
+<ol>
+<li><span class="arithmatex">\(x_{*,i} = x_{*,j}\)</span>，<span class="arithmatex">\(\forall i,j \in [n]\)</span>；</li>
+<li><span class="arithmatex">\(x_{*,i} \notin X_i\)</span>，<span class="arithmatex">\(\forall i \in [n]\)</span>。</li>
+</ol>
+<p>论断 1 表明，这些极限值必然都相等，即存在 <span class="arithmatex">\(x_{**} \in X(n)\)</span> 满足 <span class="arithmatex">\(x_{*,i} = x_{**}\)</span>，而论断 2 则说明 <span class="arithmatex">\(x_{**} \notin X_i,\forall i \in [n]\)</span>，因此 <span class="arithmatex">\(x_{**} \notin \bigcup\limits_{i=1}^n X_i\)</span>，这与 <span class="arithmatex">\(\bigcup\limits_{i=1}^n X_i = X(n)\)</span> 矛盾！因此假设不成立，即 <span class="arithmatex">\(\bigcap\limits_{i=1}^n X_i \neq \emptyset\)</span>。</p>
+<p>事实上两个论断的证明并不复杂。对于论断 1，因为 <span class="arithmatex">\(x_{k,i}\)</span> 在 <span class="arithmatex">\(T_k\)</span> 内，而 <span class="arithmatex">\(\mathcal{T}_k\)</span> 的直径小于 <span class="arithmatex">\(\dfrac{1}{k}\)</span>，因此每个 <span class="arithmatex">\(x_{k,i}\)</span> 和 <span class="arithmatex">\(x_{k,j}\)</span> 之间的距离都小于 <span class="arithmatex">\(\dfrac{1}{k}\)</span>，取 <span class="arithmatex">\(k \to \infty\)</span> 即可得到结论。对于论断 2，因为 <span class="arithmatex">\(x_{k,i} \notin X_i\)</span> 对于任意的 <span class="arithmatex">\(k \in \mathbb{N}\)</span> 成立，并且 <span class="arithmatex">\(X_i\)</span> 是相对开集，因此 <span class="arithmatex">\(X(n) \setminus X_i\)</span> 是相对闭集，故根据相对闭集的性质，<span class="arithmatex">\(x_{*,i} \in X(n) \setminus X_i\)</span>，即 <span class="arithmatex">\(x_{*,i} \notin X_i\)</span>。</p>
+<p>由此我们证明了 <span class="arithmatex">\((X_i)_{i=1}^n\)</span> 是都是 <span class="arithmatex">\(X(n)\)</span> 的相对开集的情况，这事实上覆盖了开集的情况，因此接下来证明 <span class="arithmatex">\((X_i)_{i=1}^n\)</span> 是都是闭集的情况即可完成证明。对每个 <span class="arithmatex">\(\delta &gt; 0\)</span>，令 <span class="arithmatex">\(X_{i,\delta}\)</span> 是 <span class="arithmatex">\(X_i\)</span> 的 <span class="arithmatex">\(\delta\)</span> 邻域，即 <span class="arithmatex">\(X_{i,\delta} = \{ x \in X(n) \mid d(x,X_i) &lt; \delta \}\)</span>。显然 <span class="arithmatex">\(X_{i,\delta}\)</span> 在 <span class="arithmatex">\(X(n)\)</span> 是相对开集，且包含 <span class="arithmatex">\(X_i\)</span>。特别地，<span class="arithmatex">\(\bigcup\limits_{i=1}^n X_{i,\delta} \supseteq \bigcup\limits_{i=1}^n X_i = X(n)\)</span>。根据特例的证明，<span class="arithmatex">\(\bigcap\limits_{i=1}^n X_{i,\delta}\)</span> 非空，即存在 <span class="arithmatex">\(x_{\delta} \in X(n)\)</span>，使得 <span class="arithmatex">\(x_{\delta} \in X_{i,\delta},\forall i \in [n]\)</span>，特别地，<span class="arithmatex">\(d(x_\delta, X_i) &lt; \delta\)</span>。因为 <span class="arithmatex">\(X(n)\)</span> 是紧集，因此存在 <span class="arithmatex">\((x_\delta)_{\delta &gt; 0}\)</span> 的子序列，收敛于一个极限（表示为 <span class="arithmatex">\(\hat{x}\)</span>）。注意极限时，<span class="arithmatex">\(\delta \to 0\)</span>，因此 <span class="arithmatex">\(d(\hat{x},X_i) = 0,\forall i \in [n]\)</span>，即 <span class="arithmatex">\(\hat{x} \in X_i\)</span>，因此 <span class="arithmatex">\(\hat{x} \in \bigcap\limits_{i=1}^n X_i\)</span>，故 <span class="arithmatex">\(\bigcap\limits_{i=1}^n X_i \neq \emptyset\)</span>。</p>
+</div>
+<p>总结而言，首先反证法，利用构造的染色产生了矛盾，从而证明了相对开集的情况，在闭集的情况则是取了闭集的邻域，把问题归约到了相对开集的情况，然后取极限完成证明。</p>
+<p>接下来我们讨论 KKM 定理和布劳威尔不动点定理之间的等价性。首先我们从 KKM 定理出发证明布劳威尔不动点定理，这一侧比较简单，因为 KKM 的结果是交集非空，只要我们构造出交集是不动点的情况即可完成证明：</p>
+<div class="admonition note">
+<p class="admonition-title">从 KKM 定理到布劳威尔不动点定理</p>
+<p><span class="arithmatex">\(f: X(n) \to X(n)\)</span>，定义 <span class="arithmatex">\(X_i = \{x = (x_1,\cdots,x_n) \in X(n) \mid f_i(x) \geqslant x_i\}\)</span>。</p>
+<ol>
+<li>首先说明 <span class="arithmatex">\(\bigcup\limits_{i=1}^n X_i = X(n)\)</span>：首先根据 <span class="arithmatex">\(X_i\)</span> 的定义显然有 <span class="arithmatex">\(\bigcup\limits_{i=1}^n X_i \subseteq X(n)\)</span>，因此只需证明 <span class="arithmatex">\(\bigcup\limits_{i=1}^n X_i \supseteq X(n)\)</span>。事实上，对于任意的 <span class="arithmatex">\(x  = (x_1,\cdots,x_n) \in X(n)\)</span>，根据 <span class="arithmatex">\(f: X(n) \to X(n)\)</span> 可知 <span class="arithmatex">\(\sum\limits_{i=1}^n x_i = \sum\limits_{i=1}^n f_i(x) = 1\)</span>，因此不可能出现对于任意的 <span class="arithmatex">\(i \in [n]\)</span> 都有 <span class="arithmatex">\(f_i(x) &lt; x_i\)</span> 的情况，故存在 <span class="arithmatex">\(i \in [n]\)</span> 使得 <span class="arithmatex">\(f_i(x) \geqslant x_i\)</span>，即存在 <span class="arithmatex">\(i \in [n]\)</span> 使得 <span class="arithmatex">\(x \in X_i\)</span>，得证。</li>
+<li>对于每个 <span class="arithmatex">\(i \in [n]\)</span>，<span class="arithmatex">\(X_i \supseteq \{x = (x_1,\cdots,x_n) \in X(n) \mid x_i = 0\}\)</span> 是显然的。</li>
+</ol>
+<p>因此根据 KKM，<span class="arithmatex">\(\bigcap\limits_{i=1}^n X_i = \{x = (x_1,\cdots,x_n) \in X(n) \mid f_i(x) \geqslant x_i, \forall i \in [n]\} \neq \emptyset\)</span>，根据 <span class="arithmatex">\(\sum\limits_{i=1}^n x_i = \sum\limits_{i=1}^n f_i(x) = 1\)</span> 可知，<span class="arithmatex">\(\bigcap\limits_{i=1}^n X_i = \{x = (x_1,\cdots,x_n) \in X(n) \mid f_i(x) = x_i, \forall i \in [n]\} \neq \emptyset\)</span>，事实上这就表明了 <span class="arithmatex">\(f\)</span> 至少有一个不动点。当然接下来将 <span class="arithmatex">\(f\)</span> 的定义域推广到凸紧集与之前的方式一致，没有什么特别的。</p>
+</div>
+<p>接下来我们从布劳威尔不动点定理出发证明 KKM，相对而言会更加复杂，这里给出一个习题，相当于一个逐步得到最终证明的提示，提示后每一步都非常简单：</p>
+<div class="admonition question">
+<p class="admonition-title">从布劳威尔不动点定理到 KKM 定理</p>
+<p>仍然使用反证法，假设 <span class="arithmatex">\(\bigcap\limits_{i=1}^n X_i = \emptyset\)</span>，</p>
+<ol>
+<li>
+<p>对每个 <span class="arithmatex">\(\varepsilon &gt; 0\)</span>，定义 <span class="arithmatex">\(Y^{i,\varepsilon} = \{x \in X(n) \mid d(x,X^i) \leqslant \varepsilon\}\)</span>，证明：<span class="arithmatex">\(\bigcup\limits_{i=1}^n Y^{i,\varepsilon} = X(n)\)</span> 对每个 <span class="arithmatex">\(\varepsilon &gt; 0\)</span> 成立，并且存在 <span class="arithmatex">\(\varepsilon_0 &gt; 0\)</span> 使得 <span class="arithmatex">\(\bigcap\limits_{i=1}^n Y^{i,\varepsilon_0} = \emptyset\)</span>；</p>
+</li>
+<li>
+<p>符号表示 <span class="arithmatex">\(Z^{i,\varepsilon} = X(n) \setminus Y^{i,\varepsilon}\)</span>，证明：<span class="arithmatex">\(\sum\limits_{i=1}^n d(x,Z^{i,\varepsilon}) \geqslant \varepsilon\)</span> 对每个 <span class="arithmatex">\(x \in X(n)\)</span> 成立；</p>
+</li>
+<li>
+<p>证明：<span class="arithmatex">\(\sum\limits_{i=1}^n x_id(x,Y^{i,\varepsilon}) = \sum\limits_{i: x \notin Y^{i,\varepsilon}} x_id(x,Y^{i,\varepsilon})\)</span> 对每个 <span class="arithmatex">\(x \in X(n)\)</span> 成立；</p>
+</li>
+<li>
+<p>定义函数 <span class="arithmatex">\(f^\epsilon: X(n) \to X(n)\)</span> 为 <span class="arithmatex">\(f^\epsilon_i(x) = {\begin{cases} x_i - x_id(x,Y^{i,\varepsilon}) &amp; \text{如果 } x \notin Y^{i,\varepsilon} \\ x_i + (\sum\limits_{i=1}^n x_id(x,Y^{i,\varepsilon}))\dfrac{d(x,Z^{i,\varepsilon})}{\sum\limits_{i=1}^n d(x,Z^{i,\varepsilon})} &amp; \text{如果 } x \in Y^{i,\varepsilon} \end{cases}}\)</span>，证明：<span class="arithmatex">\(f^\epsilon\)</span> 是连续函数，值域在 <span class="arithmatex">\(X(n)\)</span> 内，且 <span class="arithmatex">\(f^\epsilon\)</span> 有一个不动点 <span class="arithmatex">\(x^\varepsilon\)</span>；</p>
+</li>
+<li>
+<p>证明：<span class="arithmatex">\(x^\varepsilon \in \bigcap\limits_{i=1}^n Y^{i,\varepsilon}\)</span>；</p>
+</li>
+<li>
+<p>令 <span class="arithmatex">\((\epsilon_k)_{k \in \mathbb{N}}\)</span> 是收敛于 <span class="arithmatex">\(0\)</span> 的序列，使得 <span class="arithmatex">\(x^* = \lim\limits_{k \to \infty} x^{\epsilon_k}\)</span> 存在，证明：<span class="arithmatex">\(x^* \in \bigcap\limits_{i=1}^n X_i\)</span>，与假设矛盾。</p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../BasicGameTheory/social/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 社会选择理论">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                社会选择理论
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../fixedpoint-2/" class="md-footer__link md-footer__link--next" aria-label="下一页: 不动点与均衡（II）">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                不动点与均衡（II）
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023-2024 吴一航
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yhwu-is" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<yhwu_is@zju.edu.cn>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "navigation.footer", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "navigation.indexes", "search.share"], "search": "../../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,5497 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="yhwu_is's Notes">
+      
+      
+        <meta name="author" content="yhwu_is">
+      
+      
+        <link rel="canonical" href="https://yhwu-is.github.io/Notes/algt/BasicGameTheory/social/">
+      
+      
+        <link rel="prev" href="../signaling/">
+      
+      
+        <link rel="next" href="../../AdvancedGameTheory/fixedpoint-1/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>社会选择理论 - yhwu_is's Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="yhwu_is&#39;s Notes" class="md-header__button md-logo" aria-label="yhwu_is's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            yhwu_is's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              社会选择理论
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yhwu-is/Notes" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yhwu-is/Notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../math/linear_algebra/" class="md-tabs__link">
+          
+  
+    
+  
+  数学
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tcs/dsa/dsa0/" class="md-tabs__link">
+          
+  
+    
+  
+  理论计算机基础
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../intro/" class="md-tabs__link">
+          
+  
+    
+  
+  算法博弈论
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../eco_fin/math_eco/intro/" class="md-tabs__link">
+          
+  
+    
+  
+  经济与金融学类
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cs/network/review/" class="md-tabs__link">
+          
+  
+    
+  
+  计算机类
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../paper/auction/P1/" class="md-tabs__link">
+          
+  
+    
+  
+  论文阅读
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="yhwu_is&#39;s Notes" class="md-nav__button md-logo" aria-label="yhwu_is's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    yhwu_is's Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yhwu-is/Notes" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yhwu-is/Notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../math/math_analysis/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    数学
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            数学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../math/linear_algebra/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    线性代数
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            线性代数
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    优化理论与方法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            优化理论与方法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/preliminary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学预备知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    凸优化基础知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/convex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    凸函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/lp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性规划基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/duality/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    对偶
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/geometry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    几何应用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/optimization/descent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    下降方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            实分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/real_analysis/measure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    勒贝格测度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    泛函分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            泛函分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/functional_analysis/metric/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    度量空间
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/functional_analysis/normed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    赋范线性空间与巴拿赫空间
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/functional_analysis/contraction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    巴拿赫不动点定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    统计学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    理论计算机基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            理论计算机基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据结构与算法分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            数据结构与算法分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/dsa/dsa0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言与基础知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算理论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算理论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    导言与预备知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    有限自动机与正则语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    下推自动机与上下文无关语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Church-Turing 论题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    可判定性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicTC/TC5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    可归约性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算理论进阶
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算理论进阶
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/AdvancedTC/time/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    时间复杂性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/AdvancedTC/space/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    空间复杂性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/AdvancedTC/probabilistic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概率算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/AdvancedTC/intractability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    复杂性层次
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    机器学习理论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            机器学习理论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/MLT/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    机器学习理论基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    量子信息基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            量子信息基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/BasicQuantumInfo/hilbert/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    希尔伯特空间
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编程语言原理
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言原理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/lambda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lambda表达式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    判断与规则
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    静态与动态
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    全函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/P4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    有限数据类型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcs/pfpl/P6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无限数据类型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    算法博弈论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            算法博弈论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    微观经济学与博弈论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            微观经济学与博弈论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    导言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utility/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    偏好与效用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reverse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逆向选择与信息不对称
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bayesian/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    贝叶斯决策理论基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extensive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    扩展式博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../strategic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    策略式博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mixed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    混合策略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../refinement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    均衡精炼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlated/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    相关均衡
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信号博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    社会选择理论
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    社会选择理论
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      特殊情形：两种备选方案上的社会偏好
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一般情形：阿罗不可能定理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      可能的结果
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="可能的结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      不完全社会理性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      单峰偏好
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      社会选择函数
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    博弈论进阶
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            博弈论进阶
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AdvancedGameTheory/fixedpoint-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    不动点与均衡（I）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AdvancedGameTheory/fixedpoint-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    不动点与均衡（II）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AdvancedGameTheory/behavior/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    行为策略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AdvancedGameTheory/incomplete-general/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    不完全信息博弈的一般模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AdvancedGameTheory/infinite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无限博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    算法博弈论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            算法博弈论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../twenty_lectures/potential/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    势博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../twenty_lectures/online/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在线学习与多臂老虎机
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../twenty_lectures/regret/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无憾算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../twenty_lectures/stochastic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    随机奖励的多臂老虎机算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    算法博弈论进阶
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            算法博弈论进阶
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced-algt/complexity-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    纳什均衡的计算复杂度（I）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced-algt/complexity-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    纳什均衡的计算复杂度（II）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced-algt/bandit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多臂老虎机进阶
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    机制设计专题
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            机制设计专题
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/dominant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    占优策略的执行
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/bayesian/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    贝叶斯执行
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/optimal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    最优机制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/auction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    拍卖理论基础（I）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/multi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多参数机制基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism/prior-free/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无先验知识的机制设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算与经济杂项
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            计算与经济杂项
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/prediction-markets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    prediction markets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/peer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    peer prediction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/information-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    information design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/information-pricing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    information pricing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/strategic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    strategic learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/performative/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    performative prediction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EconCS/fairness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    fairness
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    经济与金融学类
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            经济与金融学类
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数理经济学基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            数理经济学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/math_eco/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    公司金融
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            公司金融
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/P0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    财务报表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现金流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    风险与收益
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/P4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现金管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/corporate/exercise/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一些例题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    一些杂记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            一些杂记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/notes/bernanke/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本伯南克
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eco_fin/notes/poor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    贫穷经济学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机类
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            计算机类
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机网络
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/network/review/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022-2023期末复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/network/websec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络安全复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/network/exercise/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    参考习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    网络安全
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            网络安全
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    面向信息安全的信号处理
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            面向信息安全的信号处理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/web/signals/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信号与系统基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/web/signals/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信号处理与安全
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/web/signals/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于Matlab的实验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    硬件与系统安全
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            硬件与系统安全
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    软件安全
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            软件安全
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/system/software/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基本原则与缓冲区溢出漏洞
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/system/software/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ROP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/system/software/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    格式字符串漏洞
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/system/software/P4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    堆溢出
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/system/software/P5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    杂项
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据安全
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            数据安全
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    密码学
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            密码学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/crypto/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    古典密码
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/crypto/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    对称加密算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/crypto/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RSA加密算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/crypto/P4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    椭圆曲线加密算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据安全与隐私保护
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            数据安全与隐私保护
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/data%20privacy/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    访问控制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/data%20privacy/P2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    同态加密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/data%20privacy/P3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安全多方计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data/data%20privacy/P4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    差分隐私
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    区块链安全
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            区块链安全
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/blockchain/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    区块链技术原理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    论文阅读
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            论文阅读
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    拍卖与机制设计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            拍卖与机制设计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/auction/P1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    compatitive auctions and digital goods
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算经济学
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算经济学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/ec/peer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    peer prediction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AI 相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI 相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/ai/human-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Human vs. Generative AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/ai/llm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LLM mechanism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TCS 相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            TCS 相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/tcs/almd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    算法机制设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      特殊情形：两种备选方案上的社会偏好
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一般情形：阿罗不可能定理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      可能的结果
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="可能的结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      不完全社会理性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      单峰偏好
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      社会选择函数
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">社会选择理论<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在之前的研究中，我们通常考虑的是个体的偏好、效用理论，而在本讲，我们将分析在多大程度上个人偏好能被加总为社会偏好，或者更直接地，被加总为社会决策，并且这种加总方式要“令人满意”，即需要满足一系列合意条件。我们从最简单的备选方案只有两种的情况开始，此时我们可以找到很多令人满意的加总方式，但是当备选方案的数量增多时，我们的讨论急转直下，这也就引入了著名的<strong>阿罗不可能定理</strong>，随后我们会介绍两种走出不可能定理困境的方法。最后我们会介绍如何直接将个人偏好加总为社会决策，引入<strong>社会选择函数</strong>的概念。</p>
+<h2 id="_2">特殊情形：两种备选方案上的社会偏好<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>自然地，我们从最简单的备选方案只有两种的情况开始。我们将这些备选方案称为 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span>，例如方案 <span class="arithmatex">\(x\)</span> 可能是“维持现状”，而 <span class="arithmatex">\(y\)</span> 是正在讨论准备实施的某个公共项目。</p>
+<p>对于我们的问题，我们拥有的资料是社会成员在这两个备选方案上的个人偏好。我们假设个人或称参与人（agents）的数量为 <span class="arithmatex">\(I &lt; \infty\)</span> 个。个人在这两个方案上的偏好集可用组合 <span class="arithmatex">\((\alpha_1, \cdots, \alpha_I) \in \mathbb{R}^I\)</span> 来表示，其中 <span class="arithmatex">\(\alpha_i \in \{-1, 0, 1\}\)</span>，分别表示个人 <span class="arithmatex">\(i\)</span> 偏好 <span class="arithmatex">\(x\)</span> 胜于 <span class="arithmatex">\(y\)</span>、无差异以及偏好 <span class="arithmatex">\(y\)</span> 胜于 <span class="arithmatex">\(x\)</span>。</p>
+<p>需要注意的是，在本讲中我们始终假设，在备选方案的社会决策问题中，真正重要的仅为参与人对备选方案的偏好排序，而不是他们的偏好程度（即不涉及基数或强度信息），因此我们排除了不同人之间快乐或痛苦感的比较。</p>
+<div class="admonition note">
+<p class="admonition-title">定义 1：社会福利泛函数</p>
+<p>一个<strong>社会福利泛函数（social welfare functional）</strong>或称<strong>社会福利加总器（social welfare aggregator）</strong>是一个规则 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I)\)</span>，该规则对个人偏好的每个可能组合 <span class="arithmatex">\((\alpha_1, \cdots, \alpha_I) \in \{-1,0,1\}^I\)</span> 都指定了一个社会偏好，即 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I) \in \{-1, 0, 1\}\)</span>。</p>
+</div>
+<p>接下来我们将考察社会福利泛函数应当满足的性质，首先我们考察的所有社会福利函数都要在下面定义 2 的弱意义上尊重个人偏好：</p>
+<div class="admonition note">
+<p class="admonition-title">定义 2：帕累托性质</p>
+<p>社会福利泛函数 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I)\)</span> 是<strong>帕累托的（Paretian）</strong>或称为<strong>具有帕累托性质（Pareto property）</strong>，如果它尊重参与人严格偏好的一致性，也就是说，如果 <span class="arithmatex">\(F(1, \cdots, 1) = 1\)</span> 和 <span class="arithmatex">\(F(-1, \cdots, -1) = -1\)</span>。</p>
+</div>
+<p>因此满足帕累托性质，也就是当所有人都严格偏好 <span class="arithmatex">\(x\)</span> 时，社会也严格偏好 <span class="arithmatex">\(x\)</span>，当所有人都严格偏好 <span class="arithmatex">\(y\)</span> 时，社会也严格偏好 <span class="arithmatex">\(y\)</span>。这显然是一个自然的要求，否则社会的决策将会违背所有人的意愿。</p>
+<div class="admonition question">
+<p class="admonition-title">例 1：多数投票</p>
+<p>两个备选方案之间的帕累托社会福利泛函数比比皆是。令 <span class="arithmatex">\((\beta_1, \cdots, \beta_I) \in \mathbb{R}^I\)</span> 是个元素非负的向量而且不是零向量。于是我们可以定义</p>
+<div class="arithmatex">\[ F(\alpha_1, \cdots, \alpha_I) = \text{sign} \sum_{i=1}^I \beta_i \alpha_i. \]</div>
+<p>其中 <span class="arithmatex">\(\text{sign}\)</span> 是符号函数，即对于任何 <span class="arithmatex">\(a \in \mathbb{R}\)</span>，根据 <span class="arithmatex">\(a &gt; 0, a = 0\)</span> 或 <span class="arithmatex">\(a &lt; 0\)</span>，<span class="arithmatex">\(\text{sign } a\)</span> 分别等于 <span class="arithmatex">\(1, 0\)</span> 或 <span class="arithmatex">\(-1\)</span>。</p>
+<p>一个重要的特殊情形是<strong>多数投票（majority voting）</strong>，也就是说，投票表决且多数票获胜。相信读者应该都不难看出当我们取 <span class="arithmatex">\(\beta_i = 1,\ \forall i\)</span> 时就是多数投票规则。于是 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I) = 1\)</span> 当且仅当偏好 <span class="arithmatex">\(x\)</span> 胜于 <span class="arithmatex">\(y\)</span> 的人数多于偏好 <span class="arithmatex">\(y\)</span> 胜于 <span class="arithmatex">\(x\)</span> 的人数。类似地，<span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I) = -1\)</span> 当且仅当偏好 <span class="arithmatex">\(y\)</span> 胜于 <span class="arithmatex">\(x\)</span> 的人数多于偏好 <span class="arithmatex">\(x\)</span> 胜于 <span class="arithmatex">\(y\)</span> 的人数。最后，<span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I) = 0\)</span> 当且仅当偏好 <span class="arithmatex">\(x\)</span> 胜于 <span class="arithmatex">\(y\)</span> 的人数等于偏好 <span class="arithmatex">\(y\)</span> 胜于 <span class="arithmatex">\(x\)</span> 的人数，此时两种选择社会无差异。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">定义 3：独裁</p>
+<p>我们说一个社会福利泛函数是<strong>独裁的（dictatorial）</strong>，如果存在一个参与人（独裁者），使得对于任何组合 <span class="arithmatex">\((\alpha_1, \cdots, \alpha_I)\)</span>，<span class="arithmatex">\(\alpha_i = 1\)</span> 意味着 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_i) = 1\)</span>，而且类似地，<span class="arithmatex">\(\alpha_i = -1\)</span> 意味着 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_i) = -1\)</span>。也就是说，独裁者的偏好成为了社会偏好。独裁的社会福利泛函数在定义 2 的意义上具有帕累托性质。对于例 1 中的社会福利泛函数，只要对于某个参与人 <span class="arithmatex">\(i\)</span> 有 <span class="arithmatex">\(\beta_i &gt; 0\)</span> 以及当 <span class="arithmatex">\(j \neq i\)</span> 时 <span class="arithmatex">\(\beta_j = 0\)</span>，我们就得到了一个独裁关系，因为 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I) = \text{sign }\beta_i\alpha_i,\ \beta_i &gt; 0\)</span>。</p>
+</div>
+<p>多数投票社会福利泛函数在社会选择理论中扮演着重要的基准角色。除了具有帕累托性质之外，它还具有其他三个重要性质，下面我们将正式阐述这些性质。第一个性质（参与人之间的对称性）是说社会福利泛函数平等对待每个参与人。类似地，第二个性质（备选方案的中立性）是说，社会福利泛函数事先不偏重任何一个备选方案。第三个性质（正反应性）比定义 2 的帕累托性质更强，它是说社会福利泛函数对个人偏好比较敏感。</p>
+<div class="admonition note">
+<p class="admonition-title">定义 4：对称性</p>
+<p>社会福利泛函数 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I)\)</span> 在参与人之间是<strong>对称的（symmetric）</strong>或称为<strong>匿名的（anonymous）</strong>，如果参与人的名字并不重要，即，如果将各参与人的偏好重新排列不会改变社会偏好。准确地说，令 <span class="arithmatex">\(\pi: \{1, \cdots, I\} \rightarrow \{1, \cdots, I\}\)</span> 是个满射函数（即，该函数具有下列性质：对于任何 <span class="arithmatex">\(i\)</span> 存在 <span class="arithmatex">\(h\)</span> 使得 <span class="arithmatex">\(\pi(h) = i\)</span>）。那么对于任何组合 <span class="arithmatex">\((\alpha_1, \cdots, \alpha_r)\)</span> 我们有 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_r) = F(\alpha_{\pi(1)}, \cdots, \alpha_{\pi(I)})\)</span>。</p>
+</div>
+<p>对称性（或匿名性）使得我们自然地会想起 Shapley 值的对称性，这是一个很自然的要求，因为在很多决策情况下（如无记名投票）参与人的名字本身并不应该影响社会的决策。</p>
+<div class="admonition note">
+<p class="admonition-title">定义 5：中立性</p>
+<p>社会福利泛函数 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I)\)</span> 在备选方案之间是<strong>中立性的（neutral）</strong>，如果对于每个组合 <span class="arithmatex">\((\alpha_1, \cdots, \alpha_I)\)</span> 都有 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I) = -F(-\alpha_1, \cdots, -\alpha_I)\)</span> 成立。也就是说，如果我们颠倒所有参与人的偏好，社会偏好也会颠倒。</p>
+</div>
+<p>中立性也不难理解，因为如果这一条件不成立，那么就会出现即使所有人偏好颠倒，社会偏好却不变的情况（并且社会偏好不是无差异的），那么显然此时社会是偏好这一不变的决策的。</p>
+<div class="admonition note">
+<p class="admonition-title">定义 6：正反应性</p>
+<p>社会福利泛函数 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I)\)</span> 是<strong>正反应的（positively responsive）</strong>，如果当 <span class="arithmatex">\((\alpha_1, \cdots, \alpha_I) \geqslant (\alpha_1', \cdots, \alpha_I')\)</span>，<span class="arithmatex">\((\alpha_1, \cdots, \alpha_I) \neq (\alpha_1', \cdots, \alpha_I')\)</span> 以及 <span class="arithmatex">\(F(\alpha_1', \cdots, \alpha_I') \geqslant 0\)</span> 时，我们有 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I) = 1\)</span>。也就是说，如果社会认为 <span class="arithmatex">\(x\)</span> 优于 <span class="arithmatex">\(y\)</span> 或与 <span class="arithmatex">\(y\)</span> 一样好而且某些参与人开始看重 <span class="arithmatex">\(x\)</span>，那么 <span class="arithmatex">\(x\)</span> 是受社会偏好的。</p>
+</div>
+<p>容易验证多数投票满足参与人间对称性、备选方案间中立性以及正反应性这三个性质。更强的结论是，反之我们也可以证明，这些性质完全刻画了多数投票：</p>
+<div class="admonition note">
+<p class="admonition-title">May 定理（1952）</p>
+<p>一个社会福利泛函数 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I)\)</span> 是个多数投票社会福利函数当且仅当它在参与人之间是对称的、在备选方案间是中立性的以及是正反应的。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">May 定理的证明</p>
+<p>为了证明：我们已经说过多数投票满足这三个性质，这就是必要性。为了证明充分性，注意到参与人之间的对称性意味着社会偏好仅取决于偏好 <span class="arithmatex">\(x\)</span> 胜于 <span class="arithmatex">\(y\)</span> 的参与人总数、认为 <span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(y\)</span> 无差异的参与人总数以及偏好 <span class="arithmatex">\(y\)</span> 胜于 <span class="arithmatex">\(x\)</span> 的参与人总数。给定 <span class="arithmatex">\((a_1, \cdots, a_r)\)</span>，记</p>
+<div class="arithmatex">\[ n_+(a_1, \cdots, a_r) = \# \{i: \alpha_i = 1\} \quad \text{和} \quad n_-(a_1, \cdots, \alpha) = \# \{i: \alpha_i = -1\} \]</div>
+<p>参与人之间的对称性能让我们将 <span class="arithmatex">\(F(a_1, \cdots, \alpha_1)\)</span> 写为</p>
+<div class="arithmatex">\[ F(\alpha_1, \cdots, \alpha_I) = G(n_+(\alpha_1, \cdots, \alpha_I), n_-(\alpha_1, \cdots, \alpha_I)) \]</div>
+<p>现在假设 <span class="arithmatex">\((\alpha_1, \cdots, \alpha_I)\)</span> 使得 <span class="arithmatex">\(n_+(\alpha_1, \cdots, \alpha_I) = n_-(\alpha_1, \cdots, \alpha_I)\)</span>。于是 <span class="arithmatex">\(n_+(-\alpha_1, \cdots, -\alpha_I) = n_-(\alpha_1, \cdots, \alpha_I) = n_+(\alpha_1, \cdots, \alpha_I) = n_-(-\alpha_1, \cdots, -\alpha_I)\)</span>，因此</p>
+<div class="arithmatex">\[ \begin{aligned}
+    F(\alpha_1, \cdots, \alpha_I) &amp;= G(n_+(\alpha_1, \cdots, \alpha_I), n_-(\alpha_1, \cdots, \alpha_I)) \\
+    &amp;= G(n_+(-\alpha_1, \cdots, -\alpha_I), n_-(-\alpha_1, \cdots, -\alpha_I)) \\
+    &amp;= F(-\alpha_1, \cdots, -\alpha_I) \\
+    &amp;= -F(\alpha_1, \cdots, \alpha_I)
+\end{aligned} \]</div>
+<p>最后一个等式可由备选方案之间的中立性推出。我们已经知道，对于一个数来说，如果它等于它的相反数，那么这个数必定为零。因此，我们断言，如果 <span class="arithmatex">\(n_+(\alpha_1, \cdots, \alpha_I) = n_-(\alpha_1, \cdots, \alpha_I)\)</span>，那么 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I) = 0\)</span>。</p>
+<p>接下来假设 <span class="arithmatex">\(n_+(\alpha_1, \cdots, \alpha_I) &gt; n_-(\alpha_1, \cdots, \alpha_I)\)</span>。记 <span class="arithmatex">\(H = n_+(\alpha_1, \cdots, \alpha_I)\)</span>，<span class="arithmatex">\(J = n_-(\alpha_1, \cdots, \alpha_I)\)</span>；于是 <span class="arithmatex">\(J &lt; H\)</span>。不失一般性，令 <span class="arithmatex">\(\alpha_i = 1\)</span> 对于 <span class="arithmatex">\(i \leqslant H\)</span>；<span class="arithmatex">\(\alpha_i \leqslant 0\)</span> 对于 <span class="arithmatex">\(i &gt; H\)</span>。考虑一个新组合 <span class="arithmatex">\((\alpha_1', \cdots, \alpha_I')\)</span>，该组合由 <span class="arithmatex">\(\alpha_i' = \alpha_i = 1\)</span> 对于 <span class="arithmatex">\(i \leqslant J &lt; H\)</span>，<span class="arithmatex">\(\alpha_i' = 0\)</span> 对于 <span class="arithmatex">\(J &lt; i \leqslant H\)</span>，以及 <span class="arithmatex">\(\alpha_i' = \alpha_i \leqslant 0\)</span> 对于 <span class="arithmatex">\(i &gt; H\)</span> 所定义。于是，<span class="arithmatex">\(n_+(\alpha_1', \cdots, \alpha_I') = J\)</span> 和 <span class="arithmatex">\(n_-(\alpha_1', \cdots, \alpha_I') = n_-(\alpha_1, \cdots, \alpha_I) = J\)</span>。因此，根据前面得到的结论 <span class="arithmatex">\(F(\alpha_1', \cdots, \alpha_I') = 0\)</span>。但是根据我们的构造，备选方案 <span class="arithmatex">\(x\)</span> 在新个人偏好中已经失宠了。的确，<span class="arithmatex">\((\alpha_1, \cdots, \alpha_I) \geqslant (\alpha_1', \cdots, \alpha_I')\)</span> 和 <span class="arithmatex">\(\alpha_{J+1} = 1 &gt; 0 = \alpha_{J+1}'\)</span>。因此，根据正反应性可知，我们必定有 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I) = 1\)</span>。</p>
+<p>反过来，如果 <span class="arithmatex">\(n_-(\alpha_1, \cdots, \alpha_I) &gt; n_+(\alpha_1, \cdots, \alpha_I)\)</span>，那么 <span class="arithmatex">\(n_+(-\alpha_1, \cdots, -\alpha_I) &gt; n_-(\alpha_1, \cdots, \alpha_I)\)</span>，于是 <span class="arithmatex">\(F(-\alpha_1, \cdots, -\alpha_I) = 1\)</span>，从而 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I) = -1\)</span>。由此我们可以断言 <span class="arithmatex">\(F(\alpha_1, \cdots, \alpha_I)\)</span> 的确是个多数投票社会福利泛函数。</p>
+</div>
+<p>上述证明的关键总结如下：</p>
+<ol>
+<li>根据对称性直接得到 <span class="arithmatex">\(F\)</span> 只能与 <span class="arithmatex">\(n_+\)</span> 和 <span class="arithmatex">\(n_-\)</span> 有关；</li>
+<li>构造 <span class="arithmatex">\(n^+ = n^-\)</span> 的情况，根据中立性得到 <span class="arithmatex">\(F = 0\)</span>；</li>
+<li>构造 <span class="arithmatex">\(n^+ &gt; n^-\)</span> 的情况，根据正反应性以及第 2 点的结果得到 <span class="arithmatex">\(F = 1\)</span>（因此说正反应性比帕累托性质更强）。</li>
+</ol>
+<h2 id="_3">一般情形：阿罗不可能定理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>下面我们研究任何数量备选方案上个人偏好的加总问题。我们将备选方案集合记为 <span class="arithmatex">\(X\)</span>，并且假设有 <span class="arithmatex">\(I\)</span> 个参与人 <span class="arithmatex">\(i = 1,\cdots, I\)</span>。每个参与人 <span class="arithmatex">\(i\)</span> 有着定义在 <span class="arithmatex">\(X\)</span> 上的理性（即满足完备性和传递性）偏好关系 <span class="arithmatex">\(\succeq_i\)</span>。我们将从 <span class="arithmatex">\(\succeq_i\)</span> 推导出的严格偏好和无差异关系分别记为 <span class="arithmatex">\(\succ_i\)</span> 和 <span class="arithmatex">\(\sim_i\)</span>。另外，为方便起见，我们<strong>经常假设在个人偏好关系中任何两个不同的方案都不是无差异的</strong>。因此，为了区别这两种情形，我们将 <span class="arithmatex">\(X\)</span> 上的所有可能理性偏好关系组成的集合记为 <span class="arithmatex">\(\mathcal{R}\)</span>，而将满足不存在两个不同备选方案是无差异性质的 <span class="arithmatex">\(X\)</span> 上的所有可能理性偏好关系组成的集合记为 <span class="arithmatex">\(\mathcal{P}\)</span>。注意到 <span class="arithmatex">\(\mathcal{P} \subset \mathcal{R}\)</span>。</p>
+<p>正式地说，偏好关系 <span class="arithmatex">\(\succeq_i \in \mathcal{P}\)</span>，如果它是自反（即 <span class="arithmatex">\(x \succeq_i x\)</span> 对于所有 <span class="arithmatex">\(x \in X\)</span>）、传递以及<strong>全域（total）</strong>的（若 <span class="arithmatex">\(x \neq y\)</span>，则要么 <span class="arithmatex">\(x \succeq_i y\)</span>，要么 <span class="arithmatex">\(y \succeq_i x\)</span>，但不可能都成立）。这样的偏好关系通常称为<strong>严格-全面（strict- total）</strong>偏好，或称*<em>线性序（linear orders）</em>，因为这些性质就是实直线通常拥有的序：“大于或等于”关系。</p>
+<p>类似于上一小节，我们可以将社会福利泛函数定义为一个规则，该规则对个人偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{R}^I\)</span> 指定了一个社会偏好。下面的定义 7 在两个方面推广了定义 1：一是它允许任何数量的备选方案；二是它允许将加总问题限制在个人偏好组合的某个给定定义域 <span class="arithmatex">\(\mathcal{A} \subset \mathcal{R}^I\)</span>。然而在本节我们主要考察最大的定义域，即 <span class="arithmatex">\(\mathcal{A} = \mathcal{R}^I\)</span> 和 <span class="arithmatex">\(\mathcal{A} = \mathcal{P}^I\)</span>。</p>
+<div class="admonition note">
+<p class="admonition-title">定义 7：社会福利泛函数</p>
+<p>定义在给定子集 <span class="arithmatex">\(\mathcal{A} \subset \mathcal{R}^I\)</span> 的一个<strong>社会福利泛函数</strong>（或称<strong>社会福利加总器</strong>）是一个规则 <span class="arithmatex">\(F: \mathcal{A} \to \mathcal{R}\)</span>，该规则对可行定义域 <span class="arithmatex">\(\mathcal{A} \subset \mathcal{R}^I\)</span> 中的个人理性偏好关系的任何组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 指定了一个理性偏好关系 <span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I) \in \mathcal{R}\)</span>，这个理性偏好关系称为<strong>社会偏好关系</strong>。</p>
+</div>
+<p>注意到，正如我们在上一节的做法一样，在社会加总问题中，个人特征完全是由他们在备选方案上的偏好关系刻画的，不考虑偏好的强度等。进一步地，对于任何组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span>，我们将由 <span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I)\)</span> 导出的严格偏好关系记为 <span class="arithmatex">\(F_p(\succeq_1, \cdots, \succeq_I)\)</span>，读作社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好。</p>
+<p>下面的定义 8 是定义 2 的推广，它要求社会福利泛函数在下面的弱意义上尊重个人偏好：</p>
+<div class="admonition note">
+<p class="admonition-title">定义 8：帕累托性质</p>
+<p>一个社会福利泛函数 <span class="arithmatex">\(F: \mathcal{A} \to \mathcal{R}\)</span> 是<strong>帕累托的（Paretian）</strong>，如果对于任何一对备选方案 <span class="arithmatex">\(\{x,y\} \in X\)</span> 和任何偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span>，如果 <span class="arithmatex">\(x \succ_i y\)</span> 对于每个 <span class="arithmatex">\(i\)</span> 成立，那么 <span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) y\)</span>。</p>
+</div>
+<p>下面的例子描述了一类著名且有趣的帕累托社会福利泛函数：</p>
+<div class="admonition question">
+<p class="admonition-title">例 2：波达计分</p>
+<p><strong>波达计分（Borda Count）</strong>：假设备选方案数量是有限的。给定一个偏好关系 <span class="arithmatex">\(\succeq_i \in \mathcal{R}\)</span>，我们按照以下规则对每个备选方案 <span class="arithmatex">\(x \in X\)</span> 指定一个分数。暂时假设在偏好关系 <span class="arithmatex">\(\succeq_i\)</span> 中任何两个备选方案都不是无差异的。于是我们令 <span class="arithmatex">\(c_i(x) = n\)</span>，如果 <span class="arithmatex">\(x\)</span> 在 <span class="arithmatex">\(\succeq_i\)</span> 的序中位于第 <span class="arithmatex">\(n\)</span> 名。如果在 <span class="arithmatex">\(\succeq_i\)</span> 中允许无差异，那么 <span class="arithmatex">\(c_i(x)\)</span> 是与 <span class="arithmatex">\(x\)</span> 无差异的备选方案的平均排名。例如，如果 <span class="arithmatex">\(X = \{x,y,z\}\)</span>，而且 <span class="arithmatex">\(x \succ_i y \sim_i z\)</span>，那么 <span class="arithmatex">\(c_i(x) = 1\)</span>，<span class="arithmatex">\(c_i(y) = c_i(z) = 2.5\)</span>。</p>
+<p>最后，对于任何组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{R}\)</span>，我们通过将分数加总得到它的社会排序。也就是说，如果 <span class="arithmatex">\(\sum\limits_{i} c_i(x) \leqslant \sum\limits_{i} c_i(y)\)</span>，那么 <span class="arithmatex">\(x \succeq y\)</span>。我们令 <span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I) \in \mathcal{R}\)</span> 表示由 <span class="arithmatex">\(x F(\succeq_1, \cdots, \succeq_I) y\)</span> 定义的偏好关系，那么显然这个偏好关系是完备的和传递的（它可由效用函数 <span class="arithmatex">\(c(x) = -\sum\limits_{i} c_i(x)\)</span> 表示）。而且，该偏好关系是帕累托的，这是因为如果 <span class="arithmatex">\(x \succ_i y\)</span> 对于每个 <span class="arithmatex">\(i\)</span>，那么 <span class="arithmatex">\(c_i(x) &lt; c_i(y)\)</span> 对于每个 <span class="arithmatex">\(i\)</span>，从而有 <span class="arithmatex">\(\sum\limits_{i} c_i(x) &lt; \sum\limits_{i} c_i(y)\)</span>。</p>
+</div>
+<p>下面我们阐述社会福利泛函数面对的一个重要限制条件，它首先由 Arrow（1963）提出。这个限制条件指出任何两个备选方案上的社会偏好仅取决于这两个方案上的个人偏好。我们可从三个方面为这个假设辩护：</p>
+<ol>
+<li>首先，它认为在确定 <span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(y\)</span> 的社会排序时，是否存在其他方案是不重要的，这些其他方案与当前的问题无关。这个理由是严格规范的而且有相当的吸引力；</li>
+<li>第二个理由是实践性的。这个假设使得社会决策任务变得非常方便，因为它有助于隔离问题。在确定某个备选方案子集的社会排序时，我们不需要这个子集之外的任何个人偏好信息；</li>
+<li>第三个理由与激励有关，我们将在本讲最后一小节的<strong>无谎报的激励</strong>命题中讨论。下面定义的<strong>配对独立性（pairwise independence）</strong>性质与如何提供激励让个人如实显示自己的偏好这个问题密切相关。</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">定义 9：配对独立性</p>
+<p>定义域为 <span class="arithmatex">\(\mathcal{A}\)</span> 的社会福利泛函数 <span class="arithmatex">\(F: \mathcal{A} \to \mathcal{R}\)</span> 满足<strong>配对独立性条件（pairwise independence condition）</strong>或称<strong>不相关方案无关性条件（independence of irrelevant alternative condition）</strong>，如果任何两个备选方案 <span class="arithmatex">\(\{x,y\} \in X\)</span> 上的社会偏好仅取决于这两个方案上的个人偏好组合。正式地说，对于任何一对备选方案 <span class="arithmatex">\(\{x,y\} \in X\)</span>，以及对于具有下列性质的任何一对偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span> 和 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I') \in \mathcal{A}\)</span>，即对于每个 <span class="arithmatex">\(i\)</span>，如果 </p>
+<div class="arithmatex">\[x \succeq_i y \iff x \succeq_i' y \quad \text{和} \quad y \succeq_i x \iff y \succeq_i' x,\]</div>
+<p>我们都有</p>
+<div class="arithmatex">\[x F_p(\succeq_1, \cdots, \succeq_I) y \iff x F_p(\succeq_1', \cdots, \succeq_I') y \quad \text{和} \quad y F_p(\succeq_1, \cdots, \succeq_I) x \iff y F_p(\succeq_1', \cdots, \succeq_I') x.\]</div>
+</div>
+<p>这一定义的表达看起来有些啰嗦，我们这么做的原因无非就是强调它前面的陈述。用通俗的语言解释就是，两个不同的偏好组合只要在 <span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(y\)</span> 上的偏好关系一致，那么社会对 <span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(y\)</span> 的偏好也应该一致。等价的表达为：对于任何 <span class="arithmatex">\(\{x,y\} \subset X\)</span>，若 <span class="arithmatex">\(\succeq_i \vert \{x,y\} = \succeq_i' \vert \{x,y\}\)</span> 对于所有 <span class="arithmatex">\(i\)</span> 成立，那么 <span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I) \vert \{x,y\} = F(\succeq_1', \cdots, \succeq_I') \vert \{x,y\}\)</span>。此处 <span class="arithmatex">\(\succeq \vert \{x,y\}\)</span> 表示将偏好排序 <span class="arithmatex">\(\succeq\)</span> 限制在集合 <span class="arithmatex">\(\{x,y\}\)</span> 上。</p>
+<div class="admonition question">
+<p class="admonition-title">例 2：波达计分（续）</p>
+<p>波达计分不满足配对独立性条件。原因很简单：任何一个备选方案的位次都取决于每个其他备选方案的位次。或者说，排序是有数字大小的，这会影响到配对独立性。例如，假设有两个参与人和三个备选方案 <span class="arithmatex">\(\{x,y,z\}\)</span>。对于偏好</p>
+<div class="arithmatex">\[\begin{gather*}
+    x \succ_1 y \succ_1 z, \\
+    y \succ_2 x \succ_2 z,
+\end{gather*}\]</div>
+<p>那么社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，因为 <span class="arithmatex">\(c(x) = 3, c(y) = 4\)</span>，但是对于偏好</p>
+<div class="arithmatex">\[\begin{gather*}
+    x \succ_1' y \succ_1' z, \\
+    y \succ_2' z \succ_2' x,
+\end{gather*}\]</div>
+<p>社会认为 <span class="arithmatex">\(y\)</span> 比 <span class="arithmatex">\(x\)</span> 好，因为 <span class="arithmatex">\(c(x) = 4, c(y) = 3\)</span>。然而对每个参与人而言，<span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 的相对位次没有改变。</p>
+</div>
+<p>上面例子的讨论表明，配对独立性条件是个重要限制。然而，有一种自然的方法能保证这个条件自动满足：我们可以通过某种特定加总规则来确定任何给定的两个备选方案之间的社会偏好，这个加总规则只使用了个人偏好中这两个方案的排序信息，从而我们可以得到任意一对备选方案之间的偏好关系，且是独立于其它备选方案的。并且在上一节我们已经看到，对于任何一对备选方案，存在很多这样的规则（例如多数投票）。我们能否按照这种配对方式实施而且仍能得到理性（即完备且传递的）社会偏好？下面的例子表明这非常困难：</p>
+<div class="admonition question">
+<p class="admonition-title">例 3：康多塞悖论</p>
+<p><strong>康多塞悖论（Condorcet Paradox）</strong>：假设我们要在两个备选方案之间进行多数投票。我们能否确定一个社会福利泛函数？在下一节我们将看到在某个受限制定义域 <span class="arithmatex">\(\mathcal{A} \subset \mathcal{R}^I\)</span> 内答案是肯定的。但在一般情形下我们将遇到所谓的康多塞悖论难题。假设我们有三个备选方案 <span class="arithmatex">\(\{x,y,z\}\)</span> 和三个参与人。这三个人的偏好为</p>
+<div class="arithmatex">\[\begin{gather*}
+    x \succ_1 y \succ_1 z, \\
+    y \succ_2 z \succ_2 x, \\
+    z \succ_3 x \succ_3 y.
+\end{gather*}\]</div>
+<p>多数投票规则告诉我们社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好（因为认为 <span class="arithmatex">\(x\)</span> 胜过 <span class="arithmatex">\(y\)</span> 的人数多于 <span class="arithmatex">\(y\)</span> 胜过 <span class="arithmatex">\(x\)</span> 的人数），<span class="arithmatex">\(y\)</span> 比 <span class="arithmatex">\(z\)</span> 好，以及 <span class="arithmatex">\(z\)</span> 比 <span class="arithmatex">\(x\)</span> 好，但这样的循环模式违背了社会偏好的传递性条件。</p>
+</div>
+<p>下一个命题是阿罗不可能定理，该定理是本章的核心结果。它在本质上告诉我们，康多塞悖论的出现不是由多数投票的任何强性质（参与人之间的对称性、备选方案的中立性和正反应性）引起的。康多塞悖论点破了关键问题所在：在配对独立性条件下，不存在定义在 <span class="arithmatex">\(\mathcal{R}^I\)</span> 上的社会福利泛函数，使得该函数满足最低形式的参与人之间的对称性（无独裁者）和最低形式的正反应性（帕累托性质）。</p>
+<div class="admonition note">
+<p class="admonition-title">阿罗不可能定理（Arrow's Impossibility Theorem）</p>
+<p>假设至少有三个备选方案，个人组合的定义域 <span class="arithmatex">\(\mathcal{A}\)</span> 要么为 <span class="arithmatex">\(\mathcal{A} = \mathcal{R}^I\)</span>，要么为 <span class="arithmatex">\(\mathcal{A} = \mathcal{P}^I\)</span>。那么每个满足帕累托性质和配对独立性条件的社会福利泛函数 <span class="arithmatex">\(F: \mathcal{A} \to \mathcal{R}\)</span> 在下列意义上是独裁的：存在一个参与人 <span class="arithmatex">\(h\)</span> 使得对于任何 <span class="arithmatex">\(\{x,y\} \subset X\)</span> 和任何组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span>，当 <span class="arithmatex">\(x \succ_h y\)</span> 时，社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，即 <span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) y\)</span>。</p>
+</div>
+<p>为证明的方便起见，我们将 <span class="arithmatex">\(I\)</span> 不仅视为参与人的数量，也视为参与人集合。对于整个证明，我们使用一个满足帕累托性质和配对独立性条件的固定社会福利泛函数 <span class="arithmatex">\(F: \mathcal{A} \to \mathcal{R}\)</span>。我们先给出一些定义，这些定义是证明的关键：</p>
+<div class="admonition note">
+<p class="admonition-title">定义 10：决定性</p>
+<p>给定 <span class="arithmatex">\(F(·)\)</span>，对于参与人集合的一个子集 <span class="arithmatex">\(S \subset I\)</span>，</p>
+<ol>
+<li>如果当 <span class="arithmatex">\(S\)</span> 中的每个人认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好且 <span class="arithmatex">\(S\)</span> 之外的每个人认为 <span class="arithmatex">\(y\)</span> 比 <span class="arithmatex">\(x\)</span> 好，导致社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，那么我们说 <span class="arithmatex">\(S\)</span> <strong>可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好（decisive for <span class="arithmatex">\(x\)</span> over <span class="arithmatex">\(y\)</span>）</strong>；</li>
+<li>如果对于任何一对备选方案 <span class="arithmatex">\(\{x,y\} \subset X\)</span>，<span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，那么我们说 <span class="arithmatex">\(S\)</span> 是<strong>决定性的（decisive）</strong>；</li>
+<li>如果当 <span class="arithmatex">\(S\)</span> 中的每个人认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，导致社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，那么我们说 <span class="arithmatex">\(S\)</span> <strong>完全可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好（completely decisive for <span class="arithmatex">\(x\)</span> over <span class="arithmatex">\(y\)</span>）</strong>。</li>
+</ol>
+</div>
+<p>我们的证明将沿着详细考察决定集族的结构这个路线进行。我们分步骤完成这个任务。第 1 步到第 3 步表明，如果某个参与人子集对于某对方案是决定性的，那么它对所有配对方案都是决定性的。第 4 步到第 6 步证明了决定集族的一些代数性质。第 7 步和第 8 步使用这些性质证明了存在由单个参与人组成的最小决定集。第 9 步和第 10 步证明这个参与人是个独裁者。</p>
+<div class="admonition note">
+<p class="admonition-title">阿罗不可能定理的证明</p>
+<p><strong>第 1 步：如果对于某个 <span class="arithmatex">\(\{x,y\} \subset X\)</span>，<span class="arithmatex">\(S \subset I\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，那么对于任何备选方案 <span class="arithmatex">\(z \neq x\)</span>，<span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(z\)</span> 好。类似地，对于任何 <span class="arithmatex">\(z \neq y\)</span>，<span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(z\)</span> 比 <span class="arithmatex">\(y\)</span> 好。</strong></p>
+<p>我们仅如果 <span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，那么 <span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(z \neq x\)</span> 好。另一部分的证明是类似的。如果 <span class="arithmatex">\(z = y\)</span>，我们就不用证明了。因此，我们假设 <span class="arithmatex">\(z \neq y\)</span>。考虑一个偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span>，其中</p>
+<div class="arithmatex">\[\begin{gather*}
+    x \succ_i y \succ_i z, \ \forall i \in S, \\
+    y \succ_i z \succ_i x, \ \forall i \in I \setminus S.
+\end{gather*}\]</div>
+<p>由于 <span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，所以社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，也就是说 <span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) y\)</span>。另一方面，由于 <span class="arithmatex">\(y \succ_i z\)</span> 对于每个 <span class="arithmatex">\(i \in I\)</span> 成立，所以根据 <span class="arithmatex">\(F\)</span> 满足帕累托性质可知 <span class="arithmatex">\(y F_p(\succeq_1, \cdots, \succeq_I) z\)</span>。因此，由社会偏好的传递性可知 <span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) z\)</span>。</p>
+<p>根据配对独立性条件，只要 <span class="arithmatex">\(S\)</span> 中的每个人认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(z\)</span> 好且 <span class="arithmatex">\(S\)</span> 之外的每个人认为 <span class="arithmatex">\(z\)</span> 比 <span class="arithmatex">\(x\)</span> 好，那么社会就会和上面我们举的这一特殊偏好例子一样认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(z\)</span> 好。因此，<span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(z\)</span> 好。</p>
+<p><strong>注：这里的证明思想是找到一种特殊的偏好关系证明在这种偏好下 <span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(z\)</span> 好，然后根据配对独立性推广到其它的偏好关系都能做到这一点，因为其它的偏好关系只要保持 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(z\)</span> 在 <span class="arithmatex">\(S\)</span> 和 <span class="arithmatex">\(I \setminus S\)</span> 下的顺序和前面的特殊偏好关系一致，根据配对独立性就能说明社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(z\)</span> 好，因此根据定义可知 <span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(z\)</span> 好，这一思想在之后的证明中很常用。</strong></p>
+<p><strong>第 2 步：如果对于某个 <span class="arithmatex">\(\{x,y\} \subset X\)</span>，<span class="arithmatex">\(S \subset I\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，<span class="arithmatex">\(z\)</span> 是第三个备选方案，那么当 <span class="arithmatex">\(w \in X\)</span> 是不同于 <span class="arithmatex">\(z\)</span> 的任何备选方案时，<span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(z\)</span> 比 <span class="arithmatex">\(w\)</span> 好以及决定 <span class="arithmatex">\(w\)</span> 比 <span class="arithmatex">\(z\)</span> 好。</strong></p>
+<p>根据第 1 步，<span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(z\)</span> 好以及决定 <span class="arithmatex">\(z\)</span> 比 <span class="arithmatex">\(y\)</span> 好。如果我们再次使用第 1 步，只不过这次运用在 <span class="arithmatex">\(\{x,z\}\)</span> 和 <span class="arithmatex">\(w\)</span> 上，可知：<span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(w\)</span> 比 <span class="arithmatex">\(z\)</span> 好。类似地，将第 1 步运用在 <span class="arithmatex">\(\{z,y\}\)</span> 和 <span class="arithmatex">\(w\)</span> 上，可知：<span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(z\)</span> 比 <span class="arithmatex">\(w\)</span> 好。</p>
+<p><strong>第 3 步：如果对于某个 <span class="arithmatex">\(\{x,y\} \subset X\)</span>，<span class="arithmatex">\(S \subset I\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，那么 <span class="arithmatex">\(S\)</span> 是决定性的。</strong></p>
+<p>取任意的 <span class="arithmatex">\(\{v,w\} \subset X\)</span>。如果 <span class="arithmatex">\(v = z\)</span> 或 <span class="arithmatex">\(v = w\)</span>，那么第 2 步直接蕴含了第 3 步的结论。如果 <span class="arithmatex">\(v \neq z\)</span> 且 <span class="arithmatex">\(w \neq z\)</span>，我们可以运用第 2 步从而断言 <span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(z\)</span> 比 <span class="arithmatex">\(w\)</span> 好，然后使用第 1 步（运用在 <span class="arithmatex">\(\{z,w\}\)</span> 上）断言 <span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(v\)</span> 比 <span class="arithmatex">\(w\)</span> 好。</p>
+<p><strong>第 4 步：如果 <span class="arithmatex">\(S\)</span> 和 <span class="arithmatex">\(T\)</span> 是决定性的，那么 <span class="arithmatex">\(S \cap T\)</span> 是决定性的。</strong></p>
+<p>任取三个不同的备选方案 <span class="arithmatex">\(\{x,y,z\} \subset X\)</span>，考虑偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span>，其中</p>
+<div class="arithmatex">\[\begin{align*}
+    z \succ_i y \succ_i x, \ &amp;\forall i \in S \setminus (S \cap T), \\
+    x \succ_i z \succ_i y, \ &amp;\forall i \in S \cap T, \\
+    y \succ_i x \succ_i z, \ &amp;\forall i \in T \setminus (S \cap T), \\
+    y \succ_i z \succ_i x, \ &amp;\forall i \in I \setminus (S \cup T).
+\end{align*}\]</div>
+<p>于是 <span class="arithmatex">\(z F_p(\succeq_1, \cdots, \succeq_I) y\)</span>，因为 <span class="arithmatex">\(S = [S \setminus (S \cap T)] \cup (S \cap T)\)</span> 是决定性的。类似地，<span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) z\)</span>，因为 <span class="arithmatex">\(T\)</span> 是决定性的。因此，根据社会偏好的传递性可知 <span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) y\)</span>。而在上述偏好关系下，当 <span class="arithmatex">\(i \in S \cap T\)</span> 时，<span class="arithmatex">\(x \succ_i y\)</span>，当 <span class="arithmatex">\(i \in I \setminus (S \cup T)\)</span> 时，<span class="arithmatex">\(y \succ_i x\)</span>，因此在这一偏好关系下 <span class="arithmatex">\(S \cap T\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好。由配对独立性条件可知，在更大的偏好关系集合下 <span class="arithmatex">\(S \cap T\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好。最后由第 3 步的结论可知 <span class="arithmatex">\(S \cap T\)</span> 是决定性的。</p>
+<p><strong>第 5 步：对于任何 <span class="arithmatex">\(S \subset I\)</span>，我们有：要么 <span class="arithmatex">\(S\)</span> 是决定性的，要么 <span class="arithmatex">\(I \setminus S\)</span> 是决定性的。</strong></p>
+<p>任取三个不同的备选方案 <span class="arithmatex">\(\{x,y,z\} \subset X\)</span>，考虑偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span>，其中</p>
+<div class="arithmatex">\[\begin{align*}
+    x \succ_i z \succ_i y, \ &amp;\forall i \in S, \\
+    y \succ_i x \succ_i z, \ &amp;\forall i \in I \setminus S.
+\end{align*}\]</div>
+<p>于是存在两种可能性：一是 <span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) y\)</span>，在这种情形下，根据配对独立性条件可知，<span class="arithmatex">\(S\)</span> 可以决定 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好（由第 3 步的结论可知 <span class="arithmatex">\(S\)</span> 是决定性的）；二是 <span class="arithmatex">\(y F_p(\succeq_1, \cdots, \succeq_I) x\)</span>，因为根据帕累托性质条件，我们有 <span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) z\)</span>，在这种情形下，社会偏好关系产生了 <span class="arithmatex">\(y F_p(\succeq_1, \cdots, \succeq_I) z\)</span>。再次使用配对独立性条件，我们断言 <span class="arithmatex">\(I \setminus S\)</span> 可以决定 <span class="arithmatex">\(y\)</span> 比 <span class="arithmatex">\(z\)</span> 好（由第 3 步可知 <span class="arithmatex">\(I \setminus S\)</span> 是决定性的）。</p>
+<p><strong>第 6 步：如果 <span class="arithmatex">\(S \subset I\)</span> 是决定性的而且 <span class="arithmatex">\(S \subset T\)</span>，那么 <span class="arithmatex">\(T\)</span> 也是决定性的。</strong></p>
+<p>根据帕累托性质条件可知，如果参与人集合是空集，那么它不可能是决定性的（的确，如果没有人认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好并且每个人认为 <span class="arithmatex">\(y\)</span> 比 <span class="arithmatex">\(x\)</span> 好，那么社会不会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好）。因此，<span class="arithmatex">\(I \setminus T\)</span> 不可能是决定性的，因为如若不然，根据第 4 步可知，<span class="arithmatex">\(S \cap (I \setminus T) = \emptyset\)</span> 将是决定性的。因此，由第 5 步可知，<span class="arithmatex">\(T\)</span> 是决定性的。</p>
+<p><strong>第 7 步：如果 <span class="arithmatex">\(S \subset I\)</span> 是决定性的而且它含有不止一个参与人，那么存在一个严格子集 <span class="arithmatex">\(S' \subset S\)</span>，<span class="arithmatex">\(S' \neq S\)</span>，使得 <span class="arithmatex">\(S'\)</span> 是决定性的。</strong></p>
+<p>任取 <span class="arithmatex">\(h \in S\)</span>。如果 <span class="arithmatex">\(S \setminus \{h\}\)</span> 是决定性的，那么我们就得到了结论。因此，假设 <span class="arithmatex">\(S \setminus \{h\}\)</span> 不是决定性的。于是，根据第 5 步可知，<span class="arithmatex">\(I \setminus (S \setminus \{h\}) = (I \setminus S) \cup \{h\}\)</span> 是决定性的。由第 4 步可知，<span class="arithmatex">\(\{h\} = S \cap [(I \setminus S) \cup \{h\}]\)</span> 也是决定性的。因此，我们再次得到了结论，因为根据假设，<span class="arithmatex">\(\{h\}\)</span> 是 <span class="arithmatex">\(S\)</span> 的一个严格子集。</p>
+<p><strong>第 8 步：存在一个 <span class="arithmatex">\(h \in I\)</span> 使得 <span class="arithmatex">\(S = \{h\}\)</span> 是决定性的。</strong></p>
+<p>重复运用第 7 步并且考虑以下两个事实即可得到结论：一个事实是，参与人集合 <span class="arithmatex">\(I\)</span> 是有限的；另外一个是根据帕累托性质可知，由所有参与人组成的集合 <span class="arithmatex">\(I\)</span> 是决定性的（之前我们已经知道了 <span class="arithmatex">\(\emptyset\)</span> 不是）。</p>
+<p><strong>第 9 步：如果 <span class="arithmatex">\(S \subset I\)</span> 是决定性的，那么对于任何 <span class="arithmatex">\(\{x,y\} \subset X\)</span>，<span class="arithmatex">\(S\)</span> 完全决定了 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好。</strong></p>
+<p>我们想证明，对于任何 <span class="arithmatex">\(T \subset I \setminus S\)</span>，如果 <span class="arithmatex">\(S\)</span> 中的每个参与人认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，<span class="arithmatex">\(T\)</span> 中的每个参与人认为 <span class="arithmatex">\(x\)</span> 至少与 <span class="arithmatex">\(y\)</span> 一样好，而且每个其他参与人认为 <span class="arithmatex">\(y\)</span> 比 <span class="arithmatex">\(x\)</span> 好，那么社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好。为了证明这个性质，取一个不同于 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 的第三个备选方案 <span class="arithmatex">\(z \in X\)</span>。根据配对独立性条件可知，我们只要考虑满足下面这样的偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span> 即可，其中</p>
+<div class="arithmatex">\[\begin{align*}
+    x \succ_i z \succ_i y, \ &amp;\forall i \in S, \\
+    x \succ_i y \succ_i z, \ &amp;\forall i \in T, \\
+    y \succ_i z \succ_i x, \ &amp;\forall i \in I \setminus (S \cup T).
+\end{align*}\]</div>
+<p>因为 <span class="arithmatex">\(S\)</span> 是决定性的，故有 <span class="arithmatex">\(z F_p(\succeq_1, \cdots, \succeq_I) y\)</span>，并且根据第 6 步可知 <span class="arithmatex">\(S \cup T\)</span> 是决定性的，故 <span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) z\)</span>，因此，根据社会偏好的传递性有 <span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) y\)</span>，这正是我们想证明的。</p>
+<p><strong>第 10 步：如果对于某个 <span class="arithmatex">\(h \in I\)</span>，<span class="arithmatex">\(S = \{h\}\)</span> 是决定性的，那么 <span class="arithmatex">\(h\)</span> 是个独裁者。</strong></p>
+<p>如果 <span class="arithmatex">\(\{h\}\)</span> 是决定性的，那么根据第 9 步，<span class="arithmatex">\(\{h\}\)</span> 完全决定了任何 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好。也就是说，如果偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span> 使得 <span class="arithmatex">\(x \succ_h y\)</span>，那么 <span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) y\)</span>，这意味着 <span class="arithmatex">\(h\)</span> 是个独裁者。</p>
+<p>第 8 步和第 10 步一起完成了阿罗不可能定理的证明。</p>
+</div>
+<h2 id="_4">可能的结果<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>阿罗不可能定理多少让人不安，但不能因此认为“民主是不可能的”：阿罗不可能定理其实是说，我们不应该期望集体行动具有个人行动那样的一致性。然而，需要注意，在现实中，集体判断和集体决策随处可见。阿罗不可能定理在本质上表明，我们不能忽视制度细节和政治过程程序。例如，假设人们从三个备选方案 <span class="arithmatex">\(\{x,y,z\}\)</span> 进行选择。选择方法是多数投票：先对 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 投票，然后对胜出者和 <span class="arithmatex">\(z\)</span> 投票。这将产生一个结果，但这个结果取决于投票日程是如何设定的，也就是说，取决于先对谁投票后对谁投票。程序、规则与社会加总之间的这种相关性有着深远意义。现代政治科学非常强调这一点。</p>
+<p>在本节，我们不做大的变动，仍保留基本架构。我们考察如果放松阿罗不可能定理的某些要求，我们能在多大程度上摆脱独裁者的结论。我们首先总结一下阿罗不可能定理成立的所有必要的显性和隐性的条件：</p>
+<ol>
+<li>备选方案至少为 3 个；</li>
+<li>全域定义域：社会福利泛函数 <span class="arithmatex">\(F\)</span> 的定义域为 <span class="arithmatex">\(\mathcal{R}^I\)</span> 或 <span class="arithmatex">\(\mathcal{P}^I\)</span>；</li>
+<li>社会理性：也就是说，对于个人偏好的每个可能组合，<span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I)\)</span> 是个理性偏好关系（即，完备的和传递的）；</li>
+<li>配对独立性条件；</li>
+<li>帕累托性质条件；</li>
+<li>不存在独裁关系：不存在参与人 <span class="arithmatex">\(h\)</span> 使得在个人偏好的任何组合上，<span class="arithmatex">\(h\)</span> 能对任何一对备选方案强制实施自己的严格偏好。</li>
+</ol>
+<p>事实上阿罗不可能定理中的六个假设条件，任何一个都不是多余的，其中任何一个条件的缺失我们都可以举出例子导致阿罗不可能定理的结论不成立。在下面的讨论中，我们将考察放松两种条件的结果：一是我们放松加总偏好的理性要求；二是我们在受限制定义域内提出加总问题。特别地，我们将考虑一个限制条件，即<strong>单峰偏好（single-peaked preference）</strong>，这个限制条件在实践中重要而有用。</p>
+<h3 id="_5">不完全社会理性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>假设我们保留帕累托性质和配对独立性条件但允许社会偏好的理性程度小于完全理性。下面的定义 11 描述了理性偏好在两个方面的弱化；</p>
+<div class="admonition note">
+<p class="admonition-title">定义 11：拟传递和非循环的偏好关系</p>
+<p>假设 <span class="arithmatex">\(X\)</span> 上的偏好关系 <span class="arithmatex">\(\succeq\)</span> 是反身的和完备的。</p>
+<ol>
+<li>如果由 <span class="arithmatex">\(\succeq\)</span> 推导出的严格偏好 <span class="arithmatex">\(\succ\)</span>（即，<span class="arithmatex">\(x \succ y \iff x \succeq y\)</span> 但 <span class="arithmatex">\(y \nsucceq x\)</span>）是传递的，那么我们说<span class="arithmatex">\(\succeq\)</span> 是<strong>拟传递的（quasitransitive）</strong>；</li>
+<li>如果 <span class="arithmatex">\(\succeq\)</span> 在每个有限子集 <span class="arithmatex">\(X' \subset X\)</span> 中都有一个最大元素，即 <span class="arithmatex">\(\{x \in X' : x \succeq y,\ \forall y \in X'\} \neq \emptyset\)</span>，那么我们说 <span class="arithmatex">\(\succeq\)</span> 是<strong>非循环的（acyclic）</strong>。</li>
+</ol>
+</div>
+<p>我们不难得到如下结论，其中第一条的证明中我们可以看到“循环”这一词的含义：</p>
+<div class="admonition note">
+<p class="admonition-title">偏好性质</p>
+<ol>
+<li>拟传递的偏好关系是非循环的，但是非循环的偏好关系未必是拟传递的；</li>
+<li>理性偏好关系是拟传递的，但拟传递的偏好关系未必是理性的。</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">偏好性质证明</p>
+<ol>
+<li>
+<p>假设 <span class="arithmatex">\(\succ\)</span> 是拟传递的，暂时假设它不是非循环的。于是存在某个有限集 <span class="arithmatex">\(X' \subset X\)</span> 使得该集合对于 <span class="arithmatex">\(\succeq\)</span> 没有最大元。也就是说，对于每个 <span class="arithmatex">\(x \in X'\)</span>，存在某个 <span class="arithmatex">\(y \in X'\)</span> 使得 <span class="arithmatex">\(y \succ x\)</span>（即，使得 <span class="arithmatex">\(y \succeq x\)</span> 但 <span class="arithmatex">\(x \nsucceq y\)</span>）。因此，对于任何整数 <span class="arithmatex">\(M\)</span>，我们可以找到一个链 <span class="arithmatex">\(x^1 \succ x^2 \succ \cdots \succ x^M\)</span>，其中 <span class="arithmatex">\(x^m \in X'\)</span> 对于每个 <span class="arithmatex">\(m = 1, \cdots, M\)</span>。如果 <span class="arithmatex">\(M\)</span> 大于 <span class="arithmatex">\(X'\)</span> 的元素（备选方案）数量，那么在这个链中必定存在着重复。比如说 <span class="arithmatex">\(x^m = x^{m'}\)</span> 对于 <span class="arithmatex">\(m &gt; m'\)</span>。根据拟传递性可知，<span class="arithmatex">\(x^{m'} \succ x^m \succ x^{m'}\)</span>，但这是不可能的，因为根据定义，<span class="arithmatex">\(\succ\)</span> 是非反身的。因此，<span class="arithmatex">\(\succeq\)</span> 必定是非循环的。</p>
+<p>非循环的偏好关系未必是拟传递的例子见下面的例 5。</p>
+</li>
+<li>
+<p>理性偏好关系是拟传递的显然，拟传递的偏好关系未必理性见下面的例 4。</p>
+</li>
+</ol>
+</div>
+<p>因此，非循环性条件相对更弱。然而需要注意，非循环性对理性的弱化程度没有那么厉害：例如，注意到，康多塞悖论中的社会偏好就已经违背了非循环性。我们不打算详细讨论在这些弱化社会理性条件下将会发生什么样的结果，这样的结果不是非常重要。下面两个例子是说明性的：</p>
+<div class="admonition question">
+<p class="admonition-title">例 4：寡头政治的执政集团</p>
+<p>令 <span class="arithmatex">\(I\)</span> 为参与人集，<span class="arithmatex">\(S \subset I\)</span> 是给定的参与人子集，这个子集称为<strong>寡头政治的执政集团（oligarchy）</strong>（允许 <span class="arithmatex">\(S = \{h\}\)</span> 或 <span class="arithmatex">\(S = I\)</span> 这些可能性）。给定任何偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{R}^I\)</span>，社会偏好的构建方法如下：给定任何 <span class="arithmatex">\(x,y \in X\)</span>，如果至少存在一个 <span class="arithmatex">\(h \in S\)</span> 使得 <span class="arithmatex">\(x \succ_h y\)</span>，我们说社会认为 <span class="arithmatex">\(x\)</span> 至少与 <span class="arithmatex">\(y\)</span> 一样好。因此，社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 严格好当且仅当寡头政治的执政集团中的<strong>每个人</strong>认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好。</p>
+<p>因此，这一社会偏好满足拟传递性是显然的（注意拟传递性的条件）。但是不满足传递性，例如我们考虑两个参与人 <span class="arithmatex">\(i,j \in S\)</span>，如果 <span class="arithmatex">\(x \sim_i y\)</span>，根据寡头偏好特点可知 <span class="arithmatex">\(x \sim y\)</span>，并假设 <span class="arithmatex">\(y \sim_j z\)</span>，则有 <span class="arithmatex">\(y \sim z\)</span>。但是事实上所有 <span class="arithmatex">\(S\)</span> 中的人都可以认为 <span class="arithmatex">\(x \succ z\)</span>，这与前面的假设不矛盾，因此 <span class="arithmatex">\(x \succ z\)</span> 是可能的，这就违背了传递性。这也是这一选择函数在阿罗不可能定理中唯一一个未能满足的条件（帕累托性质条件和配对独立性条件显然成立）。然而，对于社会加总问题来说，这个解几乎不能令人满意，因为福利泛函数反应迟缓。在一个极端上，如果寡头政治的执政集团仅有一个人，那么他是独裁者。在另外一个极端上，如果执政集团是整个人群（即 <span class="arithmatex">\(S = I\)</span>），那么仅当社会所有成员都能达到完全一致的意见时，该社会才能表达严格偏好。</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">例 5：否决者</p>
+<p>假设有两个参与人和三个备选方案 <span class="arithmatex">\(\{x,y,z\}\)</span>。于是给定任何偏好组合 <span class="arithmatex">\((\succeq_1, \succeq_2)\)</span>，令社会偏好关系为参与人 1 的偏好，但有一个附加条件：参与人 2 有否决权，他能够否决“社会认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好”。具体地说，如果 <span class="arithmatex">\(y \succ_2 x\)</span>，那么社会认为 <span class="arithmatex">\(y\)</span> 至少与 <span class="arithmatex">\(x\)</span> 一样好。总之，对于任何两个备选方案 <span class="arithmatex">\(\{v,w\} \subset \{x,y,z\}\)</span>，如果 <span class="arithmatex">\(v \succeq_1 w\)</span>，或者 <span class="arithmatex">\(v = y, w = x\)</span> 且 <span class="arithmatex">\(v \succ_2 w\)</span>，那么社会认为 <span class="arithmatex">\(v\)</span> 至少与 <span class="arithmatex">\(w\)</span> 一样好。</p>
+<p>这样定义的社会偏好是非循环的，这一点不难看到，我们可以分两种情况讨论，第一种是 <span class="arithmatex">\(y \nsucc x\)</span>，那么此时的偏好就是 1 的偏好，自然是理性的；第二种是 <span class="arithmatex">\(y \succ x\)</span>，此时 <span class="arithmatex">\(z\)</span> 的排序完全由 1 决定，也符合非循环性。但是这一偏好不是拟传递的，这也不难看到，我们只需合理利用否决权构造反例：考虑 <span class="arithmatex">\(x \succ_1 z\)</span> 且 <span class="arithmatex">\(z \succ_1 y\)</span>，那么根据社会偏好的定义，<span class="arithmatex">\(x \succ z\)</span>，<span class="arithmatex">\(z \succ y\)</span>，但是有可能出现 <span class="arithmatex">\(y \succ_2 x\)</span>，这样就有 <span class="arithmatex">\(y \succeq x\)</span>，这就违背了拟传递性。</p>
+</div>
+<h3 id="_6">单峰偏好<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>现在我们阐述最重要的一类受限制的定义域条件：单峰偏好。我们将看到，在这个受限的定义域内，非独裁式加总是可能的。事实上，只要施加一个小的约束条件，在这个受限定义域上，配对多数投票将产生一个社会福利泛函数。</p>
+<div class="admonition note">
+<p class="admonition-title">定义 12：线性序</p>
+<p>备选方案集 <span class="arithmatex">\(X\)</span> 上的一个二元关系 <span class="arithmatex">\(\geqslant\)</span> 是 <span class="arithmatex">\(X\)</span> 上的一个<strong>线性序（linear order）</strong>，如果它是反身的（即，<span class="arithmatex">\(x \geqslant x\)</span> 对于每个 <span class="arithmatex">\(x \in X\)</span> 成立）、传递的（即，<span class="arithmatex">\(x \geqslant y\)</span> 和 <span class="arithmatex">\(y \geqslant z\)</span> 意味着 <span class="arithmatex">\(x \geqslant z\)</span>）以及全域的（total，即对于任何不同的 <span class="arithmatex">\(x,y \in X\)</span>，要么 <span class="arithmatex">\(x \geqslant y\)</span>，要么 <span class="arithmatex">\(y \geqslant x\)</span>，但不能都成立）。</p>
+</div>
+<p>线性序的最简单例子就是 <span class="arithmatex">\(X\)</span> 为实值线的子集（即 <span class="arithmatex">\(X \subset \mathbb{R}\)</span>）且 <span class="arithmatex">\(\geqslant\)</span> 是实数的“大于或等于”关系。</p>
+<p>下面的定义描述了单峰偏好的概念：</p>
+<div class="admonition note">
+<p class="admonition-title">定义 13：单峰偏好</p>
+<p>理性偏好关系关于 <span class="arithmatex">\(X\)</span> 上的线性序 <span class="arithmatex">\(\geqslant\)</span> 是<strong>单峰的（single peaked）</strong>，如果存在一个备选方案 <span class="arithmatex">\(x \in X\)</span> 使得 <span class="arithmatex">\(\succeq\)</span> 在 <span class="arithmatex">\(\{y \in X : x \geqslant y\}\)</span> 上关于 <span class="arithmatex">\(\geqslant\)</span> 是递增的，而在 <span class="arithmatex">\(\{y \in X : y \geqslant x\}\)</span> 上关于 <span class="arithmatex">\(\geqslant\)</span> 是递减的。也就是说：</p>
+<ol>
+<li>如果 <span class="arithmatex">\(x \geqslant z &gt; y\)</span>，那么 <span class="arithmatex">\(z \succ y\)</span>；</li>
+<li>如果 <span class="arithmatex">\(y &gt; z \geqslant x\)</span>，那么 <span class="arithmatex">\(z \succ y\)</span>。</li>
+</ol>
+<p>用文字表达：存在某个代表着满足程度最高的备选方案 <span class="arithmatex">\(x\)</span>，而且随着我们接近这个峰值点，满意程度也在增加（因此，特别地，不可能存在满意程度的任何其他最大值）。</p>
+</div>
+<p>考虑 <span class="arithmatex">\(X\)</span> 是实数轴上的开区间的情况，<span class="arithmatex">\(\geqslant\)</span> 就是实数域上的大于等于关系，下图以及下面的例子会给读者关于“单峰”的更直观的体会：</p>
+<div style="text-align: center;">
+<img src="/Notes/assets/images/algt/BasicGameTheory/social/peak.png" width="80%" style="margin: 0 auto;">
+</div>
+
+<div class="admonition question">
+<p class="admonition-title">例 6：单峰偏好</p>
+<p>假设 <span class="arithmatex">\(X = [a,b] \subset \mathbb{R}\)</span> 且 <span class="arithmatex">\(\geqslant\)</span> 是实数的“大于或等于”关系。于是 <span class="arithmatex">\(X\)</span> 上的一个连续偏好关系 <span class="arithmatex">\(\succ\)</span> 关于 <span class="arithmatex">\(\geqslant\)</span> 是单峰的当且仅当它是严格凸的，也就是，当且仅当，对于每个 <span class="arithmatex">\(w \in X\)</span>，当 <span class="arithmatex">\(y \succeq w\)</span>，<span class="arithmatex">\(z \succeq w\)</span>，<span class="arithmatex">\(y \neq z\)</span> 时我们有 <span class="arithmatex">\(ay + (1 - \alpha)z &gt; w\)</span>，其中 <span class="arithmatex">\(\alpha \in (0,1)\)</span>。</p>
+<p>这一充要条件的证明并不困难。首先证明严格凸是充分条件，我们假设 <span class="arithmatex">\(x\)</span> 对于 <span class="arithmatex">\(\succeq\)</span> 是最大元（良序集一定存在最大元），然后假设 <span class="arithmatex">\(x &gt; z &gt; y\)</span>。于是 <span class="arithmatex">\(x \succeq y\)</span>，<span class="arithmatex">\(y \succeq y\)</span>，<span class="arithmatex">\(x \neq y\)</span>，以及 <span class="arithmatex">\(z = \alpha x + (1 - \alpha)y\)</span> 对于某个 <span class="arithmatex">\(\alpha \in (0,1)\)</span>。因此，根据严格凸性可知 <span class="arithmatex">\(z \succ y\)</span>。对称的情况也是类似的，因此充分性得证。必要性事实上根据单峰的几何意义是非常显然的，读者可以自行书写证明。</p>
+</div>
+<p>下面我们定义一个记号，在之后的讨论中是常用的：</p>
+<div class="admonition note">
+<p class="admonition-title">定义 14：单峰偏好集族</p>
+<p>给定 <span class="arithmatex">\(X\)</span> 上的一个线性序 <span class="arithmatex">\(\geqslant\)</span>，我们用 <span class="arithmatex">\(\mathcal{R}_\geqslant \subset \mathcal{R}\)</span> 表示关于 <span class="arithmatex">\(\geqslant\)</span> 是单峰的所有理性偏好关系组成的集族。</p>
+</div>
+<p>给定一个线性序 <span class="arithmatex">\(\geqslant\)</span> 和一组参与人 <span class="arithmatex">\(I\)</span>，从现在起，我们考虑偏好 <span class="arithmatex">\(\mathcal{R}^I_\geqslant\)</span> 的受限制的定义域。这等价于要求所有参与人关于<strong>相同的</strong>线性序 <span class="arithmatex">\(\geqslant\)</span> 都有单峰偏好。假设在定义域 <span class="arithmatex">\(\mathcal{R}^I_\geqslant\)</span> 上我们通过配对多数投票定义社会偏好关系。也就是说，给定一个偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{R}^I_\geqslant\)</span> 和任何 <span class="arithmatex">\(\{x,y\} \subset X\)</span>，如果认为 <span class="arithmatex">\(x\)</span> 严格比 <span class="arithmatex">\(y\)</span> 好的参与人数量大于或等于认为 <span class="arithmatex">\(y\)</span> 严格比 <span class="arithmatex">\(x\)</span> 好的参与人数量，也就是说，如果 <span class="arithmatex">\(\# \{i \in I : x \succ_i y\} \geqslant \# \{i \in I : y \succ_i x\}\)</span>，那么我们将这种关系记为 <span class="arithmatex">\(x \hat{F}(\succeq_1, \cdots, \succeq_I) y\)</span>，这个式子可以读为“社会认为 <span class="arithmatex">\(x\)</span> 至少与 <span class="arithmatex">\(y\)</span> 一样好”。</p>
+<p>注意到，根据定义可知，对于任何一对备选方案 <span class="arithmatex">\(\{x,y\}\)</span>，我们必定有要么 <span class="arithmatex">\(x \hat{F}(\succeq_1, \cdots, \succeq_I) y\)</span>，要么 <span class="arithmatex">\(y \hat{F}(\succeq_1, \cdots, \succeq_I) x\)</span>。因此，配对多数投票产生了一个完备的社会偏好关系（这个结论对偏好的任何可能定义域都成立）。</p>
+<p>在做了如上定义和观察后，我们的目标是：证明在单峰偏好下，我们总能保证由配对多数投票产生的社会偏好有最大元，也就是说，在多数投票规则下，存在着不可能被任何其他方案击败的方案，从而可以避免阿罗不可能定理中独裁者的出现。得到这一结论的方法非常直接，就是找到这个不可击败的方案。为了定义这一方案，我们先定义中间参与人的概念：</p>
+<div class="admonition note">
+<p class="admonition-title">定义 15：中间参与人</p>
+<p>令 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{R}^I_\geqslant\)</span> 是偏好的一个固定组合，对于每个 <span class="arithmatex">\(i \in I\)</span>，我们用 <span class="arithmatex">\(x_i\)</span> 表示 <span class="arithmatex">\(\succeq_i\)</span> 的最大元（也就是峰值）。我们称参与人 <span class="arithmatex">\(h \in I\)</span> 对于偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 是个<strong>中间参与人（median agent）</strong>，如果 </p>
+<div class="arithmatex">\[ \# \{i \in I : x_h \geqslant x_i\} \geqslant \dfrac{I}{2}\ \text{且}\ \# \{i \in I : x_i \geqslant x_h\} \geqslant \dfrac{I}{2} \]</div>
+</div>
+<p>因此中间参与人就是峰值位于所有人峰值中间的参与人。显然中间参与人总是存在的。下图说明了如何确定中间参与人：</p>
+<div style="text-align: center;">
+<img src="/Notes/assets/images/algt/BasicGameTheory/social/middle.png" width="50%" style="margin: 0 auto;">
+</div>
+
+<p>如果峰值不相等而且 <span class="arithmatex">\(I\)</span> 是奇数，那么定义 15 表明有 <span class="arithmatex">\(\dfrac{I-1}{2}\)</span> 个参与人的峰值严格小于 <span class="arithmatex">\(x_h\)</span>，另外 <span class="arithmatex">\(\dfrac{I-1}{2}\)</span> 个参与人的峰值严格大于 <span class="arithmatex">\(x_h\)</span>。在这种情形下，中间参与人是唯一的。</p>
+<div class="admonition note">
+<p class="admonition-title"><span class="arithmatex">\(x_h\)</span> 是不可击败的方案</p>
+<p>假设 <span class="arithmatex">\(\geqslant\)</span> 是 <span class="arithmatex">\(X\)</span> 上的一个线性序，考虑偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span>，在这个偏好组合中，对于每个 <span class="arithmatex">\(i\)</span>，<span class="arithmatex">\(\succeq_i\)</span> 关于 <span class="arithmatex">\(\geqslant\)</span> 是单峰的。令 <span class="arithmatex">\(h \in I\)</span> 是个中间参与人。于是 <span class="arithmatex">\(x_h \hat{F}(\succeq_1, \cdots, \succeq_I) y\)</span> 对于每个 <span class="arithmatex">\(y \in X\)</span> 成立。也就是说，在多数投票下，中间参与人的峰值 <span class="arithmatex">\(x_h\)</span> 不可能被任何其他备选方案击败。具有这种性质的任何备选方案称为<strong>康多塞获胜者（Condorcet winner）</strong>。</p>
+</div>
+<p>因此这一结论表明，只要所有参与人的偏好关于同一个线性序是单峰的，就存在着康多塞获胜者。这一结论也有一个直接推论，就是康多塞悖论中的偏好关系不是单峰的，当然事实上这也是可以直接验证的（因为 <span class="arithmatex">\(\{x,y,z\}\)</span> 的 6 种顺序都不能使得三个人的偏好都是单峰的）。</p>
+<div class="admonition note">
+<p class="admonition-title"><span class="arithmatex">\(x_h\)</span> 是不可击败的方案证明</p>
+<p>任取 <span class="arithmatex">\(y \in X\)</span> 而且假设 <span class="arithmatex">\(x_h &gt; y\)</span>（<span class="arithmatex">\(y &gt; x_h\)</span> 的情形的证明类似）。我们需要证明 <span class="arithmatex">\(y\)</span> 不能击败 <span class="arithmatex">\(x_h\)</span>，也就是说，</p>
+<div class="arithmatex">\[ \# \{i \in I : x_h \succ_i y\} \geqslant \# \{i \in I : y \succ_i x_h\} \]</div>
+<p>考虑参与人集合 <span class="arithmatex">\(S \subset I\)</span>，这个集合的峰值大于或等于 <span class="arithmatex">\(x_h\)</span>，即，<span class="arithmatex">\(S = \{i \in I : x_i \geqslant x_h\}\)</span>。于是 <span class="arithmatex">\(x_i \geqslant x_h &gt; y\)</span> 对于每个 <span class="arithmatex">\(i \in S\)</span> 成立。因此，根据 <span class="arithmatex">\(\succ\)</span> 关于 <span class="arithmatex">\(\geqslant\)</span> 的单峰性可知，<span class="arithmatex">\(x_h \succ_i y\)</span> 对于每个 <span class="arithmatex">\(i \in S\)</span> 成立。另一方面，由于参与人 <span class="arithmatex">\(h\)</span> 是个中间参与人，我们有 <span class="arithmatex">\(\# S \geqslant \dfrac{I}{2}\)</span>，从而</p>
+<div class="arithmatex">\[ \# \{i \in I : y \succ_i x_h\} \leqslant \# (I \setminus S) \leqslant \dfrac{I}{2} \leqslant \# S \leqslant \# \{i \in I : x_h \succ_i y\} \]</div>
+</div>
+<p>上面的命题保证了偏好关系 <span class="arithmatex">\(\hat{F}(\succeq_1, \cdots, \succeq_I)\)</span> 为非循环的，然而它未必是传递的：</p>
+<div class="admonition question">
+<p class="admonition-title">单峰偏好配对多数投票偏好不一定是传递的</p>
+<p>我们考虑有三个备选方案 <span class="arithmatex">\(\{x,y,z\}\)</span> 的情况，参与人集合 <span class="arithmatex">\(I = \{1,2,3,4\}\)</span>，如果四个人的偏好满足</p>
+<div class="arithmatex">\[\begin{gather*}
+    x \succ_1 y \succ_1 z, \\
+    z \succ_2 y \succ_2 x, \\
+    x \succ_3 y \succ_3 z, \\
+    y \succ_4 z \succ_4 x,
+\end{gather*}\]</div>
+<p>根据多数投票规则，我们有社会认为 <span class="arithmatex">\(x \sim y, y \succ z, z \sim x\)</span>。这就违背了传递性。</p>
+</div>
+<p>事实上，偏好关系 <span class="arithmatex">\(\hat{F}(\succeq_1, \cdots, \succeq_I)\)</span> 在下列这种特殊情形下是传递的：当 <span class="arithmatex">\(I\)</span> 为奇数时；而且对于每个 <span class="arithmatex">\(i\)</span>，偏好关系 <span class="arithmatex">\(\succeq_i\)</span> 属于集族 <span class="arithmatex">\(\mathcal{P}_\geqslant \subset \mathcal{R}_\geqslant\)</span>，其中 <span class="arithmatex">\(\geqslant\)</span> 是由具有下列两个性质的偏好关系 <span class="arithmatex">\(\succeq\)</span> 组成的：</p>
+<ol>
+<li><span class="arithmatex">\(\succeq\)</span> 关于 <span class="arithmatex">\(\geqslant\)</span> 是单峰的；</li>
+<li>对于 <span class="arithmatex">\(\succeq\)</span>，不存在无差异的两个不同备选方案。</li>
+</ol>
+<p>注意到，如果 <span class="arithmatex">\(I\)</span> 为奇数而且偏好属于 <span class="arithmatex">\(\mathcal{P}_\geqslant\)</span>，那么对于任何一对备选方案，在多数投票规则下，一个方案总是严格好于另外一个。因此，在这种情形下，一个康多塞获胜方案总能击败任何其他备选方案。</p>
+<div class="admonition note">
+<p class="admonition-title">配对多数投票产生的社会偏好是理性的条件</p>
+<p>假设 <span class="arithmatex">\(I\)</span> 是奇数，而且 <span class="arithmatex">\(\geqslant\)</span> 是 <span class="arithmatex">\(X\)</span> 上的一个线性序。于是配对多数投票产生了一个良好定义的社会福利泛函数 <span class="arithmatex">\(F : \mathcal{P}^I_\geqslant \to \mathcal{R}\)</span>。也就是说，如果偏好定义域关于 <span class="arithmatex">\(\geqslant\)</span> 是单峰的，而且在该定义域不存在无差异的两个不同备选方案，那么我们可以断言由配对多数投票产生的社会偏好关系 <span class="arithmatex">\(\hat{F}(\succeq_1, \cdots, \succeq_I)\)</span> 是完备的和传递的。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">配对多数投票产生的社会偏好是理性的条件证明</p>
+<p>我们已经知道 <span class="arithmatex">\(\hat{F}(\succeq_1, \cdots, \succeq_I)\)</span> 是完备的，因为任何两个备选方案都可以通过多数投票规则进行比较，因此剩下的任务是证明它是传递的。假设 <span class="arithmatex">\(x \hat{F}(\succeq_1, \cdots, \succeq_I) y\)</span> 和 <span class="arithmatex">\(y \hat{F}(\succeq_1, \cdots, \succeq_I) z\)</span>。在我们的假设条件下（回忆 <span class="arithmatex">\(I\)</span> 是奇数而且任何个人对于方案都不允许无差异），<span class="arithmatex">\(x\)</span> 击败了 <span class="arithmatex">\(y\)</span>，<span class="arithmatex">\(y\)</span> 击败了 <span class="arithmatex">\(z\)</span>（奇数且非无差异投票不可能出现平局）。考虑集合 <span class="arithmatex">\(X' = \{x,y,z\}\)</span>，如果偏好被限制在这个集合上，那么相对于 <span class="arithmatex">\(X'\)</span>，偏好仍然属于 <span class="arithmatex">\(\mathcal{P}_\geqslant\)</span>，因此 <span class="arithmatex">\(X'\)</span> 中存在着一个备选方案，它不可能被 <span class="arithmatex">\(X'\)</span> 中的任何其他备选方案击败。这个备选方案不是 <span class="arithmatex">\(y\)</span>（因为 <span class="arithmatex">\(y\)</span> 被 <span class="arithmatex">\(x\)</span> 击败），也不是 <span class="arithmatex">\(z\)</span>（因为 <span class="arithmatex">\(z\)</span> 被 <span class="arithmatex">\(y\)</span> 击败）。因此，它必定是 <span class="arithmatex">\(x\)</span>，我们断言 <span class="arithmatex">\(x \hat{F}(\succeq_1, \cdots, \succeq_I) z\)</span>，这样就证明了传递性。</p>
+</div>
+<p>这样我们就结束了两个角度放松阿罗不可能定理前提从而避免独裁社会选择函数的讨论：一方面我们可以放松社会理性的假设，我们可以得到寡头政治、否决者等非独裁的社会决策模型；另一方面我们可以限制偏好的定义域为单峰偏好，得到在多数投票规则下，中间投票人的峰值是不可击败的结论，并且多数投票在上面定理的前提下导出的社会偏好也是理性的。</p>
+<p>除此之外，在 MWG《微观经济理论》21.D 节最后的小字部分还讨论了备选方案落在多维空间的一些复杂情况，感兴趣的读者可以自行阅读，从此不再赘述。</p>
+<h2 id="_7">社会选择函数<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>在前面几节我们完成的任务是如何将个人偏好关系组合加总为一致的（即，理性的）社会偏好序。然后，这个社会偏好序可能被用作决策依据。在本节，我们直接考察社会决策，将社会加总问题视为分析个人偏好组合如何转变为社会决策的问题。我们得到的主要结果再一次地产生了独裁者结论。在某种意义上，这个结果等价于将阿罗不可能定理翻译为选择函数的语言。它也起到了重新解释配对独立性条件的作用，为本章内容和机制设计中基于激励的分析提供了联系。</p>
+<p>与以前一样，我们有一组备选方案 <span class="arithmatex">\(X\)</span> 和一组有限个参与人 <span class="arithmatex">\(I\)</span>。<span class="arithmatex">\(X\)</span> 上的偏好关系 <span class="arithmatex">\(\succeq\)</span> 构成的集合记为 <span class="arithmatex">\(\mathcal{R}\)</span>。我们将在 <span class="arithmatex">\(\mathcal{R}\)</span> 中由满足任何两个不同方案对于 <span class="arithmatex">\(\succeq\)</span> 都不是无差异这一性质的偏好关系组成的子集记为 <span class="arithmatex">\(\mathcal{P}\)</span>。</p>
+<div class="admonition note">
+<p class="admonition-title">定义 16：社会选择函数</p>
+<p>给定任何子集 <span class="arithmatex">\(\mathcal{A} \subset \mathcal{R}^I\)</span>，定义在 <span class="arithmatex">\(X\)</span> 上的一个<strong>社会选择函数（social choice function）</strong> <span class="arithmatex">\(f : \mathcal{A} \to X\)</span>，对每个 <span class="arithmatex">\(\succeq_1, \cdots, \succeq_I \in \mathcal{A}\)</span> 都指定了一个选定的元素 <span class="arithmatex">\(f(\succeq_1, \cdots, \succeq_I) \in X\)</span>。</p>
+</div>
+<p>社会选择函数的概念蕴含着一个要求：选择集是单值的，当然某些情况下我们也允许选择集是多值的，当然单值想强调的是要求参与人的选择不是随机的。</p>
+<p>如果 <span class="arithmatex">\(X\)</span> 是有限的，定义域上的每个社会福利函数 <span class="arithmatex">\(F\)</span> 产生了一个自然的社会选择函数：对于每个 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span> 指定了 <span class="arithmatex">\(X\)</span> 中关于社会偏好关系 <span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I)\)</span> 而言的一个最受偏好的元素。例如，如果与之前保证配对多数投票产生的社会偏好是理性的情形一样，<span class="arithmatex">\(\mathcal{A} \subset \mathcal{P}_\geqslant^I\)</span> 是单峰偏好的定义域，<span class="arithmatex">\(I\)</span> 为奇数，<span class="arithmatex">\(F\)</span> 是定义在 <span class="arithmatex">\(\mathcal{A}\)</span> 上的配对多数投票社会福利泛函数，那么对于每个 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span>，<span class="arithmatex">\(f(\succeq_1, \cdots, \succeq_I)\)</span> 这个选择是 <span class="arithmatex">\(X\)</span> 中的康多塞获胜方案。</p>
+<p>现在我们阐述和证明一个类似于阿罗不可能定理的结果。回忆对于阿罗不可能定理，我们有两个条件：社会福利泛函数必须具有帕累托性质，而且必须是配对独立的。此处我们再次要求两个条件：首先，社会选择函数必须再次具有（弱）帕累托性质；其次，这个函数必须是单调的。下面的两个定义分别给出了这两个概念：</p>
+<div class="admonition note">
+<p class="admonition-title">定义 17：帕累托性质</p>
+<p>定义在 <span class="arithmatex">\(\mathcal{A} \subset \mathcal{R}^I\)</span> 上的社会选择函数 <span class="arithmatex">\(f : \mathcal{A} \to X\)</span> 是<strong>弱帕累托的（weakly Paretian）</strong>，如果对于任何偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span>，<span class="arithmatex">\(f(\succeq_1, \cdots, \succeq_I) \in X\)</span> 这个选择是弱帕累托最优的，也就是说，如果对于某对方案 <span class="arithmatex">\(\{x,y\} \subset X\)</span> 我们有 <span class="arithmatex">\(x \succ_i y\)</span> 对于每个 <span class="arithmatex">\(i\)</span> 成立，那么 <span class="arithmatex">\(y \neq f(\succeq_1, \cdots, \succeq_I)\)</span>。</p>
+</div>
+<p>这个概念非常自然，就是说如果所有人都认为 <span class="arithmatex">\(x\)</span> 比 <span class="arithmatex">\(y\)</span> 好，那么 <span class="arithmatex">\(y\)</span> 一定不可能是最后的社会选择。接下来我们定义单调性，为了定义单调性，我们需要一个更基础的概念：</p>
+<div class="admonition note">
+<p class="admonition-title">定义 18：位置保留</p>
+<p>备选方案 <span class="arithmatex">\(x \in X\)</span> 将它在组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{R}^I\)</span> 中的<strong>位置（position）保留</strong>到了 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I') \in \mathcal{R}^I\)</span>，如果</p>
+<div class="arithmatex">\[ x \succeq_i y\ \text{意味着}\ x \succeq_i' y \]</div>
+<p>对于每个 <span class="arithmatex">\(i\)</span> 和每个 <span class="arithmatex">\(y \in X\)</span> 成立。</p>
+</div>
+<p>用文字表示，<span class="arithmatex">\(x\)</span> 将自己在 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中的位置保留到了 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span>，如果从 <span class="arithmatex">\(\succeq_i\)</span> 变为 <span class="arithmatex">\(\succeq_i'\)</span> 时，对于每个 <span class="arithmatex">\(i\)</span>，劣于（或无差异于） <span class="arithmatex">\(x\)</span> 的备选方案集扩大了（或维持不变）。也就是说，下轮廓集</p>
+<div class="arithmatex">\[ L(x,\succeq_i) = \{y \in X : x \succeq_i y\} \subset L(x,\succeq_i') = \{y \in X : x \succeq_i' y\} \]</div>
+<p>注意，定义 18 中的条件没有要求从 <span class="arithmatex">\(\succeq_i\)</span> 变为 <span class="arithmatex">\(\succeq_i'\)</span> 时其它备选方案如何改变它们相互之间的位置。</p>
+<div class="admonition note">
+<p class="admonition-title">定义 19：单调性</p>
+<p>定义在 <span class="arithmatex">\(\mathcal{A} \subset \mathcal{R}^I\)</span> 上的社会选择函数 <span class="arithmatex">\(f : \mathcal{A} \to X\)</span> 是<strong>单调的（monotonic）</strong>，如果对于任何两个组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span> 和 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I') \in \mathcal{A}\)</span>，如果备选方案 <span class="arithmatex">\(x = f(\succeq_1, \cdots, \succeq_I)\)</span> 将它在 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中的位置保留到了 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span>，那么我们有 <span class="arithmatex">\(f(\succeq_1', \cdots, \succeq_I') = x\)</span>。</p>
+</div>
+<p>用文字表达：如果任何一个备选方案都不能从选择集中删除，除非某个参与人喜欢它的程度下降了（它的位次向后移动了），那么选择函数是单调的。实际上这很容易让我们回忆起社会福利泛函数的正反应性。</p>
+<p>是否存在同时满足弱帕累托性和单调性的社会选择函数？答案是肯定的，事实上读者不难验证：定义在单峰偏好定义域上的配对多数投票社会决策函数是弱帕累托的和单调的。但是如果我们的定义域是全域（即 <span class="arithmatex">\(\mathcal{A} = \mathcal{R}^I\)</span> 或 <span class="arithmatex">\(\mathcal{A} = \mathcal{P}^I\)</span>），结果又是怎样的？在这个定义域上存在着具有这两个性质的一类社会选择函数，它们就是我们不怎么喜欢的独裁社会选择函数。</p>
+<div class="admonition note">
+<p class="admonition-title">定义 20：独裁社会选择函数</p>
+<p>参与人 <span class="arithmatex">\(h \in I\)</span> 对于社会选择函数 <span class="arithmatex">\(f : \mathcal{A} \to X\)</span> 来说是个独裁者，如果对于每个组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span>，在 <span class="arithmatex">\(X\)</span> 中 <span class="arithmatex">\(f(\succeq_1, \cdots, \succeq_I)\)</span> 对于 <span class="arithmatex">\(\succeq_h\)</span> 都是最受偏好的选择；也就是说，</p>
+<div class="arithmatex">\[ f(\succeq_1, \cdots, \succeq_I) \in \{x \in X : x \succeq y\ \text{对于每个}\ y \in X\} \]</div>
+<p>允许存在独裁者的社会选择函数称为<strong>独裁的（dictatorial）</strong>社会选择函数。</p>
+</div>
+<p>用更通俗的语言描述，即在任何偏好组合下，社会选择的都是独裁者 <span class="arithmatex">\(h\)</span> 最偏好的结果。显然的事情是，在定义域中，一个独裁的社会选择函数是弱帕累托的和单调的。遗憾的是，在全域定义域（即 <span class="arithmatex">\(\mathcal{A} = \mathcal{R}^I\)</span> 或 <span class="arithmatex">\(\mathcal{A} = \mathcal{P}^I\)</span>）中，最好的结果就是独裁的社会选择函数：</p>
+<div class="admonition note">
+<p class="admonition-title">阿罗不可能定理在社会选择函数下的推论</p>
+<p>假设备选方案的数量至少有三个，可行偏好组合的定义域为 <span class="arithmatex">\(\mathcal{A} = \mathcal{R}^I\)</span> 或 <span class="arithmatex">\(\mathcal{A} = \mathcal{P}^I\)</span>。那么每个弱帕累托的和单调的社会选择函数 <span class="arithmatex">\(f : \mathcal{A} \to X\)</span> 是独裁的。</p>
+</div>
+<p>这个结果的证明可以作为阿罗不可能定理的一个推论。为了完成此事，我们要推导出一个社会福利泛函数 <span class="arithmatex">\(F\)</span>，它能将 <span class="arithmatex">\(f(\succeq_1, \cdots, \succeq_I)\)</span> 对于每个组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span> 理性化。然后证明 <span class="arithmatex">\(F\)</span> 满足阿罗不可能定理的假设条件，从而得到了独裁关系结论。其中最关键的步骤就是从社会选择函数 <span class="arithmatex">\(f\)</span> 导出福利函数 <span class="arithmatex">\(F\)</span>，这需要我们下面的定义：</p>
+<div class="admonition note">
+<p class="admonition-title">定义 21：置顶</p>
+<p>给定一个有限子集 <span class="arithmatex">\(X' \subset X\)</span> 和一个组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{R}^I\)</span>，我们说组合 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中把 <span class="arithmatex">\(X'\)</span> <strong>置顶（takes <span class="arithmatex">\(X'\)</span> to the top）</strong>，如果对于每个 <span class="arithmatex">\(i\)</span>，</p>
+<div class="arithmatex">\[\begin{gather*}
+    x \succ_i' y\ \text{对于每个}\ x \in X\ \text{和}\ y \notin X' \\
+    x \succeq_i y \iff x \succeq_i' y\ \text{对于每个}\ x,y \in X'
+\end{gather*}\]</div>
+</div>
+<p>用文字表达：<span class="arithmatex">\(\succeq_i'\)</span> 是通过下列方法得到的——在 <span class="arithmatex">\(\succeq_i\)</span> 中把 <span class="arithmatex">\(X'\)</span> 中的每个备选方案的位置都向最前方移动，但保留 <span class="arithmatex">\(X'\)</span> 中的这些备选方案之间（弱或严格的）次序不变。<span class="arithmatex">\(X'\)</span> 之外的备选方案之间的次序则是任意的。例如，如果 <span class="arithmatex">\(x \succ_i y \succ_i z \succ_i w\)</span>，那么由 <span class="arithmatex">\(y \succ_i' w \succ_i' z \succ_i' x\)</span> 定义的偏好关系 <span class="arithmatex">\(\succeq_i'\)</span> 把 <span class="arithmatex">\(\{y,w\}\)</span> 从 <span class="arithmatex">\(\succeq_i\)</span> 中置顶。还要注意，如果 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span> 将 <span class="arithmatex">\(X'\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中置顶，那么每个 <span class="arithmatex">\(x \in X'\)</span> 将它在 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中的位置保留到了 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span>。</p>
+<p>余下的证明我们分若干步骤进行：</p>
+<div class="admonition note">
+<p class="admonition-title">独裁社会选择函数证明</p>
+<p><strong>第 1 步：如果组合 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I') \in \mathcal{A}\)</span> 和 <span class="arithmatex">\((\succeq_1'', \cdots, \succeq_I'') \in \mathcal{A}\)</span> 都把 <span class="arithmatex">\(X' \subset X\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中置顶，那么 <span class="arithmatex">\(f(\succeq_1', \cdots, \succeq_I') = f(\succeq_1'', \cdots, \succeq_I'')\)</span>。</strong></p>
+<p>这一步是显然的，首先利用弱帕累托性质可知 <span class="arithmatex">\(f(\succeq_1', \cdots, \succeq_I') \in X'\)</span>，然后利用单调性质可知 <span class="arithmatex">\(f(\succeq_1', \cdots, \succeq_I') = f(\succeq_1'', \cdots, \succeq_I'')\)</span>（因为置顶过程 <span class="arithmatex">\(X'\)</span> 位置保留）。</p>
+<p><strong>第 2 步：定义 <span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I)\)</span>。</strong></p>
+<p>对于每个组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span>，我们定义 <span class="arithmatex">\(X\)</span> 上的一个二元关系 <span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I)\)</span>。具体地说，我们令 <span class="arithmatex">\(x F(\succeq_1, \cdots, \succeq_I) y\)</span>（读作“社会认为 <span class="arithmatex">\(x\)</span> 至少与 <span class="arithmatex">\(y\)</span> 一样好”），如果 <span class="arithmatex">\(x = y\)</span> 或 <span class="arithmatex">\(x = f(\succeq_1', \cdots, \succeq_I')\)</span> 当 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I') \in \mathcal{A}\)</span> 是把 <span class="arithmatex">\(\{x,y\}\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中置顶的任何偏好组合时。根据第 1 步，这个二元关系是良定义的，也就是说，与我们选择的特定偏好组合 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span> 无关。</p>
+<p><strong>第 3 步：对于每个组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span>，<span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I)\)</span> 是个理性偏好关系。而且，<span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I) \in \mathcal{P}\)</span>，也就是说，对于两个不同备选方案，社会不会认为它们是无差异的。</strong></p>
+<p>由 <span class="arithmatex">\(f\)</span> 的弱帕累托性质可知，当 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span> 把 <span class="arithmatex">\(\{x,y\}\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中置顶时，我们有 <span class="arithmatex">\(f(\succeq_1', \cdots, \succeq_I') \in \{x,y\}\)</span>。因此，我们断言：要么 <span class="arithmatex">\(x F(\succeq_1, \cdots, \succeq_I) y\)</span>，要么 <span class="arithmatex">\(y F(\succeq_1, \cdots, \succeq_I) x\)</span>，但不可能都成立（除非 <span class="arithmatex">\(x = y\)</span>），不可能都成立的原因是第 1 步保证了 <span class="arithmatex">\(f\)</span> 取值唯一性。特别地，<span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I)\)</span> 是完备的。</p>
+<p>为了验证传递性，假设 <span class="arithmatex">\(x F(\succeq_1, \cdots, \succeq_I) y\)</span> 和 <span class="arithmatex">\(y F(\succeq_1, \cdots, \succeq_I) z\)</span>。我们假设这三个备选方案 <span class="arithmatex">\(\{x,y,z\}\)</span> 是不同的。令 <span class="arithmatex">\((\succeq_1'', \cdots, \succeq_I'') \in \mathcal{A}\)</span> 是个把 <span class="arithmatex">\(\{x,y,z\}\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中置顶的偏好组合。由于 <span class="arithmatex">\(f\)</span> 是弱帕累托的，我们有 <span class="arithmatex">\(f(\succeq_1'', \cdots, \succeq_I'') \in \{x,y,z\}\)</span>。</p>
+<p>假设我们有 <span class="arithmatex">\(y = f(\succeq_1', \cdots, \succeq_I')\)</span>。考虑一个把 <span class="arithmatex">\(\{x,y\}\)</span> 从 <span class="arithmatex">\((\succeq_1'', \cdots, \succeq_I'')\)</span> 中置顶的偏好组合 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I') \in \mathcal{A}\)</span>。由于 <span class="arithmatex">\(y\)</span> 把它在 <span class="arithmatex">\((\succeq_1'', \cdots, \succeq_I'')\)</span> 中的位置保留到了 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span>，由单调性可知，<span class="arithmatex">\(f(\succeq_1', \cdots, \succeq_I') = y\)</span>。但是 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span> 也将 <span class="arithmatex">\(\{x,y\}\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中置顶：当从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 到 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span> 时，在任何个人偏好关系中，<span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 的相对位置（它们是排在最前端的两个备选方案）都未发生变化。因此，我们断言 <span class="arithmatex">\(y F(\succeq_1, \cdots, \succeq_I) x\)</span>，这违背了 <span class="arithmatex">\(x F(\succeq_1, \cdots, \succeq_I) y, x \neq y\)</span> 这个假设。因此， <span class="arithmatex">\(y \neq f(\succeq_1'', \cdots, \succeq_I'')\)</span>。</p>
+<p>类似地，我们得到 <span class="arithmatex">\(z \neq f(\succeq_1'', \cdots, \succeq_I'')\)</span>。我们仅需要使用 <span class="arithmatex">\(\{y,z\}\)</span> 来重复相同的论证即可。剩下的唯一可能是 <span class="arithmatex">\(x = f(\succeq_1'', \cdots, \succeq_I'')\)</span>。因此，令 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I') \in \mathcal{A}\)</span> 把 <span class="arithmatex">\(\{x,z\}\)</span> 从 <span class="arithmatex">\((\succeq_1'', \cdots, \succeq_I'')\)</span> 中置顶。由于 <span class="arithmatex">\(x\)</span> 将它在 <span class="arithmatex">\((\succeq_1'', \cdots, \succeq_I'')\)</span> 中的位置保留到了 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span>，所以 <span class="arithmatex">\(x = f(\succeq_1', \cdots, \succeq_I')\)</span>。但是 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span> 也把 <span class="arithmatex">\(\{x,z\}\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中置顶。因此，<span class="arithmatex">\(x F(\succeq_1, \cdots, \succeq_I) z\)</span>。这样我们就证明了传递性。</p>
+<p><strong>第 4 步：社会福利泛函数 <span class="arithmatex">\(F : \mathcal{A} \to \mathcal{P}\)</span> 理性化了社会选择函数 <span class="arithmatex">\(f : \mathcal{A} \to X\)</span>；也就是说，对于每个组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span>，<span class="arithmatex">\(f(\succeq_1, \cdots, \succeq_I)\)</span> 在 <span class="arithmatex">\(X\)</span> 中对于 <span class="arithmatex">\(F(\succeq_1, \cdots, \succeq_I)\)</span> 是最受偏好的备选方案。</strong></p>
+<p>这个结论非常直观，因为 <span class="arithmatex">\(F\)</span> 是由 <span class="arithmatex">\(f\)</span> 构建出的。记 <span class="arithmatex">\(x = f(\succeq_1, \cdots, \succeq_I)\)</span>，令 <span class="arithmatex">\(y \neq x\)</span> 为任何其他备选方案。考虑偏好组合 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I') \in \mathcal{A}\)</span>，它将 <span class="arithmatex">\(\{x,y\}\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中置顶。由于 <span class="arithmatex">\(x\)</span> 把它在 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中的位置保留到了 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span>，我们有 <span class="arithmatex">\(x = f(\succeq_1', \cdots, \succeq_I')\)</span>。因此根据第 2 步 <span class="arithmatex">\(F\)</span> 的定义，我们有 <span class="arithmatex">\(x F(\succeq_1, \cdots, \succeq_I) y\)</span>。</p>
+<p><strong>第 5 步：社会福利泛函数 <span class="arithmatex">\(F : \mathcal{A} \to \mathcal{P}\)</span> 是帕累托的。</strong></p>
+<p>显然，如果 <span class="arithmatex">\(x \succ_i y\)</span> 对于每个 <span class="arithmatex">\(i\)</span> 成立，那么根据 <span class="arithmatex">\(f\)</span> 的帕累托性质，当 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span> 把 <span class="arithmatex">\(\{x,y\}\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中置顶时，我们必定有 <span class="arithmatex">\(x = f(\succeq_1', \cdots, \succeq_I')\)</span>。因此，<span class="arithmatex">\(x F(\succeq_1, \cdots, \succeq_I) y\)</span>，根据第 3 步可知，<span class="arithmatex">\(x F_p(\succeq_1, \cdots, \succeq_I) y\)</span>。</p>
+<p><strong>第 6 步：社会福利泛函数 <span class="arithmatex">\(F : \mathcal{A} \to \mathcal{P}\)</span> 满足配对独立性条件。</strong></p>
+<p>假设在 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{A}\)</span> 和 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I') \in \mathcal{A}\)</span> 中，对于每个 <span class="arithmatex">\(i\)</span>，<span class="arithmatex">\(\{x,y\}\)</span> 的位置是相同的（也就是说，对于每个 <span class="arithmatex">\(i\)</span>，<span class="arithmatex">\(x \succeq_i y\)</span> 当且仅当 <span class="arithmatex">\(x \succeq_i' y\)</span>）。假设 <span class="arithmatex">\((\succeq_1'', \cdots, \succeq_I'')\)</span> 将 <span class="arithmatex">\(\{x,y\}\)</span> 从 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I)\)</span> 中置顶，而且比如 <span class="arithmatex">\(x = f(\succeq_1'', \cdots, \succeq_I'')\)</span>。于是 <span class="arithmatex">\(x F(\succeq_1, \cdots, \succeq_I) y\)</span>。但是 <span class="arithmatex">\((\succeq_1'', \cdots, \succeq_I'')\)</span> 也将 <span class="arithmatex">\(\{x,y\}\)</span> 从 <span class="arithmatex">\((\succeq_1', \cdots, \succeq_I')\)</span> 中置顶。因此 <span class="arithmatex">\(x F(\succeq_1', \cdots, \succeq_I') y\)</span>，这正是我们想证明的。</p>
+<p><strong>第 7 步：社会选择函数 <span class="arithmatex">\(f : \mathcal{A} \to X\)</span> 是独裁的。</strong></p>
+<p>根据阿罗不可能定理以及之前的 4、5、6 步可以立即得到（第 4 步的意义就是保证 <span class="arithmatex">\(f\)</span> 取出的是独裁者最偏好的方案）。</p>
+</div>
+<p>在本讲的最后，我们来讨论一下下列推论，它表明上面的定理和如实显示偏好的激励问题相关，我们将在机制设计中详细分析后面这个问题：</p>
+<div class="admonition note">
+<p class="admonition-title">独裁社会选择函数的推论</p>
+<p>假设备选方案至少有三个，<span class="arithmatex">\(f : \mathcal{P}^I \to X\)</span> 是个社会选择函数，它具有弱帕累托性质且满足下列<strong>无谎报的激励（no-incentive-to-misrepresent）</strong>条件：</p>
+<div class="arithmatex">\[ f(\succeq_1, \cdots, \succeq_{h-1}, \succ_h, \succeq_{h+1}, \cdots, \succeq_I) \succeq_h f(\succeq_1, \cdots, \succeq_{h-1}, \succeq_h', \succeq_{h+1}, \cdots, \succeq_I) \]</div>
+<p>对于每个参与人 <span class="arithmatex">\(h\)</span>、每个 <span class="arithmatex">\(\succeq_h' \in \mathcal{P}\)</span> 和每个偏好组合 <span class="arithmatex">\((\succeq_1, \cdots, \succeq_I) \in \mathcal{P}^I\)</span> 成立。那么 <span class="arithmatex">\(f\)</span> 是独裁的。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">推论的证明</p>
+<p>根据前面的定理可知，我们只需证明 <span class="arithmatex">\(f\)</span> 是单调的即可。假设它不是单调的。不失一般性，我们假设对于某个参与人 <span class="arithmatex">\(h\)</span>，存在参与人 <span class="arithmatex">\(i \neq h\)</span> 的偏好 <span class="arithmatex">\(\succeq_i \in \mathcal{P}\)</span> 以及参与人 <span class="arithmatex">\(h\)</span> 的偏好 <span class="arithmatex">\(\succeq_h'', \succeq_h''' \in \mathcal{P}\)</span>，使得 </p>
+<div class="arithmatex">\[\begin{gather*}
+    x = f(\succeq_1, \cdots, \succeq_{h-1}, \succeq_h'', \succeq_{h+1}, \cdots, \succeq_I) \\
+    y = f(\succeq_1, \cdots, \succeq_{h-1}, \succeq_h''', \succeq_{h+1}, \cdots, \succeq_I)
+\end{gather*}\]</div>
+<p>并且我们有 <span class="arithmatex">\(x \succeq_h'' z\)</span> 意味着 <span class="arithmatex">\(x \succeq_h''' z\)</span> 对于每个 <span class="arithmatex">\(z \in X\)</span> 成立，但 <span class="arithmatex">\(y \neq x\)</span>（也就是说 <span class="arithmatex">\(x\)</span> 的位置保留了，但选择发生了变化）。那么我们有两种可能性：要么 <span class="arithmatex">\(y \succ_h'' x\)</span>，要么 <span class="arithmatex">\(x \succeq_h'' y\)</span>。</p>
+<ol>
+<li>如果 <span class="arithmatex">\(y \succ_h'' x\)</span>，那么无谎报的激励条件不成立，因为如果我们考虑如下情况：“真实的”偏好关系为 <span class="arithmatex">\(\succeq_h = \succeq_h''\)</span>，谎报的偏好关系为 <span class="arithmatex">\(\succeq_h' = \succeq_h'''\)</span>；</li>
+<li>如果 <span class="arithmatex">\(x \succeq_h'' y\)</span>，那么 <span class="arithmatex">\(x \succeq_h''' y\)</span>。因此，由于不存在两个无差异的不同方案，所以 <span class="arithmatex">\(x \succ_h''' y\)</span>。但是如果 <span class="arithmatex">\(x \succ_h''' y\)</span>，那么无谎报的激励条件不成立，因为如果我们考虑如下情况：“真实的”偏好关系为 <span class="arithmatex">\(\succeq_h = \succeq_h'''\)</span>，谎报的偏好关系为 <span class="arithmatex">\(\succeq_h' = \succeq_h''\)</span>。</li>
+</ol>
+</div>
+<p>事实上这里的证明和结论能让我们想起迈尔森引理（见机制设计的最优机制一节）中诚实报价与单调性之间的关系。事实上，只要不满足单调性，我们总能找到一些反例使得不诚实报价可以获得更好的结果。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../signaling/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 信号博弈">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                信号博弈
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../AdvancedGameTheory/fixedpoint-1/" class="md-footer__link md-footer__link--next" aria-label="下一页: 不动点与均衡（I）">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                不动点与均衡（I）
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023-2024 吴一航
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yhwu-is" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<yhwu_is@zju.edu.cn>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "navigation.footer", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "navigation.indexes", "search.share"], "search": "../../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
