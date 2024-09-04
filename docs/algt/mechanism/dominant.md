@@ -10,7 +10,7 @@
 
 在博弈论基础中我们就已经知道，对于博弈中的参与人 $i$ 的某个策略来说，无论 $i$ 的竞争对手选择哪个可能策略，$i$ 的这个策略带给他的收益都不小于他的任何其他可能策略带来的收益，那么这个策略是参与人 $i$ 的一个弱占优策略。在当前的非完全信息环境下，对于参与人 $i$ 来说，策略 $s_i: \Theta_i \to S_i$ 是他在机制 $\Gamma = (S_1, \cdots, S_I, g(\cdot))$ 中的一个弱占优策略，如果对于所有 $\theta_i \in \Theta_i$ 和参与人 $j \neq i$ 的所有可能策略 $s_{-i}(\cdot) = (s_1(\cdot), \cdots, s_{i-1}(\cdot), s_{i+1}(\cdot), \cdots, s_I(\cdot))$，我们有
 
-$$ E_{\theta_{-i}}[u_i(g(s_i(\theta_i), s_{-i}(\theta_{-i})), \theta_i) \mid \theta_i] \geqslant E_{\theta_{-i}}[u_i(g(s_i', s_{-i}(\theta_{-i})), \theta_i) \mid \theta_i],\ \forall s_i' \in S_i  \tag{1} \label{eq1} $$
+$$ E_{\theta_{-i}}[u_i(g(s_i(\theta_i), s_{-i}(\theta_{-i})), \theta_i) \mid \theta_i] \geqslant E_{\theta_{-i}}[u_i(g(s_i', s_{-i}(\theta_{-i})), \theta_i) \mid \theta_i],\ \forall s_i' \in S_i  \tag{1} \label{mech-dom-1} $$
 
 关于这一表达式，需要强调以下几点：
 
@@ -20,18 +20,18 @@ $$ E_{\theta_{-i}}[u_i(g(s_i(\theta_i), s_{-i}(\theta_{-i})), \theta_i) \mid \th
 事实上这一定义非常容易理解，与完全信息条件下的仅仅是多了一层条件期望。但是这一条件验证起来显然更加复杂，幸运的是，我们有如下结论可以对上面的条件进行简化：
 
 !!! note "占优策略的等价定义"
-    占优策略的定义式 $\eqref{eq1}$ 等价于
+    占优策略的定义式 $\eqref{mech-dom-1}$ 等价于
 
-    $$ u_i(g(s_i(\theta_i),s_{-i}),\theta_i) \geqslant u_i(g(s_i',s_{-i}),\theta_i),\ \forall s_i' \in S_i,s_{-i} \in S_{-i},\theta_i \in \Theta_i \tag{2} \label{eq2} $$
+    $$ u_i(g(s_i(\theta_i),s_{-i}),\theta_i) \geqslant u_i(g(s_i',s_{-i}),\theta_i),\ \forall s_i' \in S_i,s_{-i} \in S_{-i},\theta_i \in \Theta_i \tag{2} \label{mech-dom-2} $$
 
 !!! note "占优策略等价定义的证明"
-    1. $\eqref{eq1} \implies \eqref{eq2}$：显然，我们只需在 $\eqref{eq1}$ 中取 $s_{-i}(\theta_{-i}) = s_{-i}$ 即可（即取与 $\theta_{-i}$ 无关的固定策略 $s_{-i}$）；
+    1. $\eqref{mech-dom-1} \implies \eqref{mech-dom-2}$：显然，我们只需在 $\eqref{mech-dom-1}$ 中取 $s_{-i}(\theta_{-i}) = s_{-i}$ 即可（即取与 $\theta_{-i}$ 无关的固定策略 $s_{-i}$）；
     
-    2. $\eqref{eq2} \implies \eqref{eq1}$：事实上，$s_{-i}(\theta_{-i})$ 在 $\theta_{-i}$ 固定的时候就是一个固定策略 $s_{-i}$，因此这一个方向证明的核心就是把 $\eqref{eq2}$ 视为不同的 $\theta_{-i}$ 下不同的 $s_{-i}$ 的情况，然后以条件概率 $p(\cdot \mid \theta_i)$ 求期望即可推出 $\eqref{eq1}$。形式化地表达就是，由 $\eqref{eq2}$ 可得
+    2. $\eqref{mech-dom-2} \implies \eqref{mech-dom-1}$：事实上，$s_{-i}(\theta_{-i})$ 在 $\theta_{-i}$ 固定的时候就是一个固定策略 $s_{-i}$，因此这一个方向证明的核心就是把 $\eqref{mech-dom-2}$ 视为不同的 $\theta_{-i}$ 下不同的 $s_{-i}$ 的情况，然后以条件概率 $p(\cdot \mid \theta_i)$ 求期望即可推出 $\eqref{mech-dom-1}$。形式化地表达就是，由 $\eqref{mech-dom-2}$ 可得
 
     $$ \sum\limits_{\theta_{-i}} p(\theta_{-i} \mid \theta_i) u_i(g(s_i(\theta_i),s_{-i}),\theta_i) \geqslant \sum\limits_{\theta_{-i}} p(\theta_{-i} \mid \theta_i) u_i(g(s_i',s_{-i}),\theta_i),\ \forall s_i' \in S_i $$
 
-    对任意的 $\theta_i$ 和 $s_{-i}$ 都成立。如果我们将 $\eqref{eq1}$ 展开，事实上也会得到这一表达式，从而证明了 $\eqref{eq1}$（甚至我们可以直接通过这一观察证明 $\eqref{eq1} \iff \eqref{eq2}$）。
+    对任意的 $\theta_i$ 和 $s_{-i}$ 都成立。如果我们将 $\eqref{mech-dom-1}$ 展开，事实上也会得到这一表达式，从而证明了 $\eqref{mech-dom-1}$（甚至我们可以直接通过这一观察证明 $\eqref{mech-dom-1} \iff \eqref{mech-dom-2}$）。
 
 总而言之，上面的讨论可以引出下面的定义 1：
 
@@ -42,7 +42,7 @@ $$ E_{\theta_{-i}}[u_i(g(s_i(\theta_i), s_{-i}(\theta_{-i})), \theta_i) \mid \th
 
     对于所有 $s_i \in S_i$ 和所有 $s_{-i} \in S_{-i}$ 成立。
 
-有了这一定义后，我们也能迁移上一讲中执行的定义到占优策略均衡的情形，这里不再赘述。我们对占优策略执行特别感兴趣，这是因为如果我们占优执行的机制是非常强和稳健的。因为在博弈论中我们就知道占优策略是最强、对理性假设最弱的解概念。除此之外，根据 $\eqref{eq2}$ 可知，占优策略不需要先验概率分布就可以判断，因此即使我们不知道参与人的类型分布，也可以判断一个策略是否是占优的。
+有了这一定义后，我们也能迁移上一讲中执行的定义到占优策略均衡的情形，这里不再赘述。我们对占优策略执行特别感兴趣，这是因为如果我们占优执行的机制是非常强和稳健的。因为在博弈论中我们就知道占优策略是最强、对理性假设最弱的解概念。除此之外，根据 $\eqref{mech-dom-2}$ 可知，占优策略不需要先验概率分布就可以判断，因此即使我们不知道参与人的类型分布，也可以判断一个策略是否是占优的。
 
 ### 显示原理的讨论
 
@@ -51,13 +51,13 @@ $$ E_{\theta_{-i}}[u_i(g(s_i(\theta_i), s_{-i}(\theta_{-i})), \theta_i) \mid \th
 !!! note "定义 2：占优策略激励相容"
     社会选择函数 $f$ **在占优策略中是如实可执行的（truthfully implementable in dominant strategies）**或**占优策略激励相容的（dominant strategy incentive compatible）**或**防策略的（strategy-proof）**或**直观的（straightforward）**，如果 $s_i^*(\theta_i) = \theta_i$ 对于所有 $\theta_i \in \Theta_i$ 和所有 $i$ 是直接显示机制 $\Gamma = (\Theta_1, \cdots, \Theta_I, f(\cdot))$ 的一个占优策略均衡。也就是说，如果对于所有 $i$ 和所有 $\theta_i \in \Theta_i$，我们有
 
-    $$ u_i(f(\theta_i, \theta_{-i}), \theta_i) \geqslant u_i(f(\theta_i', \theta_{-i}), \theta_i) \tag{3} \label{eq3} $$
+    $$ u_i(f(\theta_i, \theta_{-i}), \theta_i) \geqslant u_i(f(\theta_i', \theta_{-i}), \theta_i) \tag{3} \label{mech-dom-3} $$
 
     对于所有 $\theta_i' \in \Theta$ 和所有 $\theta_{-i} \in \Theta_{-i}$ 成立。
     
-因此根据显示原理，在理论上，为了识别某个特定社会选择函数 $f$ 是否为占优策略可执行的，我们只要检验不等式 $\eqref{eq3}$ 即可。
+因此根据显示原理，在理论上，为了识别某个特定社会选择函数 $f$ 是否为占优策略可执行的，我们只要检验不等式 $\eqref{mech-dom-3}$ 即可。
 
-鉴于不等式 $\eqref{eq3}$ 是社会选择函数 $f$ 能在占优策略中被如实执行的必要且充分条件，我们可以将其解释为某种**弱偏好逆转性质（weak preference reversal property）**：考虑任何参与人 $i$，以及参与人 $i$ 的任何一对可能类型 $\theta_i'$ 和 $\theta_i''$。如果如实报告是参与人 $i$ 的一个占优策略，那么对于任何 $\theta_{-i} \in \Theta_{-i}$，我们必定有
+鉴于不等式 $\eqref{mech-dom-3}$ 是社会选择函数 $f$ 能在占优策略中被如实执行的必要且充分条件，我们可以将其解释为某种**弱偏好逆转性质（weak preference reversal property）**：考虑任何参与人 $i$，以及参与人 $i$ 的任何一对可能类型 $\theta_i'$ 和 $\theta_i''$。如果如实报告是参与人 $i$ 的一个占优策略，那么对于任何 $\theta_{-i} \in \Theta_{-i}$，我们必定有
 
 $$ u_i(g(f(\theta_i', \theta_{-i}), \theta_i')) \geqslant u_i(g(f(\theta_i'', \theta_{-i}), \theta_i')) $$
 
@@ -171,14 +171,14 @@ $$ X = \{ (k, t_1, \cdots, t_I) \mid k \in K, t_i \in \mathbb{R}, \sum\limits_{i
 
 在这种拟线性环境中，社会选择函数的形式为 $f(\cdot) = (k(\cdot), t_1(\cdot), \cdots, t_I(\cdot))$。其中对于所有 $\theta \in \Theta$，$k(\theta) \in K$ 和 $\sum\limits_{i=1}^I t_i(\theta) \leqslant 0$。注意到，如果社会选择函数 $f$ 是事后有效率的，那么对于所有 $\theta \in \Theta$，$k(\theta)$ 必定满足
 
-$$ \sum\limits_{i=1}^I v_i(k(\theta), \theta_i) \geqslant \sum\limits_{i=1}^I v_i(k, \theta_i), \forall k \in K  \tag{4} \label{eq4} $$
+$$ \sum\limits_{i=1}^I v_i(k(\theta), \theta_i) \geqslant \sum\limits_{i=1}^I v_i(k, \theta_i), \forall k \in K  \tag{4} \label{mech-dom-4} $$
 
-否则我们一定可以通过调整 $t_i$ 的值找到一个帕累托改进。于是在拟线性环境中，事后有效率就是所谓的**社会福利最大化**。下面我们引入一个命题，它识别出了一类社会选择函数，这类函数满足 $\eqref{eq4}$ 而且在占优策略中如实可执行：
+否则我们一定可以通过调整 $t_i$ 的值找到一个帕累托改进。于是在拟线性环境中，事后有效率就是所谓的**社会福利最大化**。下面我们引入一个命题，它识别出了一类社会选择函数，这类函数满足 $\eqref{mech-dom-4}$ 而且在占优策略中如实可执行：
 
 !!! note "VCG 机制"
-    令 $k^*(\cdot)$ 是满足式 $\eqref{eq4}$ 的一个函数。如果对于所有 $i = 1, \cdots, I$，我们有
+    令 $k^*(\cdot)$ 是满足式 $\eqref{mech-dom-4}$ 的一个函数。如果对于所有 $i = 1, \cdots, I$，我们有
 
-    $$ t_i(\theta) = \left[ \sum\limits_{j \neq i} v_j(k^*(\theta), \theta_j) \right] + h_i(\theta_{-i}) \tag{5} \label{eq5} $$
+    $$ t_i(\theta) = \left[ \sum\limits_{j \neq i} v_j(k^*(\theta), \theta_j) \right] + h_i(\theta_{-i}) \tag{5} \label{mech-dom-5} $$
 
     其中 $h_i(\cdot)$ 是一个关于 $\theta_i$ 的任意函数，那么社会选择函数 $f(\cdot) = (k^*(\cdot), t_1(\cdot), \cdots, t_I(\cdot))$ 在占优策略中如实可执行。
 
@@ -187,13 +187,13 @@ $$ \sum\limits_{i=1}^I v_i(k(\theta), \theta_i) \geqslant \sum\limits_{i=1}^I v_
 
     $$ v_i(k^*(\theta_i',\theta_{-i}), \theta_i) + t_i(\theta_i', \theta_{-i}) > v_i(k^*(\theta), \theta_i) + t_i(\theta) $$
 
-    使用式 $\eqref{eq5}$ 替换上式中的 $t_i(\theta_i', \theta_{-i})$ 和 $t_i(\theta_i, \theta_{-i})$，可得
+    使用式 $\eqref{mech-dom-5}$ 替换上式中的 $t_i(\theta_i', \theta_{-i})$ 和 $t_i(\theta_i, \theta_{-i})$，可得
 
     $$ \sum\limits_{i=1}^I v_i(k^*(\theta_i',\theta_{-i}), \theta_i) > \sum\limits_{i=1}^I v_i(k^*(\theta), \theta_i) $$
 
-    这与 $k^*(\cdot)$ 满足式 $\eqref{eq4}$ 矛盾。因此，$f(\cdot)$ 必定在占优策略中如实可执行。
+    这与 $k^*(\cdot)$ 满足式 $\eqref{mech-dom-4}$ 矛盾。因此，$f(\cdot)$ 必定在占优策略中如实可执行。
 
-满足 $\eqref{eq4}$ 和 $\eqref{eq5}$ 的直接显示机制 $\Gamma = (\Theta_1, \cdots, \Theta_I, f(\cdot))$ 称为**维克里-克拉克-格罗夫斯（Vickrey-Clarke-Groves）机制**，简称 **VCG 机制**，或称**格罗夫斯方案（Groves scheme, 1973）**。在 VCG 机制中，给定参与人 $j \neq i$ 的报告 $\theta_{-i}$，参与人 $i$ 的转移取决于他报告的类型，这种依赖仅通过他的报告对项目选择 $k^*(\theta)$ 的影响而发生。而且，当他的报告改变了项目决策 $k$ 时，**参与人 $i$ 的转移改变量正好等于 $k$ 的这个改变对参与人 $j \neq i$ 的影响**。换句话说，参与人 $i$ 的转移的改变正好反映了他对其他参与人施加的**外部性（externality）**。因此，这诱导参与人 $i$ 将该外部性内部化，并且如实报告类型，从而产生了 $k$ 的最优水平，即能使 $\sum\limits_{i=1}^I v_i(k,\theta_i)$ 最大的项目水平。
+满足 $\eqref{mech-dom-4}$ 和 $\eqref{mech-dom-5}$ 的直接显示机制 $\Gamma = (\Theta_1, \cdots, \Theta_I, f(\cdot))$ 称为**维克里-克拉克-格罗夫斯（Vickrey-Clarke-Groves）机制**，简称 **VCG 机制**，或称**格罗夫斯方案（Groves scheme, 1973）**。在 VCG 机制中，给定参与人 $j \neq i$ 的报告 $\theta_{-i}$，参与人 $i$ 的转移取决于他报告的类型，这种依赖仅通过他的报告对项目选择 $k^*(\theta)$ 的影响而发生。而且，当他的报告改变了项目决策 $k$ 时，**参与人 $i$ 的转移改变量正好等于 $k$ 的这个改变对参与人 $j \neq i$ 的影响**。换句话说，参与人 $i$ 的转移的改变正好反映了他对其他参与人施加的**外部性（externality）**。因此，这诱导参与人 $i$ 将该外部性内部化，并且如实报告类型，从而产生了 $k$ 的最优水平，即能使 $\sum\limits_{i=1}^I v_i(k,\theta_i)$ 最大的项目水平。
 
 Clarke（1971）独立发现了 VCG 机制的一种特殊情形，称为**克拉克机制（Clarke mechanism）**或**主角机制（pivotal mechanism）**。这个机制对应于 $h_i(\theta_{-i}) = -\sum\limits_{j \neq i} v_j(k_{-i}^*(\theta_{-i}), \theta_j)$ 的情形，其中对于所有 $\theta_{-i} \in \Theta_{-i}$，$k_{-i}^*(\theta_{-i})$ 满足
 
@@ -211,19 +211,19 @@ $$ t_i(\theta) = \left[ \sum\limits_{j \neq i} v_j(k^*(\theta), \theta_j) \right
 2. 当参与人 $i$ 是对物品的评价最高的买者时，他正好是主角；
 3. 当参与人 $i$ 是主角时，他缴纳的“税收”正好等于第二高的评价（特别地，在这种情形下 $\sum\limits_{j \neq i} v_j(k^*(\theta), \theta_j) = 0$，而且 $\sum\limits_{j \neq i} v_j(k_{-i}^*(\theta_{-i}), \theta_j)$ 等于第二高评价数额）。
 
-到目前为止我们已经看到，满足式 $\eqref{eq4}$ 和 $\eqref{eq5}$ 的社会选择函数在占优策略中如实可执行。这类函数是满足式 $\eqref{eq4}$ 且是如实可执行的唯一函数吗？下面的命题（归功于 Green 和 Laffont，1979）表明，在一定条件下，答案是肯定的。在这个命题中，我们令 $V$ 表示由所有可能函数 $v : K \to \mathbb{R}$ 组成的集合。
+到目前为止我们已经看到，满足式 $\eqref{mech-dom-4}$ 和 $\eqref{mech-dom-5}$ 的社会选择函数在占优策略中如实可执行。这类函数是满足式 $\eqref{mech-dom-4}$ 且是如实可执行的唯一函数吗？下面的命题（归功于 Green 和 Laffont，1979）表明，在一定条件下，答案是肯定的。在这个命题中，我们令 $V$ 表示由所有可能函数 $v : K \to \mathbb{R}$ 组成的集合。
 
 !!! note "Green 和 Laffont，1979"
-    假设对于每个参与人 $i = 1, \cdots, I$，、对于某个 $\theta_i \in \Theta_i$，每个可能评价函数 $v_i : K \to \mathbb{R}$ 都可能出现。那么对于某个社会选择函数 $f(\cdot) = (k^*(\cdot), t_1(\cdot), \cdots, t_I(\cdot))$ 来说（其中 $k^*$ 满足 $\eqref{eq4}$），$f(\cdot)$ 在占优策略中如实可执行仅当对于 $i = 1, \cdots, I$，$t_i(\cdot)$ 满足式 $\eqref{eq5}$。
+    假设对于每个参与人 $i = 1, \cdots, I$，、对于某个 $\theta_i \in \Theta_i$，每个可能评价函数 $v_i : K \to \mathbb{R}$ 都可能出现。那么对于某个社会选择函数 $f(\cdot) = (k^*(\cdot), t_1(\cdot), \cdots, t_I(\cdot))$ 来说（其中 $k^*$ 满足 $\eqref{mech-dom-4}$），$f(\cdot)$ 在占优策略中如实可执行仅当对于 $i = 1, \cdots, I$，$t_i(\cdot)$ 满足式 $\eqref{mech-dom-5}$。
 
 !!! note "证明"
     首先注意到我们总可以将 $t$ 的表达式写为（因为 $h$ 可以是任意函数）
 
-    $$ t_i(\theta_i, \theta_{-i}) = \sum\limits_{j \neq i} v_j(k^*(\theta_i,\theta_{-i}), \theta_j) + h_i(\theta_i, \theta_{-i}) \tag{6} \label{eq6} $$
+    $$ t_i(\theta_i, \theta_{-i}) = \sum\limits_{j \neq i} v_j(k^*(\theta_i,\theta_{-i}), \theta_j) + h_i(\theta_i, \theta_{-i}) \tag{6} \label{mech-dom-6} $$
 
     于是我们想证明的是，如果 $f(\cdot)$ 在占优策略中如实可执行，函数 $h_i(\cdot)$ 必定事实上独立于 $\theta_i$。假设它不是；也就是说，$f(\cdot)$ 在占优策略中如实可执行，但是对于某个 $\theta_i, \theta_i'$ 和 $\theta_{-i}$，我们有 $h_i(\theta_i, \theta_{-i}) \neq h_i(\theta_i', \theta_i)$。现在我们考虑两种不同的情形。
 
-    1. $k^*(\theta_i, \theta_{-i}) = k^*(\theta_i', \theta_{-i})$：如果 $f(\cdot)$ 在占优策略中如实可执行，那么根据式 $\eqref{eq3}$ 我们有
+    1. $k^*(\theta_i, \theta_{-i}) = k^*(\theta_i', \theta_{-i})$：如果 $f(\cdot)$ 在占优策略中如实可执行，那么根据式 $\eqref{mech-dom-3}$ 我们有
     
         $$ v_i(k^*(\theta_i, \theta_{-i}), \theta_i) + t_i(\theta_i, \theta_{-i}) \geqslant v_i(k^*(\theta_i', \theta_{-i}), \theta_i) + t_i(\theta_i', \theta_{-i}) $$
 
@@ -231,17 +231,17 @@ $$ t_i(\theta) = \left[ \sum\limits_{j \neq i} v_j(k^*(\theta), \theta_j) \right
 
         $$ v_i(k^*(\theta_i', \theta_{-i}), \theta_i') + t_i(\theta_i', \theta_{-i}) \geqslant v_i(k^*(\theta_i, \theta_{-i}), \theta_i') + t_i(\theta_i, \theta_{-i}) $$
 
-        由于 $k^*(\theta_i, \theta_{-i}) = k^*(\theta_i', \theta_{-i})$，上述两个不等式意味着 $t_i(\theta_i, \theta_{-i}) = t_i(\theta_i', \theta_{-i})$，因此根据式 $\eqref{eq6}$ 我们有 $h_i(\theta_i, \theta_{-i}) = h_i(\theta_i', \theta_{-i})$：矛盾。
+        由于 $k^*(\theta_i, \theta_{-i}) = k^*(\theta_i', \theta_{-i})$，上述两个不等式意味着 $t_i(\theta_i, \theta_{-i}) = t_i(\theta_i', \theta_{-i})$，因此根据式 $\eqref{mech-dom-6}$ 我们有 $h_i(\theta_i, \theta_{-i}) = h_i(\theta_i', \theta_{-i})$：矛盾。
     
     2. $k^*(\theta_i, \theta_{-i}) \neq k^*(\theta_i', \theta_{-i})$：不失一般性，假设 $h_i(\theta_i, \theta_{-i}) > h_i(\theta_i', \theta_{-i})$。考虑满足下列条件的类型 $\theta^{\epsilon}_i \in \Theta_i$：
     
-        $$ v_i(k, \theta_i^{\epsilon}) = \begin{cases} -\sum\limits_{j \neq i} v_j(k^*(\theta_i, \theta_{-i}), \theta_j) & \text{if}\ k = k^*(\theta_i, \theta_{-i}) \\ -\sum\limits_{j \neq i} v_j(k^*(\theta_i', \theta_{-i}), \theta_j) + \epsilon & \text{if}\ k = k^*(\theta_i', \theta_{-i}) \\ -\infty & \text{otherwise} \end{cases} \tag{7} \label{eq7} $$
+        $$ v_i(k, \theta_i^{\epsilon}) = \begin{cases} -\sum\limits_{j \neq i} v_j(k^*(\theta_i, \theta_{-i}), \theta_j) & \text{if}\ k = k^*(\theta_i, \theta_{-i}) \\ -\sum\limits_{j \neq i} v_j(k^*(\theta_i', \theta_{-i}), \theta_j) + \epsilon & \text{if}\ k = k^*(\theta_i', \theta_{-i}) \\ -\infty & \text{otherwise} \end{cases} \tag{7} \label{mech-dom-7} $$
 
-        我们将证明，对于充分小的 $\epsilon > 0$，当其他参与人的类型为 $\theta_{-i}$ 时，类型为 $\theta^{\epsilon}_i$ 的参与人严格偏好说谎，谎称自己的类型为 $\theta_i$。为了看清这一点，首先注意到，$k^*(\theta_i', \theta_{-i}) = k^*(\theta_i^{\epsilon}, \theta_{-i})$，这是因为根据 $\eqref{eq7}$ 可知 $k = k^*(\theta_i', \theta_{-i})$ 使得社会福利 $v_i(k, \theta^{\epsilon}_i) + \sum\limits_{j \neq i} v_j(k, \theta_j)$ 最大。因此，为使如实报告成为占优策略，必有
+        我们将证明，对于充分小的 $\epsilon > 0$，当其他参与人的类型为 $\theta_{-i}$ 时，类型为 $\theta^{\epsilon}_i$ 的参与人严格偏好说谎，谎称自己的类型为 $\theta_i$。为了看清这一点，首先注意到，$k^*(\theta_i', \theta_{-i}) = k^*(\theta_i^{\epsilon}, \theta_{-i})$，这是因为根据 $\eqref{mech-dom-7}$ 可知 $k = k^*(\theta_i', \theta_{-i})$ 使得社会福利 $v_i(k, \theta^{\epsilon}_i) + \sum\limits_{j \neq i} v_j(k, \theta_j)$ 最大。因此，为使如实报告成为占优策略，必有
 
         $$ v_i(k^*(\theta_i', \theta_{-i}), \theta^{\epsilon}_i) + t_i(\theta^{\epsilon}_i, \theta_{-i}) \geqslant v_i(k^*(\theta_i, \theta_{-i}), \theta^{\epsilon}_i) + t_i(\theta_i, \theta_{-i}) $$
 
-        或者根据式 $\eqref{eq6}$ 和式 $\eqref{eq7}$ 进行代换可得
+        或者根据式 $\eqref{mech-dom-6}$ 和式 $\eqref{mech-dom-7}$ 进行代换可得
         
         $$\epsilon + h_i(\theta_i^{\epsilon}, \theta_{-i}) \geqslant h_i(\theta_i, \theta_{-i})$$
         
@@ -251,20 +251,20 @@ $$ t_i(\theta) = \left[ \sum\limits_{j \neq i} v_j(k^*(\theta), \theta_j) \right
         
         根据假设我们有 $h_i(\theta_i, \theta_{-i}) > h_i(\theta_i', \theta_{-i})$，因此，对于足够小的 $\epsilon > 0$，上式必定不成立。这样我们就完成了证明。
 
-因此，对于某个 $\theta_i \in \Theta_i$，每个可能评价函数 $v_i(k, \theta_i)$ 都可能出现的情形下，满足 $\eqref{eq4}$ 且在占优策略中如实可执行的唯一一类社会选择函数是 VCG 机制中的社会选择函数。
+因此，对于某个 $\theta_i \in \Theta_i$，每个可能评价函数 $v_i(k, \theta_i)$ 都可能出现的情形下，满足 $\eqref{mech-dom-4}$ 且在占优策略中如实可执行的唯一一类社会选择函数是 VCG 机制中的社会选择函数。
 
 ### VCG 机制与预算平衡
 
-直到目前，我们已经研究了对于总是能导致 $k$ 的有效率选择的社会选择函数（满足 $\eqref{eq4}$ 的函数）何时能在占优策略中如实执行。但是事后效率也要求计价物不存在浪费，也就是说，要求满足预算平衡条件：
+直到目前，我们已经研究了对于总是能导致 $k$ 的有效率选择的社会选择函数（满足 $\eqref{mech-dom-4}$ 的函数）何时能在占优策略中如实执行。但是事后效率也要求计价物不存在浪费，也就是说，要求满足预算平衡条件：
 
-$$ \sum\limits_{i=1}^I t_i(\theta) = 0, \forall \theta \in \Theta \tag{8} \label{eq8} $$
+$$ \sum\limits_{i=1}^I t_i(\theta) = 0, \forall \theta \in \Theta \tag{8} \label{mech-dom-8} $$
 
-我们现在简要考察完全事后有效率的社会选择函数（满足 $\eqref{eq4}$ 和 $\eqref{eq8}$ 的函数）何时能在占优策略中如实执行。遗憾的是，在很多情形下我们不可能在占优策略中如实执行完全事后有效率的社会选择函数。例如，下面的命题（归功于 Green 和 Laffont，1979）表明，如果每个参与人的可能类型集都充分大，那么任何在占优策略中如实可执行的社会选择函数都不是事后有效率的。这个命题的证明我们略去。
+我们现在简要考察完全事后有效率的社会选择函数（满足 $\eqref{mech-dom-4}$ 和 $\eqref{mech-dom-8}$ 的函数）何时能在占优策略中如实执行。遗憾的是，在很多情形下我们不可能在占优策略中如实执行完全事后有效率的社会选择函数。例如，下面的命题（归功于 Green 和 Laffont，1979）表明，如果每个参与人的可能类型集都充分大，那么任何在占优策略中如实可执行的社会选择函数都不是事后有效率的。这个命题的证明我们略去。
 
 !!! note "Green 和 Laffont，1979"
-    假设对于每个参与人 $i = 1, \cdots, I$，每个可能评价函数 $v_i: K \to \mathbb{R}$ 都可能出现。那么不存在社会选择函数 $f(\cdot) = (k^*(\cdot), t_1(\cdot), \cdots, t_I(\cdot))$ 满足 $\eqref{eq4}$ 和 $\eqref{eq8}$（即满足事后有效率），且在占优策略中如实可执行。
+    假设对于每个参与人 $i = 1, \cdots, I$，每个可能评价函数 $v_i: K \to \mathbb{R}$ 都可能出现。那么不存在社会选择函数 $f(\cdot) = (k^*(\cdot), t_1(\cdot), \cdots, t_I(\cdot))$ 满足 $\eqref{mech-dom-4}$ 和 $\eqref{mech-dom-8}$（即满足事后有效率），且在占优策略中如实可执行。
 
-因此，在上述命题的假设下，私人信息的存在意味着 $I$ 个参与人要么容忍计价物的浪费（即对于某个 $\theta$ 有 $\sum\limits_{i=1}^I t_i(\theta) < 0$，这与克拉克机制情形一样），要么不再指望总能得到有效率的项目选择（即对于某个 $\theta$，未必满足 $\eqref{eq4}$）。
+因此，在上述命题的假设下，私人信息的存在意味着 $I$ 个参与人要么容忍计价物的浪费（即对于某个 $\theta$ 有 $\sum\limits_{i=1}^I t_i(\theta) < 0$，这与克拉克机制情形一样），要么不再指望总能得到有效率的项目选择（即对于某个 $\theta$，未必满足 $\eqref{mech-dom-4}$）。
 
 当然，在一种特殊情形下，我们也能得到更为肯定的结果，这就是当至少一个参与人的偏好信息为大家共知时。为了方便表达，令这个参与人为“参与人 0”；另外，令还有 $I$ 个参与人 $i = 1, \cdots, I$，这 $I$ 个人的偏好都是私人信息（因此，现在一共有 $I+1$ 个参与人）。最简单情形当然是，参与人 0 对项目选择 $k$ 没有偏好，也就是说，他的偏好为 $u_i(x) = \overline{m}_0 + t_0$（事实上拍卖环境符合这一假定，参与人 0 就是卖家）。在这个 $I+1$ 个参与人环境中，VCG 机制是事后有效率的，只要我们令参与人 0 的转移为 $t_0(\theta) = -\sum\limits_{i=1}^I t_i(\theta)$ 对于所有 $\theta$。在本质上，无私人信息的“外部”参与人 0 的存在，使得那些拥有私人信息的参与人不需要满足预算平衡条件（**VCG 拍卖就是如此**）。然而，我们应该对这个貌似正面的结果提出警告：直到目前，我们还未考虑过参与人是否愿意参与到机制中。正如我们将在下一讲中看到的，当参与人自愿参与时，即使存在这样的参与人 0，也可能不存在占优策略中可执行的事后有效率社会选择函数。
 
@@ -278,17 +278,17 @@ $$ \dfrac{\partial^2 v_i(k, \theta_i)}{\partial k^2} < 0, \dfrac{\partial^2 v_i(
 
 首先注意到，对于任何连续可微的社会选择函数 $f(\cdot) = (k(\cdot), t_1(\cdot), \cdots, t_I(\cdot))$，如果如实报告是参与人 $i$ 的一个占优策略，那么参与人 $i$ 的一阶条件意味着，对于所有 $\theta_i$，在所有 $\theta_i \in (\theta, \theta')$ 上，我们有
 
-$$ \dfrac{\partial v_i(k(\theta_i, \theta_{-i}), \theta_i)}{\partial k} \dfrac{\partial k(\theta_i, \theta_{-i})}{\partial \theta_i} + \dfrac{\partial t_i(\theta_i, \theta_{-i})}{\partial \theta_i} = 0 \tag{9} \label{eq9} $$
+$$ \dfrac{\partial v_i(k(\theta_i, \theta_{-i}), \theta_i)}{\partial k} \dfrac{\partial k(\theta_i, \theta_{-i})}{\partial \theta_i} + \dfrac{\partial t_i(\theta_i, \theta_{-i})}{\partial \theta_i} = 0 \tag{9} \label{mech-dom-9} $$
 
 将上式关于变量 $\theta_i$ 积分，这意味着对于所有类型组合 $(\theta, \theta_{-i})$，我们有
 
-$$ t_i(\theta_i, \theta_{-i}) = t_i(\underline{\theta}_i, \theta_{-i}) - \int_{\underline{\theta}_i}^{\theta} \dfrac{\partial v_i(k(s, \theta_{-i}), s)}{\partial k} \dfrac{\partial k(s, \theta_{-i})}{\partial s} \text{d}s \tag{9} \label{eq10} $$
+$$ t_i(\theta_i, \theta_{-i}) = t_i(\underline{\theta}_i, \theta_{-i}) - \int_{\underline{\theta}_i}^{\theta} \dfrac{\partial v_i(k(s, \theta_{-i}), s)}{\partial k} \dfrac{\partial k(s, \theta_{-i})}{\partial s} \text{d}s \tag{9} \label{mech-dom-10} $$
 
-现在考虑满足式 $\eqref{eq4}$ 的任何社会选择函数 $f(\cdot) = (k^*(\cdot), t_1(\cdot), \cdots, t_I(\cdot))$。在我们当前的假设条件下，$k^*(\cdot)$ 必定满足：对于所有 $\theta$，
+现在考虑满足式 $\eqref{mech-dom-4}$ 的任何社会选择函数 $f(\cdot) = (k^*(\cdot), t_1(\cdot), \cdots, t_I(\cdot))$。在我们当前的假设条件下，$k^*(\cdot)$ 必定满足：对于所有 $\theta$，
 
-$$ \sum\limits_{i=1}^I \dfrac{\partial v_i(k^*(\theta), \theta_i)}{\partial k} = 0 \tag{10} \label{eq11} $$
+$$ \sum\limits_{i=1}^I \dfrac{\partial v_i(k^*(\theta), \theta_i)}{\partial k} = 0 \tag{10} \label{mech-dom-11} $$
 
-而且，使用隐函数定理和我们对函数 $v_i(\cdot)$ 所作的假设，可知 $k^*(\cdot)$ 是连续可微的，而且它有着非零偏导数 $\dfrac{\partial k^*(\theta)}{\partial \theta_i} \neq 0$ 对于所有 $i$。现在我们使用式 $\eqref{eq11}$ 替换式 $\eqref{eq10}$ 中的 $\dfrac{\partial v_i(k(s, \theta_{-i}), s)}{\partial k}$。替换后可知，对于所有组合 $(\theta, \theta_{-i})$，
+而且，使用隐函数定理和我们对函数 $v_i(\cdot)$ 所作的假设，可知 $k^*(\cdot)$ 是连续可微的，而且它有着非零偏导数 $\dfrac{\partial k^*(\theta)}{\partial \theta_i} \neq 0$ 对于所有 $i$。现在我们使用式 $\eqref{mech-dom-11}$ 替换式 $\eqref{mech-dom-10}$ 中的 $\dfrac{\partial v_i(k(s, \theta_{-i}), s)}{\partial k}$。替换后可知，对于所有组合 $(\theta, \theta_{-i})$，
 
 $$ \begin{aligned} 
     t_i(\theta, \theta_{-i}) & = t_i(\underline{\theta}_i, \theta_{-i}) + \int_{\underline{\theta}_i}^{\theta} \left(\sum\limits_{j \neq i} \dfrac{\partial v_j(k^*(s, \theta_{-i}), \theta_j)}{\partial k}\right) \dfrac{\partial k^*(s, \theta_{-i})}{\partial s} \text{d}s \\
@@ -296,9 +296,9 @@ $$ \begin{aligned}
     &= t_i(\underline{\theta}_i, \theta_{-i}) + \sum\limits_{j \neq i} v_j(k^*(\theta, \theta_{-i}), \theta_j) - \sum\limits_{j \neq i} v_j(k^*(\underline{\theta}_i, \theta_{-i}), \theta_j)
 \end{aligned} $$
 
-但这为真当且仅当 $t_i(\theta)$ 满足 $\eqref{eq5}$。因此，在这样的环境下，格罗夫斯机制是在占优策略中如实可执行且满足 $\eqref{eq4}$ 的唯一一类社会选择函数。
+但这为真当且仅当 $t_i(\theta)$ 满足 $\eqref{mech-dom-5}$。因此，在这样的环境下，格罗夫斯机制是在占优策略中如实可执行且满足 $\eqref{mech-dom-4}$ 的唯一一类社会选择函数。
 
-现在考虑当不存在外部参与人 0 时的预算平衡问题。我们将证明，当 $I=2$ 时（对于 $I > 2$ 参见 Laffont 和 Maskin（1980）），在这个可微环境中，不可能满足 $\eqref{eq11}$ 和预算平衡条件。根据 $\eqref{eq9}$ 可知，对于所有 $\theta=(\theta_1, \theta_2)$，我们有
+现在考虑当不存在外部参与人 0 时的预算平衡问题。我们将证明，当 $I=2$ 时（对于 $I > 2$ 参见 Laffont 和 Maskin（1980）），在这个可微环境中，不可能满足 $\eqref{mech-dom-11}$ 和预算平衡条件。根据 $\eqref{mech-dom-9}$ 可知，对于所有 $\theta=(\theta_1, \theta_2)$，我们有
 
 $$ \dfrac{\partial t_1(\theta)}{\partial \theta_1} = - \dfrac{\partial v_1(k^*(\theta), \theta_1)}{\partial k} \dfrac{\partial k^*(\theta)}{\partial \theta_1} $$
 
@@ -314,7 +314,7 @@ $$ - \dfrac{\partial^2 t_1(\theta)}{\partial \theta_1\partial \theta_2} = \dfrac
 
 $$ - \dfrac{\partial^2 t_2(\theta)}{\partial \theta_1\partial \theta_2} = \dfrac{\partial^2 v_2(k^*(\theta), \theta_2)}{\partial k^2} \dfrac{\partial k^*(\theta)}{\partial \theta_2} \dfrac{\partial k^*(\theta)}{\partial \theta_1} + \dfrac{\partial v_2(k^*(\theta), \theta_2)}{\partial k} \dfrac{\partial^2 k^*(\theta)}{\partial \theta_1\partial \theta_2} $$
 
-如果预算平衡，那么 $t_1(\theta) = -t_2(\theta)$ 对于所有 $\theta$ 成立，因此我们必定有 $\dfrac{\partial^2 t_1(\theta)}{\partial \theta_1\partial \theta_2} = -\dfrac{\partial^2 t_2(\theta)}{\partial \theta_1\partial \theta_2}$。但这意味着，通过将上述两个式子相加，并使用 $\eqref{eq10}$，即可得到
+如果预算平衡，那么 $t_1(\theta) = -t_2(\theta)$ 对于所有 $\theta$ 成立，因此我们必定有 $\dfrac{\partial^2 t_1(\theta)}{\partial \theta_1\partial \theta_2} = -\dfrac{\partial^2 t_2(\theta)}{\partial \theta_1\partial \theta_2}$。但这意味着，通过将上述两个式子相加，并使用 $\eqref{mech-dom-10}$，即可得到
 
 $$ \left[ \dfrac{\partial^2 v_1(k^*(\theta), \theta_1)}{\partial k^2} + \dfrac{\partial^2 v_2(k^*(\theta), \theta_2)}{\partial k^2} \right] \dfrac{\partial k^*(\theta)}{\partial \theta_1} \dfrac{\partial k^*(\theta)}{\partial \theta_2} = 0 $$
 
