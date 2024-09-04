@@ -80,6 +80,8 @@ nav:
       - 空间复杂性: tcs/AdvancedTC/space.md
       - 概率算法: tcs/AdvancedTC/probabilistic.md
       - 复杂性层次: tcs/AdvancedTC/intractability.md
+    - 机器学习理论:
+      - 机器学习理论基础: tcs/MLT/basic.md
     - 量子信息基础:
       - 希尔伯特空间: tcs/BasicQuantumInfo/hilbert.md
     - 编程语言原理:
@@ -122,7 +124,7 @@ nav:
       - 占优策略的执行: algt/mechanism/dominant.md
       - 贝叶斯执行: algt/mechanism/bayesian.md
       - 最优机制: algt/mechanism/optimal.md
-      - 拍卖理论基础: algt/mechanism/auction.md
+      - 拍卖理论基础（I）: algt/mechanism/auction.md
       - 多参数机制基础: algt/mechanism/multi.md
       - 无先验知识的机制设计: algt/mechanism/prior-free.md
     - 计算与经济杂项:
